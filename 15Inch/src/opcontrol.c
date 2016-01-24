@@ -70,11 +70,11 @@ void operatorControl()
 
 			if(intake1RunningIn)
 			{
-				intake1In(robotIntake);
+				intake1In(&robotIntake);
 			}
 			else
 			{
-				intake1Stop(robotIntake);
+				intake1Stop(&robotIntake);
 			}
 		}
 		else if(OIGetIntake1Out() && !lastIntake1OutButton)
@@ -85,11 +85,11 @@ void operatorControl()
 
 			if(intake1RunningOut)
 			{
-				intake1Out(robotIntake);
+				intake1Out(&robotIntake);
 			}
 			else
 			{
-				intake1Stop(robotIntake);
+				intake1Stop(&robotIntake);
 			}
 		}
 
@@ -98,16 +98,18 @@ void operatorControl()
 
 		if(OIGetIntake2In())
 		{
-			intake2In(robotIntake);
+			intake2In(&robotIntake);
 		}
 		else if(OIGetIntake2Out())
 		{
-			intake2Out(robotIntake);
+			intake2Out(&robotIntake);
 		}
 		else
 		{
-			intake2Stop(robotIntake);
+			intake2Stop(&robotIntake);
 		}
+
+		runIntake(&robotIntake);
 
 		if(OIShooterOn())
 		{

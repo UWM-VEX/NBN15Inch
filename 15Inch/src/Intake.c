@@ -15,47 +15,81 @@ Intake initIntake(PantherMotor leftMotor, PantherMotor rightMotor,
 	pinMode(rightLimitSwitch, INPUT);
 
 	Intake newIntake = {leftMotor, rightMotor, backMotor,
-			leftLimitSwitch, rightLimitSwitch};
+			leftLimitSwitch, rightLimitSwitch, INTAKE_OFF, INTAKE_OFF};
 	return newIntake;
 }
 
-void intake1In(Intake intake)
+void intake1In(Intake *intake)
 {
-	setPantherMotor(intake.leftMotor, 127);
+	(*intake).frontIntakeState = INTAKE_IN;
+}
 
-	if(digitalRead(intake.leftLimitSwitch) && digitalRead(intake.rightLimitSwitch))
+void intake1Out(Intake *intake)
+{
+	(*intake).frontIntakeState = INTAKE_OUT;
+}
+
+void intake1Stop(Intake *intake)
+{
+	(*intake).frontIntakeState = INTAKE_OFF;
+}
+
+void intake2In(Intake *intake)
+{
+	(*intake).backIntakeState = INTAKE_IN;
+}
+
+void intake2Out(Intake *intake)
+{
+	(*intake).backIntakeState = INTAKE_OUT;
+}
+
+void intake2Stop(Intake *intake)
+{
+	(*intake).backIntakeState = INTAKE_OFF;
+}
+
+void runIntake(Intake *intake)
+{
+	switch((*intake).frontIntakeState)
 	{
-		setPantherMotor(intake.rightMotor, 0);
+	case(INTAKE_OFF):
+		setPantherMotor((*intake).leftMotor, 0);
+		setPantherMotor((*intake).rightMotor, 0);
+		break;
+
+	case(INTAKE_IN):
+		setPantherMotor((*intake).leftMotor, 127);
+
+		if(!digitalRead((*intake).leftLimitSwitch) && !digitalRead((*intake).rightLimitSwitch))
+		{
+			setPantherMotor((*intake).rightMotor, 0);
+		}
+		else
+		{
+			setPantherMotor((*intake).rightMotor, 127);
+		}
+
+		break;
+
+	case(INTAKE_OUT):
+		setPantherMotor((*intake).leftMotor, -127);
+		setPantherMotor((*intake).rightMotor, -127);
+		break;
 	}
-	else
+
+	switch((*intake).backIntakeState)
 	{
-		setPantherMotor(intake.rightMotor, 0);
+	case(INTAKE_OFF):
+		setPantherMotor((*intake).backMotor, 0);
+		break;
+
+	case(INTAKE_IN):
+		setPantherMotor((*intake).backMotor, 127);
+		break;
+
+	case(INTAKE_OUT):
+		setPantherMotor((*intake).backMotor, -127);
+		break;
 	}
-}
-
-void intake1Out(Intake intake)
-{
-	setPantherMotor(intake.leftMotor, -127);
-	setPantherMotor(intake.rightMotor, -127);
-}
-
-void intake1Stop(Intake intake)
-{
-	setPantherMotor(intake.leftMotor, 0);
-	setPantherMotor(intake.rightMotor, 0);
-}
-
-void intake2In(Intake intake)
-{
-	setPantherMotor(intake.backMotor, 127);
-}
-
-void intake2Out(Intake intake)
-{
-	setPantherMotor(intake.backMotor, -127);
-}
-
-void intake2Stop(Intake intake)
-{
-	setPantherMotor(intake.backMotor, 0);
 }
