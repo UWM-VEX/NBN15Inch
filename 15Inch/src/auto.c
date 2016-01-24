@@ -124,14 +124,14 @@ void autonomousPeriodic()
 
 				break;
 
-				case(2):
+				/*case(2):
 					propDriveToWayPoint(&turn90Left);
 
 					autonomousInfo.isFinished = turn90Left.isFinished;
 
-					break;
+					break;*/
 
-				case(3):
+				case(2):
 					propDriveToWayPoint(&drive18Back);
 
 					autonomousInfo.isFinished = drive18Back.isFinished;

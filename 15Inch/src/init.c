@@ -161,13 +161,14 @@ void initializeIO() {
  *
  * This function must exit relatively promptly, or the operatorControl() and autonomous() tasks will not start. An autonomous mode selection menu like the pre_auton() in other environments can be implemented in this task if desired.
  */
+
 void initialize() {
 	imeInitializeAll();
 
 	robotDrive = initDrive(initPantherMotor(2,0), initPantherMotor(5,1),
 			initPantherMotor(3,0), initPantherMotor(6,1),
 			initPantherMotor(4,0), initPantherMotor(7,1),
-			encoderInit(1, 2, 0), encoderInit(3,4,0), gyroInit(1, 0));
+			encoderInit(1, 2, 1), encoderInit(3,4,0), gyroInit(1, -196));
 	PIDController shooterPID = initPIDController(.0125, 0, 0, .028, 0, 100);
 	robotShooter = initShooter(shooterPID, initPantherMotor(9,1), 2800, 0, 0);
 

@@ -47,9 +47,12 @@ void propDriveToWayPoint(PropDriveToWayPoint *step)
 	{
 		(*step).initialDistance = (encoderGet((*step).drive.leftEncoder) +
 				encoderGet((*step).drive.rightEncoder)) / 2.0;
-		(*step).initialDistance = encoderToInches((*step).initialDistance, 3.25);
+		(*step).initialDistance = encoderToInches((*step).initialDistance, WHEEL_DIAMETER);
 		(*step).initialAngle = gyroGet((*step).drive.gyro);
 	}
+
+	lcdPrint(uart1, 1, "Left: %d", encoderGet((*step).drive.leftEncoder));
+	lcdPrint(uart1, 2, "Right: %d", encoderGet((*step).drive.rightEncoder));
 
 	printf("\nInitial Distance: %f", (*step).initialDistance);
 
