@@ -10,12 +10,20 @@
 
 struct Intake{
 
-	PantherMotor intake1;
-	PantherMotor intake2;
+	PantherMotor leftMotor;
+	PantherMotor rightMotor;
+	PantherMotor backMotor;
+	int leftLimitSwitch;
+	int rightLimitSwitch;
 
 }typedef Intake;
 
-Intake initIntake(PantherMotor intake1, PantherMotor intake2);
+/**
+ * Use in initIO method.
+ */
+Intake initIntake(PantherMotor leftMotor, PantherMotor rightMotor,
+		PantherMotor backMotor, int leftLimitSwitch,
+		int rightLimitSwitch);
 void intake1In(Intake intake);
 void intake1Out(Intake intake);
 void intake1Stop(Intake intake);
