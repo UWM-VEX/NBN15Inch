@@ -13,6 +13,5 @@
 Drive robotDrive;
 Intake robotIntake;
 Shooter robotShooter;
-BallStopper robotStopper;
 
 #endif /* INCLUDE_ROBOT_H_ */

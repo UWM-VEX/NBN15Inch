@@ -89,13 +89,3 @@ int OIShooterDown()
 {
 	return joystickGetDigital(numJoysticks, 5, JOY_UP);
 }
-
-int OIBallStopperUp()
-{
-	return joystickGetDigital(1, 8, JOY_UP);
-}
-
-int OIBallStopperDown()
-{
-	return joystickGetDigital(1, 8, JOY_DOWN);
-}

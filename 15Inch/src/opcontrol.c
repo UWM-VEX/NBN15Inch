@@ -148,15 +148,6 @@ void operatorControl()
 			lcdSetBacklight(uart1, false);
 		}
 
-		if(OIBallStopperDown())
-		{
-			ballStopperDown(robotStopper);
-		}
-		else if(OIBallStopperUp())
-		{
-			ballStopperUp(robotStopper);
-		}
-
 		delay(25);
 
 		puts("hi");

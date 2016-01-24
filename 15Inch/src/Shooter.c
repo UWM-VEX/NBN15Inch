@@ -7,7 +7,7 @@
 
 #include "main.h"
 
-Shooter initShooter(PIDController controller, PantherMotor motor, int defaultSpeed, int IMEPort, int IMEInverted)
+Shooter initShooter(PIDController controller, PantherMotor motor1, PantherMotor motor2, int defaultSpeed, int IMEPort, int IMEInverted)
 {
 	PIDController newController = controller;
 
@@ -15,7 +15,7 @@ Shooter initShooter(PIDController controller, PantherMotor motor, int defaultSpe
 
 	IME newIME = initIME(IMEPort, IMEInverted);
 
-	Shooter newShooter = {motor, 0, defaultSpeed, 0, millis(), newController, 0, millis(), newIME, defaultSpeed};
+	Shooter newShooter = {motor1, motor2, 0, defaultSpeed, 0, millis(), newController, 0, millis(), newIME, defaultSpeed};
 	return newShooter;
 }
 
@@ -125,5 +125,6 @@ void runShooterAtSpeed(Shooter *shooter)
 	(*shooter).controller.setPoint = (*shooter).SP;
 	int speed = runPIDController(&((*shooter).controller),
 			(*shooter).processVariable);
-	setPantherMotor((*shooter).motor, speed);
+	setPantherMotor((*shooter).motor1, speed);
+	setPantherMotor((*shooter).motor2, speed);
 }
