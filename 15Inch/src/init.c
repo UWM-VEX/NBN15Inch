@@ -167,7 +167,7 @@ void initialize() {
 	robotDrive = initDrive(initPantherMotor(2,0), initPantherMotor(5,1),
 			initPantherMotor(3,0), initPantherMotor(6,1),
 			initPantherMotor(4,0), initPantherMotor(7,1),
-			encoderInit(1, 2, 0), encoderInit(3,4,0));
+			encoderInit(1, 2, 0), encoderInit(3,4,0), gyroInit(1, 0));
 	PIDController shooterPID = initPIDController(.0125, 0, 0, .028, 0, 100);
 	robotShooter = initShooter(shooterPID, initPantherMotor(9,1), 2800, 0, 0);
 

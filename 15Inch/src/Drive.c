@@ -6,11 +6,11 @@
 Drive initDrive(PantherMotor frontLeftMotor, PantherMotor frontRightMotor,
 		PantherMotor middleLeftMotor, PantherMotor middleRightMotor,
 		PantherMotor rearLeftMotor, PantherMotor rearRightMotor,
-		Encoder leftEncoder, Encoder rightEncoder)
+		Encoder leftEncoder, Encoder rightEncoder, Gyro gyro)
 {
 	Drive newDrive = {frontLeftMotor, frontRightMotor, middleLeftMotor,
 			middleRightMotor, rearLeftMotor, rearRightMotor,
-			leftEncoder, rightEncoder};
+			leftEncoder, rightEncoder, gyro};
 
 	return newDrive;
 }
@@ -30,4 +30,9 @@ void tankDrive(Drive drive, int left, int right)
 	setPantherMotor(drive.frontRightMotor, rightSpeed);
 	setPantherMotor(drive.middleRightMotor, rightSpeed);
 	setPantherMotor(drive.rearRightMotor, rightSpeed);
+}
+
+void arcadeDrive(Drive drive, int magnitude, int rotation)
+{
+	tankDrive(drive, magnitude + rotation, magnitude - rotation);
 }
