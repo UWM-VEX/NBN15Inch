@@ -8,13 +8,13 @@
 #include "main.h"
 
 Intake initIntake(PantherMotor leftMotor, PantherMotor rightMotor,
-		PantherMotor middleMotor, PantherMotor backMotor, int leftLimitSwitch,
+		PantherMotor backMotor, int leftLimitSwitch,
 		int rightLimitSwitch)
 {
 	pinMode(leftLimitSwitch, INPUT);
 	pinMode(rightLimitSwitch, INPUT);
 
-	Intake newIntake = {leftMotor, rightMotor, middleMotor, backMotor,
+	Intake newIntake = {leftMotor, rightMotor, backMotor,
 			leftLimitSwitch, rightLimitSwitch};
 	return newIntake;
 }
@@ -47,18 +47,15 @@ void intake1Stop(Intake intake)
 
 void intake2In(Intake intake)
 {
-	setPantherMotor(intake.middleMotor, 127);
 	setPantherMotor(intake.backMotor, 127);
 }
 
 void intake2Out(Intake intake)
 {
-	setPantherMotor(intake.middleMotor, -127);
 	setPantherMotor(intake.backMotor, -127);
 }
 
 void intake2Stop(Intake intake)
 {
-	setPantherMotor(intake.middleMotor, 0);
 	setPantherMotor(intake.backMotor, 0);
 }

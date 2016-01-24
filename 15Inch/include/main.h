@@ -50,6 +50,7 @@
 #include "IME.h"
 #include "PIDController.h"
 #include "Drive.h"
+#include "BallStopper.h"
 #include "Intake.h"
 #include "Shooter.h"
 #include "Robot.h"

@@ -18,5 +18,7 @@ int OIShooterOn();
 int OIShooterOff();
 int OIShooterUp();
 int OIShooterDown();
+int OIBallStopperUp();
+int OIBallStopperDown();
 
 #endif /* INCLUDE_OI_H_ */
