@@ -17,6 +17,127 @@
 
 #include "main.h"
 
+void changeSelection(int valueToChange, int * selection, int size)
+{
+	if(valueToChange == -1)
+	{
+		if((* selection) > 0)
+		{
+			(* selection) --;
+		}
+		else
+		{
+			(* selection) = size - 1;
+		}
+	}
+	else if(valueToChange == 1)
+		{
+			if((* selection) < size - 1)
+			{
+				(* selection) ++;
+			}
+			else
+			{
+				(* selection) = 0;
+			}
+		}
+}
+
+void lcdModeSelect()
+{
+	int inModeSelection = 1;
+	int step = 1;
+	int lastButtonPress = 0;
+	int newButtonPressed;
+	int lastStep = 0;
+
+	const char * selectionText[] = {"Nothing", "Mode 1", "4 SkyRise"};
+	int size = 3;
+
+	autonomousSelection = 0;
+
+	while((isOnline() ? (!isAutonomous() && !isEnabled()
+			&& inModeSelection) : inModeSelection))
+	{
+		printf("Step: %d\n", step);
+
+		if(lastButtonPress != lcdReadButtons(uart1))
+		{
+			newButtonPressed = lcdReadButtons(uart1);
+		}
+		else
+		{
+			newButtonPressed = 0;
+		}
+
+		lastButtonPress = lcdReadButtons(uart1);
+
+		switch(step)
+		{
+		case(1):
+			puts("Setting Text");
+
+			if(step != lastStep)
+			{
+				lcdSetText(uart1, 1, "    Alliance    ");
+				lcdSetText(uart1, 2, "Red         Blue");
+			}
+
+			lastStep = step;
+
+			if(newButtonPressed == 1)
+			{
+				alliance = RED;
+				step ++;
+			}
+
+			if(newButtonPressed == 4)
+			{
+				alliance = BLUE;
+				step ++;
+			}
+
+			break;
+
+		case(2):
+			lcdSetText(uart1, 1, "      Mode      ");
+			lcdSetText(uart1, 2, selectionText[autonomousSelection]);
+
+			if(newButtonPressed == 1)
+			{
+				changeSelection(-1, &autonomousSelection, size);
+			}
+
+			if(newButtonPressed == 4)
+			{
+				changeSelection(1, &autonomousSelection, size);
+			}
+
+			if(newButtonPressed == 2)
+			{
+				step++;
+			}
+			break;
+
+		default:
+			lcdSetText(uart1, 1, "   Selection:   ");
+			lcdPrint(uart1, 2, "%s  %s", (alliance ? "Blue" : "Red"),
+					selectionText[autonomousSelection]);
+
+			delay(5000);
+
+			lcdSetBacklight(uart1, false);
+
+			inModeSelection = 0;
+
+			break;
+
+		}
+
+		delay(20);
+	}
+}
+
  /**
   * Runs pre-initialization code.
   *
@@ -49,4 +170,10 @@ void initialize() {
 			encoderInit(1, 2, 0), encoderInit(3,4,0));
 	PIDController shooterPID = initPIDController(.0125, 0, 0, .028, 0, 100);
 	robotShooter = initShooter(shooterPID, initPantherMotor(9,1), 2800, 0, 0);
+
+	lcdSetBacklight(uart1, true);
+
+	lcdModeSelect();
+
+	puts("LCD Finished");
 }

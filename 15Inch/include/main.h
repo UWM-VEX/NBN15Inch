@@ -54,6 +54,8 @@
 #include "Intake.h"
 #include "Shooter.h"
 #include "Robot.h"
+#include "Auto.h"
+#include "PropDriveToWayPoint.h"
 
 int numJoysticks;
 
