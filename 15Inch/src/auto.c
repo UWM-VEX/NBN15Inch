@@ -69,6 +69,7 @@ PropDriveToWayPoint drive24Inches;
 PropDriveToWayPoint turn90Left;
 PropDriveToWayPoint drive18Back;
 PropDriveToWayPoint turnAndForward;
+PropDriveToWayPoint turn90Right;
 
 int isAuto = 1;
 
@@ -88,6 +89,7 @@ void autonomousInit()
 	turn90Left = initPropDriveToWayPoint(robotDrive, 0, -90);
 	drive18Back = initPropDriveToWayPoint(robotDrive, -18, 0);
 	turnAndForward = initPropDriveToWayPoint(robotDrive, 24, 60);
+	turn90Right = initPropDriveToWayPoint(robotDrive, 0, 90);
 	//propDriveToWayPointSetMaxSpeed(&drive24Inches, 50);
 
 	autonomousInfo.lastStep = 0;
@@ -124,17 +126,24 @@ void autonomousPeriodic()
 
 				break;
 
-				/*case(2):
+				case(2):
 					propDriveToWayPoint(&turn90Left);
 
 					autonomousInfo.isFinished = turn90Left.isFinished;
 
-					break;*/
+					break;
 
-				case(2):
+				case(3):
 					propDriveToWayPoint(&drive18Back);
 
 					autonomousInfo.isFinished = drive18Back.isFinished;
+
+					break;
+
+				case(4):
+					propDriveToWayPoint(&turn90Right);
+
+					autonomousInfo.isFinished = turn90Right.isFinished;
 
 					break;
 

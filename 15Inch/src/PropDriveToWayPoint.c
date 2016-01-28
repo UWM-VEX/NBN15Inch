@@ -9,7 +9,7 @@
 
 PropDriveToWayPoint initPropDriveToWayPoint(Drive drive, double distance, int rotation)
 {
-	PropDriveToWayPoint newStep = {drive, 100, 1.00, distance, rotation, 100, 15, 0, 0, 0, 18.0, 500, 0};
+	PropDriveToWayPoint newStep = {drive, 100, 2.00, distance, rotation, 100, 15, 0, 0, 0, 18.0, 500, 0};
 	return newStep;
 }
 
@@ -149,13 +149,13 @@ void propDriveToWayPoint(PropDriveToWayPoint *step)
 			}
 			else if(turnEncoderError > 0)
 			{
-				rotation = 20;
+				rotation = 30;
 				goodRotation = 0;
 				lcdSetText(uart1, 2, "Turning Right");
 			}
 			else
 			{
-				rotation = -20;
+				rotation = -30;
 				goodRotation = 0;
 				lcdSetText(uart1, 2, "Turning Left");
 			}
