@@ -24,6 +24,7 @@ struct PropDriveToWayPoint{
 	int isFinished;
 	double slowDownDistance;
 	long timeToAccelerate;
+	int goodDistance;
 
 }typedef PropDriveToWayPoint;
 

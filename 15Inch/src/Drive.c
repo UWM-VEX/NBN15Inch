@@ -34,5 +34,8 @@ void tankDrive(Drive drive, int left, int right)
 
 void arcadeDrive(Drive drive, int magnitude, int rotation)
 {
-	tankDrive(drive, magnitude + rotation, magnitude - rotation);
+	int left = limit(magnitude + rotation, 127, -127);
+	int right = limit(magnitude - rotation, 127, -127);
+
+	tankDrive(drive, left, right);
 }

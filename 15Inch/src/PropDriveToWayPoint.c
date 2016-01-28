@@ -9,7 +9,7 @@
 
 PropDriveToWayPoint initPropDriveToWayPoint(Drive drive, double distance, int rotation)
 {
-	PropDriveToWayPoint newStep = {drive, /*12.7*/ 1.50, 1.00, distance, rotation, 100, 15, 0, 0, 0, 18.0, 500};
+	PropDriveToWayPoint newStep = {drive, 100, 1.00, distance, rotation, 100, 15, 0, 0, 0, 18.0, 500, 0};
 	return newStep;
 }
 
@@ -35,7 +35,6 @@ void propDriveToWayPointSetMinSpeed(PropDriveToWayPoint *step, int speed)
 
 void propDriveToWayPoint(PropDriveToWayPoint *step)
 {
-	int goodDistance = 0;
 	int goodRotation = 0;
 	int magnitude = 0;
 	int rotation = 0;
@@ -45,21 +44,23 @@ void propDriveToWayPoint(PropDriveToWayPoint *step)
 
 	if(autonomousInfo.step != autonomousInfo.lastStep)
 	{
+		(*step).goodDistance = 0;
 		(*step).initialDistance = (encoderGet((*step).drive.leftEncoder) +
 				encoderGet((*step).drive.rightEncoder)) / 2.0;
 		(*step).initialDistance = encoderToInches((*step).initialDistance, WHEEL_DIAMETER);
-		(*step).initialAngle = gyroGet((*step).drive.gyro);
+		(*step).initialAngle = -gyroGet((*step).drive.gyro);
 	}
 
-	lcdPrint(uart1, 1, "Left: %d", encoderGet((*step).drive.leftEncoder));
-	lcdPrint(uart1, 2, "Right: %d", encoderGet((*step).drive.rightEncoder));
+	//lcdPrint(uart1, 1, "Left: %d", encoderGet((*step).drive.leftEncoder));
+	//lcdPrint(uart1, 2, "Right: %d", encoderGet((*step).drive.rightEncoder));
+	//lcdPrint(uart1, 2, "Gyro: %d", -gyroGet((*step).drive.gyro));
 
 	printf("\nInitial Distance: %f", (*step).initialDistance);
 
 	double currentDistance = (encoderGet((*step).drive.leftEncoder) +
 			encoderGet((*step).drive.rightEncoder)) / 2.0;
-	currentDistance = encoderToInches(currentDistance, 3.25);
-	int currentAngle = gyroGet((*step).drive.gyro);
+	currentDistance = encoderToInches(currentDistance, WHEEL_DIAMETER);
+	int currentAngle = -gyroGet((*step).drive.gyro);
 
 	double deltaDistance = currentDistance - (*step).initialDistance;
 	int deltaAngle = currentAngle - (*step).initialAngle;
@@ -79,7 +80,8 @@ void propDriveToWayPoint(PropDriveToWayPoint *step)
 	if(absDouble(distanceError) < .5)
 	{
 		//magnitude = (forward) ? -10 : 10;
-		goodDistance = 1;
+		(*step).goodDistance = 1;
+		lcdSetText(uart1, 1, "Good Distance");
 	}
 	else if(absDouble(distanceError) < (*step).slowDownDistance)
 	{
@@ -90,6 +92,8 @@ void propDriveToWayPoint(PropDriveToWayPoint *step)
 
 		if(forward) magnitude = limit(magnitude, (*step).maxSpeed, (*step).minSpeed);
 		else magnitude = limit(magnitude, -(*step).minSpeed, -(*step).maxSpeed);
+
+		lcdSetText(uart1, 1, "Slowing Down");
 	}
 	else if(autonomousInfo.elapsedTime < (*step).timeToAccelerate)
 	{
@@ -97,19 +101,25 @@ void propDriveToWayPoint(PropDriveToWayPoint *step)
 				* (*step).maxSpeed);
 
 		if(!forward) magnitude *= -1;
+
+		lcdSetText(uart1, 1, "Accelerating");
 	}
 	else
 	{
 		if(forward) magnitude = (*step).maxSpeed;
 		else magnitude = -(*step).maxSpeed;
+
+		lcdSetText(uart1, 1, "Coasting");
 	}
 
-	if(!driveStraight || driveStraight)//TODO change back
+	if(!driveStraight)//TODO change back
 	{
 		if(abs(angleError) < 2)
 		{
 			rotation = 0;
 			goodRotation = 1;
+
+			lcdSetText(uart1, 2, "Good Rotation");
 		}
 		else
 		{
@@ -120,34 +130,41 @@ void propDriveToWayPoint(PropDriveToWayPoint *step)
 
 			if(turnRight) rotation = limit(rotation, (*step).maxSpeed, -(*step).maxSpeed);
 			else rotation = limit(rotation, -(*step).minSpeed, -(*step).maxSpeed);
-		}
 
-		if(driveStraight) goodRotation = 0;
+			lcdSetText(uart1, 2, "P Rot Cor");
+		}
 	}
-	//else TODO reverse
+	else //TODO reverse
 	{
-		if(goodDistance && driveStraight)
+		if((*step).goodDistance && driveStraight)
 		{
+			magnitude = 0;
+
 			int turnEncoderError = right - left;
 
-			if(abs(turnEncoderError) < 2 || 1)
+			if(abs(turnEncoderError) < 5)
 			{
 				goodRotation = 1;
+				lcdSetText(uart1, 2, "Good Rotation");
 			}
 			else if(turnEncoderError > 0)
 			{
 				rotation = 20;
 				goodRotation = 0;
+				lcdSetText(uart1, 2, "Turning Right");
 			}
 			else
 			{
 				rotation = -20;
 				goodRotation = 0;
+				lcdSetText(uart1, 2, "Turning Left");
 			}
 		}
 	}
 
 	arcadeDrive((*step).drive, magnitude, rotation);
 
-	(*step).isFinished = goodDistance && goodRotation;
+	(*step).isFinished = (*step).goodDistance && goodRotation;
+
+	if((*step).isFinished) arcadeDrive((*step).drive, 0, 0);
 }
