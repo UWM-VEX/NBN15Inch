@@ -122,6 +122,8 @@ void autonomousPeriodic()
 
 				propDriveToWayPoint(&drive24Inches);
 
+				lcdSetText(uart1, 2, "Step 1");
+
 				autonomousInfo.isFinished = drive24Inches.isFinished;
 
 				break;
@@ -131,6 +133,8 @@ void autonomousPeriodic()
 
 					autonomousInfo.isFinished = turn90Left.isFinished;
 
+					lcdSetText(uart1, 2, "Step 2");
+
 					break;
 
 				case(3):
@@ -138,12 +142,16 @@ void autonomousPeriodic()
 
 					autonomousInfo.isFinished = drive18Back.isFinished;
 
+					lcdSetText(uart1, 2, "Step 3");
+
 					break;
 
 				case(4):
 					propDriveToWayPoint(&turn90Right);
 
 					autonomousInfo.isFinished = turn90Right.isFinished;
+
+					lcdSetText(uart1, 2, "Step 4");
 
 					break;
 

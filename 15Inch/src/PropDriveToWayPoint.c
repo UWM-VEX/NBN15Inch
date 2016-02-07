@@ -40,10 +40,13 @@ void propDriveToWayPoint(PropDriveToWayPoint *step)
 	int rotation = 0;
 
 	int forward = (*step).distance >= 0;
-	int driveStraight = (*step).rotation == 0;
+	int driveStraight = ((*step).rotation == 0);
 
 	if(autonomousInfo.step != autonomousInfo.lastStep)
 	{
+		encoderReset((*step).drive.leftEncoder);
+		encoderReset((*step).drive.rightEncoder);
+		gyroReset((*step).drive.gyro);
 		(*step).goodDistance = 0;
 		(*step).initialDistance = (encoderGet((*step).drive.leftEncoder) +
 				encoderGet((*step).drive.rightEncoder)) / 2.0;
@@ -119,7 +122,7 @@ void propDriveToWayPoint(PropDriveToWayPoint *step)
 			rotation = 0;
 			goodRotation = 1;
 
-			lcdSetText(uart1, 2, "Good Rotation");
+			//lcdSetText(uart1, 2, "Good Rotation");
 		}
 		else
 		{
@@ -131,10 +134,10 @@ void propDriveToWayPoint(PropDriveToWayPoint *step)
 			if(turnRight) rotation = limit(rotation, (*step).maxSpeed, -(*step).maxSpeed);
 			else rotation = limit(rotation, -(*step).minSpeed, -(*step).maxSpeed);
 
-			lcdSetText(uart1, 2, "P Rot Cor");
+			//lcdSetText(uart1, 2, "P Rot Cor");
 		}
 	}
-	else //TODO reverse
+	else
 	{
 		if((*step).goodDistance && driveStraight)
 		{
@@ -145,19 +148,19 @@ void propDriveToWayPoint(PropDriveToWayPoint *step)
 			if(abs(turnEncoderError) < 5)
 			{
 				goodRotation = 1;
-				lcdSetText(uart1, 2, "Good Rotation");
+				//lcdSetText(uart1, 2, "Good Rotation");
 			}
 			else if(turnEncoderError > 0)
 			{
-				rotation = 30;
+				rotation = 50;
 				goodRotation = 0;
-				lcdSetText(uart1, 2, "Turning Right");
+				//lcdSetText(uart1, 2, "Turning Right");
 			}
 			else
 			{
-				rotation = -30;
+				rotation = -50;
 				goodRotation = 0;
-				lcdSetText(uart1, 2, "Turning Left");
+				//lcdSetText(uart1, 2, "Turning Left");
 			}
 		}
 	}
