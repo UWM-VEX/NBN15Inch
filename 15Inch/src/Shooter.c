@@ -7,22 +7,15 @@
 
 #include "main.h"
 
-Shooter initShooter(PIDController controller, PantherMotor motor, int defaultSpeed, int IMEPort, int IMEInverted)
+Shooter initShooter(PantherMotor motor, int defaultSpeed)
 {
-	PIDController newController = controller;
-
-	newController.setPoint = 0;
-
-	IME newIME = initIME(IMEPort, IMEInverted);
-
-	Shooter newShooter = {motor, 0, defaultSpeed, 0, millis(), newController, 0, millis(), newIME, defaultSpeed};
+	Shooter newShooter = {motor, 0, defaultSpeed, 0, millis()};
 	return newShooter;
 }
 
 void turnShooterOn(Shooter *shooter)
 {
 	(*shooter).turnedOn = 1;
-	(*shooter).SP = (*shooter).speed;
 	puts("Shooter turned on.");
 }
 
@@ -34,12 +27,12 @@ void turnShooterOff(Shooter *shooter)
 
 void changeShooterSP(Shooter *shooter, int SP)
 {
-	(*shooter).speed = SP;
+	(*shooter).SP = SP;
 }
 
 void incrementShooterSP(Shooter *shooter, int amount)
 {
-	(*shooter).speed += amount;
+	(*shooter).SP += amount;
 }
 
 void runShooter(Shooter *shooter)
@@ -48,7 +41,6 @@ void runShooter(Shooter *shooter)
 
 	if((*shooter).turnedOn)
 	{
-		(*shooter).SP = (*shooter).speed;
 		speed = (*shooter).SP;
 
 		(*shooter).lastSpeed = (*shooter).SP;
@@ -59,8 +51,7 @@ void runShooter(Shooter *shooter)
 
 		if(dT > 50)
 		{
-			speed = (*shooter).lastSpeed - 10;
-			(*shooter).lastSpeed = speed;
+			speed = --(*shooter).lastSpeed;
 			(*shooter).lastChangeTime = millis();
 		}
 		else
@@ -68,62 +59,8 @@ void runShooter(Shooter *shooter)
 			speed = (*shooter).lastSpeed;
 		}
 
-		speed = limit(speed, 3500, 0);
+		speed = limit(speed, 127, 0);
 	}
 
-	(*shooter).SP = speed;
-
-	runShooterAtSpeed(shooter);
-}
-
-void shooterSetKP(Shooter *shooter, double kP)
-{
-	setkP(&((*shooter).controller), kP);
-}
-
-void shooterSetKI(Shooter *shooter, double kI)
-{
-	setkI(&((*shooter).controller), kI);
-}
-
-void shooterSetKD(Shooter *shooter, double kD)
-{
-	setkD(&((*shooter).controller), kD);
-}
-
-void shooterSetKF(Shooter *shooter, double kF)
-{
-	setkF(&((*shooter).controller), kF);
-}
-
-void shooterSetErrorEpsilon(Shooter *shooter, int errorEpsilon)
-{
-	setErrorEpsilon(&((*shooter).controller), errorEpsilon);
-}
-
-void updateShooter(Shooter *shooter)
-{
-	(*shooter).processVariable = getIMEVelocity((*shooter).ime);
-
-	printf("Speed: %d\n", (*shooter).processVariable);
-
-	printf("Error: %d\n", (*shooter).controller.setPoint - (*shooter).processVariable);
-
-	if(abs((int) (*shooter).controller.setPoint - (*shooter).processVariable) > 250)
-	{
-		(*shooter).lastOffTime = millis();
-	}
-}
-
-int isShooterUpToSpeed(Shooter *shooter)
-{
-	return (((millis() - (*shooter).lastOffTime)) > 100);
-}
-
-void runShooterAtSpeed(Shooter *shooter)
-{
-	(*shooter).controller.setPoint = (*shooter).SP;
-	int speed = runPIDController(&((*shooter).controller),
-			(*shooter).processVariable);
 	setPantherMotor((*shooter).motor, speed);
 }

@@ -122,33 +122,22 @@ void operatorControl()
 
 		if(OIShooterUp() && !lastIncrement)
 		{
-			incrementShooterSP(&robotShooter, 100);
+			incrementShooterSP(&robotShooter, 5);
 		}
 		else if(OIShooterDown() && !lastDecrement)
 		{
-			incrementShooterSP(&robotShooter, -100);
+			incrementShooterSP(&robotShooter, -5);
 		}
 
 		lastIncrement = OIShooterUp();
 		lastDecrement = OIShooterDown();
 
-		updateShooter(&robotShooter);
-
 		runShooter(&robotShooter);
 
-		lcdPrint(uart1, 2, "SP: %d", robotShooter.SP);
+		lcdPrint(uart1, 1, "SP: %d", robotShooter.SP);
 		puts("6");
 
-		lcdPrint(uart1, 1, "PV: %d", robotShooter.processVariable);
-
-		if(isShooterUpToSpeed(&robotShooter))
-		{
-			lcdSetBacklight(uart1, true);
-		}
-		else
-		{
-			lcdSetBacklight(uart1, false);
-		}
+		lcdSetBacklight(uart1, true);
 
 		if(OIBallStopperDown())
 		{
