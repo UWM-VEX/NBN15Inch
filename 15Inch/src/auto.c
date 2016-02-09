@@ -65,11 +65,12 @@
  * Running the pickup or spinner does not require an object to be declared
  * or instantiated, an example is shown below.
  */
-PropDriveToWayPoint drive24Inches;
-PropDriveToWayPoint turn90Left;
-PropDriveToWayPoint drive18Back;
-PropDriveToWayPoint turnAndForward;
-PropDriveToWayPoint turn90Right;
+
+PropDriveToWayPoint driveToGoal;
+PropDriveToWayPoint backFromGoal;
+PropDriveToWayPoint turnToBalls;
+PropDriveToWayPoint driveToBalls;
+PropDriveToWayPoint turnToGoal;
 
 int isAuto = 1;
 
@@ -85,12 +86,13 @@ void autonomousInit()
 	 * given about them. By hovering over the function name, you can see a
 	 * list of the arguments to pass in.
 	 */
-	drive24Inches = initPropDriveToWayPoint(robotDrive, 36, 0);
-	turn90Left = initPropDriveToWayPoint(robotDrive, 0, -90);
-	drive18Back = initPropDriveToWayPoint(robotDrive, -18, 0);
-	turnAndForward = initPropDriveToWayPoint(robotDrive, 24, 60);
-	turn90Right = initPropDriveToWayPoint(robotDrive, 0, 90);
-	//propDriveToWayPointSetMaxSpeed(&drive24Inches, 50);
+	driveToGoal = initPropDriveToWayPoint(robotDrive, 12 * 7, 0);
+	backFromGoal = initPropDriveToWayPoint(robotDrive, -18, 0);
+	turnToBalls = initPropDriveToWayPoint(robotDrive, 0, 180);
+	driveToBalls = initPropDriveToWayPoint(robotDrive, 24, 0);
+	turnToGoal = initPropDriveToWayPoint(robotDrive, 0, -180);
+
+
 
 	autonomousInfo.lastStep = 0;
 	autonomousInfo.step = 1;
@@ -118,40 +120,140 @@ void autonomousPeriodic()
 	case(MODE_1):
 				switch(autonomousInfo.step)
 				{
-				case(1):
+				case(1): //Drive to the goal
 
-				propDriveToWayPoint(&drive24Inches);
+					propDriveToWayPoint(&driveToGoal);
 
-				lcdSetText(uart1, 2, "Step 1");
+					turnShooterOn(&robotShooter);
 
-				autonomousInfo.isFinished = drive24Inches.isFinished;
+					runShooter(&robotShooter);
 
-				break;
+					lcdSetText(uart1, 2, "Step 1");
 
-				case(2):
-					propDriveToWayPoint(&turn90Left);
-
-					autonomousInfo.isFinished = turn90Left.isFinished;
-
-					lcdSetText(uart1, 2, "Step 2");
+					autonomousInfo.isFinished = driveToGoal.isFinished;
 
 					break;
 
-				case(3):
-					propDriveToWayPoint(&drive18Back);
+				case(2): //Shoot preloads
 
-					autonomousInfo.isFinished = drive18Back.isFinished;
+					intake1In(&robotIntake);
+					intake2In(&robotIntake);
+					runIntake(&robotIntake);
 
-					lcdSetText(uart1, 2, "Step 3");
+					runShooter(&robotShooter);
+
+					ballStopperUp(&robotStopper);
+					runBallStopper(&robotStopper);
+
+					autonomousInfo.isFinished = autonomousInfo.elapsedTime > 5000;
 
 					break;
 
-				case(4):
-					propDriveToWayPoint(&turn90Right);
+				case(3): //Back away from the goal
 
-					autonomousInfo.isFinished = turn90Right.isFinished;
+					runIntake(&robotIntake);
 
-					lcdSetText(uart1, 2, "Step 4");
+					ballStopperDown(&robotStopper);
+					runBallStopper(&robotStopper);
+
+					runShooter(&robotShooter);
+
+					propDriveToWayPoint(&backFromGoal);
+
+					autonomousInfo.isFinished = backFromGoal.isFinished;
+
+					break;
+
+				case(4): //Turn towards balls
+
+					runIntake(&robotIntake);
+
+					ballStopperDown(&robotStopper);
+					runBallStopper(&robotStopper);
+
+					runShooter(&robotShooter);
+
+					propDriveToWayPoint(&turnToBalls);
+
+					autonomousInfo.isFinished = turnToBalls.isFinished;
+
+					break;
+
+				case(5): //Drive to the balls
+
+					runIntake(&robotIntake);
+
+					ballStopperDown(&robotStopper);
+					runBallStopper(&robotStopper);
+
+					runShooter(&robotShooter);
+
+					propDriveToWayPoint(&driveToBalls);
+
+					autonomousInfo.isFinished = driveToBalls.isFinished;
+
+					break;
+
+				case(6): //Turn back towards the goal
+
+					runIntake(&robotIntake);
+
+					ballStopperDown(&robotStopper);
+					runBallStopper(&robotStopper);
+
+					runShooter(&robotShooter);
+
+					propDriveToWayPoint(&turnToGoal);
+
+					autonomousInfo.isFinished = turnToGoal.isFinished;
+
+					break;
+
+				case(7): //Drive back towards the goal
+
+					runIntake(&robotIntake);
+
+					ballStopperDown(&robotStopper);
+					runBallStopper(&robotStopper);
+
+					runShooter(&robotShooter);
+
+					tankDrive(robotDrive, 75, 75);
+
+					autonomousInfo.isFinished = autonomousInfo.elapsedTime > 2000;
+
+					break;
+
+				case(8): //Shoot the balls
+
+					runIntake(&robotIntake);
+
+					ballStopperUp(&robotStopper);
+					runBallStopper(&robotStopper);
+
+					runShooter(&robotShooter);
+
+					tankDrive(robotDrive, 0, 0);
+
+					autonomousInfo.isFinished = autonomousInfo.elapsedTime > 5000;
+
+					break;
+
+				case(9): //Stop everything
+
+					intake1Stop(&robotIntake);
+					intake2Stop(&robotIntake);
+					runIntake(&robotIntake);
+
+					ballStopperDown(&robotStopper);
+					runBallStopper(&robotStopper);
+
+					turnShooterOff(&robotShooter);
+					runShooter(&robotShooter);
+
+					tankDrive(robotDrive, 0, 0);
+
+					autonomousInfo.isFinished = autonomousInfo.elapsedTime > 2000;
 
 					break;
 
@@ -181,7 +283,11 @@ void autonomousPeriodic()
 
 void autonomous()
 {
+	lcdSetText(uart1, 1, "started");
+
 	autonomousInit();
+
+	lcdSetText(uart1, 1, "initialized");
 
 	while(isAuto)
 	{
