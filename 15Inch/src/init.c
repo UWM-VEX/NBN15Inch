@@ -163,7 +163,7 @@ void initializeIO() {
  */
 
 void initialize() {
-	imeInitializeAll();
+	//imeInitializeAll();
 
 	robotDrive = initDrive(initPantherMotor(2,0), initPantherMotor(5,1),
 			initPantherMotor(3,0), initPantherMotor(6,1),

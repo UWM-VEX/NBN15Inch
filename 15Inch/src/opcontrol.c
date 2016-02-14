@@ -50,66 +50,11 @@ void operatorControl()
 	int lastIncrement = 0;
 	int lastDecrement = 0;
 
-	int lastIntake1InButton = 0;
-	int intake1RunningIn = 0;
-
-	int lastIntake1OutButton = 0;
-	int intake1RunningOut = 0;
-
 	teleopInit();
 
 	while (true)
 	{
 		tankDrive(robotDrive, OIGetDriveLeft(), OIGetDriveRight());
-
-		if(OIGetIntake1In() && !lastIntake1InButton)
-		{
-			intake1RunningIn = !intake1RunningIn;
-
-			intake1RunningOut = 0;
-
-			if(intake1RunningIn)
-			{
-				intake1In(&robotIntake);
-			}
-			else
-			{
-				intake1Stop(&robotIntake);
-			}
-		}
-		else if(OIGetIntake1Out() && !lastIntake1OutButton)
-		{
-			intake1RunningIn = 0;
-
-			intake1RunningOut = !intake1RunningOut;
-
-			if(intake1RunningOut)
-			{
-				intake1Out(&robotIntake);
-			}
-			else
-			{
-				intake1Stop(&robotIntake);
-			}
-		}
-
-		lastIntake1InButton = OIGetIntake1In();
-		lastIntake1OutButton = OIGetIntake1Out();
-
-		if(OIGetIntake2In())
-		{
-			intake2In(&robotIntake);
-		}
-		else if(OIGetIntake2Out())
-		{
-			intake2Out(&robotIntake);
-		}
-		else
-		{
-			intake2Stop(&robotIntake);
-		}
-
-		runIntake(&robotIntake);
 
 		if(OIShooterOn())
 		{
@@ -139,16 +84,58 @@ void operatorControl()
 
 		lcdSetBacklight(uart1, true);
 
-		if(OIBallStopperDown())
-		{
-			ballStopperDown(&robotStopper);
-		}
-		else if(OIBallStopperUp())
+		if(OIFireAtWill())
 		{
 			ballStopperUp(&robotStopper);
+			intake1In(&robotIntake);
+			intake2In(&robotIntake);
+		}
+		else if(OISpitAtWill())
+		{
+			ballStopperDown(&robotStopper);
+			intake1Out(&robotIntake);
+			intake2Out(&robotIntake);
+		}
+		else
+		{
+			if(OIBallStopperDown())
+			{
+				ballStopperDown(&robotStopper);
+			}
+			else if(OIBallStopperUp())
+			{
+				ballStopperUp(&robotStopper);
+			}
+
+			if(OIGetIntake1In())
+			{
+				intake1In(&robotIntake);
+			}
+			else if(OIGetIntake1Out())
+			{
+				intake1Out(&robotIntake);
+			}
+			else
+			{
+				intake1Stop(&robotIntake);
+			}
+
+			if(OIGetIntake2In())
+			{
+				intake2In(&robotIntake);
+			}
+			else if(OIGetIntake2Out())
+			{
+				intake2Out(&robotIntake);
+			}
+			else
+			{
+				intake2Stop(&robotIntake);
+			}
 		}
 
 		runBallStopper(&robotStopper);
+		runIntake(&robotIntake);
 
 		delay(25);
 

@@ -92,10 +92,20 @@ int OIShooterDown()
 
 int OIBallStopperUp()
 {
-	return joystickGetDigital(1, 8, JOY_UP);
+	return joystickGetAnalog(2, 1) > 25;
 }
 
 int OIBallStopperDown()
 {
-	return joystickGetDigital(1, 8, JOY_DOWN);
+	return joystickGetAnalog(2, 1) < -25;
+}
+
+int OIFireAtWill()
+{
+	return joystickGetAnalog(2, 3) > 25;
+}
+
+int OISpitAtWill()
+{
+	return joystickGetAnalog(2, 3) < -25;
 }

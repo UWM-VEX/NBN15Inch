@@ -20,5 +20,7 @@ int OIShooterUp();
 int OIShooterDown();
 int OIBallStopperUp();
 int OIBallStopperDown();
+int OIFireAtWill();
+int OISpitAtWill();
 
 #endif /* INCLUDE_OI_H_ */
