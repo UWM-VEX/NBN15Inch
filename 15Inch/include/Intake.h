@@ -11,6 +11,7 @@
 #define INTAKE_OFF 0
 #define INTAKE_IN 1
 #define INTAKE_OUT 2
+#define INTAKE_UNJAM 3
 
 struct Intake{
 
@@ -21,6 +22,8 @@ struct Intake{
 	int rightLimitSwitch;
 	int frontIntakeState;
 	int backIntakeState;
+	long macroTriggerTime;
+	int preMacroState;
 
 }typedef Intake;
 
@@ -36,6 +39,7 @@ void intake1Stop(Intake *intake);
 void intake2In(Intake *intake);
 void intake2Out(Intake *intake);
 void intake2Stop(Intake *intake);
+void intakeTriggerMacro(Intake *intake);
 void runIntake(Intake *intake);
 
 #endif /* INCLUDE_INTAKE_H_ */

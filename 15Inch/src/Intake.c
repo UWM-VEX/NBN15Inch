@@ -49,6 +49,13 @@ void intake2Stop(Intake *intake)
 	(*intake).backIntakeState = INTAKE_OFF;
 }
 
+void intakeTriggerMacro(Intake *intake)
+{
+	(*intake).preMacroState = (*intake).frontIntakeState;
+	(*intake).macroTriggerTime = millis();
+	(*intake).frontIntakeState = INTAKE_UNJAM;
+}
+
 void runIntake(Intake *intake)
 {
 	switch((*intake).frontIntakeState)
@@ -76,6 +83,17 @@ void runIntake(Intake *intake)
 		setPantherMotor((*intake).leftMotor, -127);
 		setPantherMotor((*intake).rightMotor, -127);
 		break;
+
+	case(INTAKE_UNJAM):
+		if(millis() - (*intake).macroTriggerTime < 1000)
+		{
+			setPantherMotor((*intake).leftMotor, 127);
+			setPantherMotor((*intake).rightMotor, -70);
+		}
+		else
+		{
+			(*intake).frontIntakeState = (*intake).preMacroState;
+		}
 	}
 
 	switch((*intake).backIntakeState)
