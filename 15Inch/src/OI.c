@@ -70,6 +70,11 @@ int OIGetIntake2Out()
 	}
 }
 
+int OIGetIntakeMacroTrigger()
+{
+	return joystickGetDigital(2, 8, JOY_RIGHT);
+}
+
 int OIShooterOn()
 {
 	return joystickGetDigital(numJoysticks, 6, JOY_DOWN);

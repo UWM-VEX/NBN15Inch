@@ -115,6 +115,10 @@ void operatorControl()
 			{
 				intake1Out(&robotIntake);
 			}
+			else if(OIGetIntakeMacroTrigger())
+			{
+				intakeTriggerMacro(&robotIntake);
+			}
 			else
 			{
 				intake1Stop(&robotIntake);

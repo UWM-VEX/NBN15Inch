@@ -14,6 +14,7 @@ int OIGetIntake1In();
 int OIGetIntake1Out();
 int OIGetIntake2In();
 int OIGetIntake2Out();
+int OIGetIntakeMacroTrigger();
 int OIShooterOn();
 int OIShooterOff();
 int OIShooterUp();

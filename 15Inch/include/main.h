@@ -47,8 +47,6 @@
 #include "OI.h"
 #include "PantherMotor.h"
 #include "Utilities.h"
-#include "IME.h"
-#include "PIDController.h"
 #include "Drive.h"
 #include "BallStopper.h"
 #include "Intake.h"
