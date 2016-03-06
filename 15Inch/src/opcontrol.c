@@ -107,7 +107,11 @@ void operatorControl()
 				ballStopperUp(&robotStopper);
 			}
 
-			if(OIGetIntake1In())
+			if(OIGetIntakeMacroTrigger())
+			{
+				intakeTriggerMacro(&robotIntake);
+			}
+			else if(OIGetIntake1In())
 			{
 				intake1In(&robotIntake);
 			}
@@ -115,13 +119,11 @@ void operatorControl()
 			{
 				intake1Out(&robotIntake);
 			}
-			else if(OIGetIntakeMacroTrigger())
-			{
-				intakeTriggerMacro(&robotIntake);
-			}
+
 			else
 			{
-				intake1Stop(&robotIntake);
+				//if(!isIntakeMacroOn(&robotIntake))
+					intake1Stop(&robotIntake);
 			}
 
 			if(OIGetIntake2In())

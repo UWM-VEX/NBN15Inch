@@ -15,7 +15,7 @@ Intake initIntake(PantherMotor leftMotor, PantherMotor rightMotor,
 	pinMode(rightLimitSwitch, INPUT);
 
 	Intake newIntake = {leftMotor, rightMotor, backMotor,
-			leftLimitSwitch, rightLimitSwitch, INTAKE_OFF, INTAKE_OFF};
+			leftLimitSwitch, rightLimitSwitch, INTAKE_OFF, INTAKE_OFF, millis(), INTAKE_OFF};
 	return newIntake;
 }
 
@@ -27,6 +27,11 @@ void intake1In(Intake *intake)
 void intake1Out(Intake *intake)
 {
 	(*intake).frontIntakeState = INTAKE_OUT;
+}
+
+void intake1Auto(Intake *intake)
+{
+	(*intake).frontIntakeState = AUTO_INTAKE;
 }
 
 void intake1Stop(Intake *intake)
@@ -84,16 +89,22 @@ void runIntake(Intake *intake)
 		setPantherMotor((*intake).rightMotor, -127);
 		break;
 
+	case(AUTO_INTAKE):
+		setPantherMotor((*intake).leftMotor, 42);
+		setPantherMotor((*intake).rightMotor, 127);
+		break;
+
 	case(INTAKE_UNJAM):
-		if(millis() - (*intake).macroTriggerTime < 1000)
-		{
+		//if(millis() - (*intake).macroTriggerTime < 1000)
+		//{
 			setPantherMotor((*intake).leftMotor, 127);
 			setPantherMotor((*intake).rightMotor, -70);
-		}
-		else
-		{
-			(*intake).frontIntakeState = (*intake).preMacroState;
-		}
+		//}
+		//else
+		//{
+		//	(*intake).frontIntakeState = (*intake).preMacroState;
+		//	runIntake(intake);
+		//}
 	}
 
 	switch((*intake).backIntakeState)
@@ -110,4 +121,9 @@ void runIntake(Intake *intake)
 		setPantherMotor((*intake).backMotor, -127);
 		break;
 	}
+}
+
+int isIntakeMacroOn(Intake *intake)
+{
+	return (*intake).frontIntakeState == INTAKE_UNJAM;
 }

@@ -51,8 +51,8 @@ void lcdModeSelect()
 	int newButtonPressed;
 	int lastStep = 0;
 
-	const char * selectionText[] = {"Nothing", "Mode 1"};
-	int size = 2;
+	const char * selectionText[] = {"Nothing", "Mode 1", "Mode 2", "FSU"};
+	int size = 4;
 
 	autonomousSelection = 0;
 
@@ -164,15 +164,16 @@ void initializeIO() {
 
 void initialize() {
 	//imeInitializeAll();
-
 	robotDrive = initDrive(initPantherMotor(2,0), initPantherMotor(5,1),
-			initPantherMotor(3,0), initPantherMotor(6,1),
-			initPantherMotor(4,0), initPantherMotor(7,1),
-			encoderInit(1, 2, 1), encoderInit(3,4,0), gyroInit(1, 0));
-	robotShooter = initShooter(initPantherMotor(9,1), 80);
+					initPantherMotor(3,0), initPantherMotor(6,1),
+					initPantherMotor(4,0), initPantherMotor(7,1),
+					encoderInit(1, 2, 1), encoderInit(3,4,0), gyroInit(1, 200));
+	robotShooter = initShooter(initPantherMotor(9,1), 64);
 	lcdSetBacklight(uart1, true);
 
 	lcdModeSelect();
+
+	lcdSetText(uart1, 1, "lcd done");
 
 	puts("LCD Finished");
 }
