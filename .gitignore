@@ -89,3 +89,4 @@ RemoteSystemsTempFiles/
 
 *.orig
 15Inch/bin/output.bin
+*.bin
