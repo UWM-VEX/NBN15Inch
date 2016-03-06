@@ -657,11 +657,11 @@ void autonomousPeriodic()
 	default:
 		isAuto = 0;
 	}
+	break;
 
-
-				case(DO_NOTHING):
-					isAuto = 0;
-				break;
+	case(DO_NOTHING):
+			isAuto = 0;
+			break;
 
 	}
 
