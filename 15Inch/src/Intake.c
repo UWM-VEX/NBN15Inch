@@ -95,16 +95,9 @@ void runIntake(Intake *intake)
 		break;
 
 	case(INTAKE_UNJAM):
-		//if(millis() - (*intake).macroTriggerTime < 1000)
-		//{
-			setPantherMotor((*intake).leftMotor, 127);
-			setPantherMotor((*intake).rightMotor, -70);
-		//}
-		//else
-		//{
-		//	(*intake).frontIntakeState = (*intake).preMacroState;
-		//	runIntake(intake);
-		//}
+		setPantherMotor((*intake).leftMotor, 127);
+		setPantherMotor((*intake).rightMotor, -70);
+		break;
 	}
 
 	switch((*intake).backIntakeState)

@@ -55,8 +55,6 @@
 #include "Auto.h"
 #include "PropDriveToWayPoint.h"
 
-int numJoysticks;
-
 // Allow usage of this file in C++ programs
 #ifdef __cplusplus
 extern "C" {

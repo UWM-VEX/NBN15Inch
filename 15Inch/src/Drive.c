@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * Initializes a new drive object composed of two PantherMotors.
+ * Initializes a new drive object composed of six PantherMotors, two encoders and a gyro.
  */
 Drive initDrive(PantherMotor frontLeftMotor, PantherMotor frontRightMotor,
 		PantherMotor middleLeftMotor, PantherMotor middleRightMotor,
@@ -15,10 +15,6 @@ Drive initDrive(PantherMotor frontLeftMotor, PantherMotor frontRightMotor,
 	return newDrive;
 }
 
-/**
- * Drives a holonomic drive robot at the specified direction, magnitude,
- * and rotation.
- */
 void tankDrive(Drive drive, int left, int right)
 {
 	int leftSpeed = limit(left, 127, -127);

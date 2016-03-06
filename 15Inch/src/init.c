@@ -45,6 +45,8 @@ void changeSelection(int valueToChange, int * selection, int size)
 
 void lcdModeSelect()
 {
+	lcdSetBacklight(uart1, true);
+
 	int inModeSelection = 1;
 	int step = 1;
 	int lastButtonPress = 0;
@@ -52,12 +54,11 @@ void lcdModeSelect()
 	int lastStep = 0;
 
 	const char * selectionText[] = {"Nothing", "Mode 1", "Mode 2", "FSU"};
-	int size = 4;
+	int size = sizeof(selectionText) / sizeof(int);
 
 	autonomousSelection = 0;
 
-	while((isOnline() ? (!isAutonomous() && !isEnabled()
-			&& inModeSelection) : inModeSelection))
+	while((isOnline() ? (!isEnabled() && inModeSelection) : inModeSelection))
 	{
 		printf("Step: %d\n", step);
 
@@ -124,7 +125,14 @@ void lcdModeSelect()
 			lcdPrint(uart1, 2, "%s  %s", (alliance ? "Blue" : "Red"),
 					selectionText[autonomousSelection]);
 
-			delay(5000);
+			long startTime = millis();
+
+			//Wait 5 seconds
+			while((isOnline() ? (millis() - startTime < 5000 && !isEnabled())
+					: millis() - startTime < 5000))
+			{
+				delay(20);
+			}
 
 			lcdSetBacklight(uart1, false);
 
@@ -163,17 +171,13 @@ void initializeIO() {
  */
 
 void initialize() {
-	//imeInitializeAll();
 	robotDrive = initDrive(initPantherMotor(2,0), initPantherMotor(5,1),
 					initPantherMotor(3,0), initPantherMotor(6,1),
 					initPantherMotor(4,0), initPantherMotor(7,1),
 					encoderInit(1, 2, 1), encoderInit(3,4,0), gyroInit(1, 200));
 	robotShooter = initShooter(initPantherMotor(9,1), 64);
-	lcdSetBacklight(uart1, true);
 
 	lcdModeSelect();
-
-	lcdSetText(uart1, 1, "lcd done");
 
 	puts("LCD Finished");
 }

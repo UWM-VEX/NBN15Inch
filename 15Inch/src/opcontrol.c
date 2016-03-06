@@ -19,19 +19,7 @@
 
 void teleopInit()
 {
-	/*if(isJoystickConnected(2))
-	{
-		numJoysticks = 2;
-		lcdPrint(uart1, 1, ":DDD");
-		delay(5000);
-	}
-	else
-	{
-		numJoysticks = 1;
-		lcdPrint(uart1, 1, ":(((((");
-		delay(5000);
-	}*/
-	numJoysticks = 2;
+	//Any telop initialization code goes here
 }
 
 /**
@@ -122,8 +110,7 @@ void operatorControl()
 
 			else
 			{
-				//if(!isIntakeMacroOn(&robotIntake))
-					intake1Stop(&robotIntake);
+				intake1Stop(&robotIntake);
 			}
 
 			if(OIGetIntake2In())
@@ -144,7 +131,5 @@ void operatorControl()
 		runIntake(&robotIntake);
 
 		delay(25);
-
-		puts("hi");
 	}
 }
