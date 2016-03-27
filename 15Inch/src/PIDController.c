@@ -6,10 +6,19 @@
  */
 #include "main.h"
 
-PIDController initPIDController(double kP, double kI, double kD, double kF, int setPoint, int errorEpsilon)
+PIDController* initPIDController(double kP, double kI, double kD, double kF, int setPoint, int errorEpsilon)
 {
-	PIDController newController = {kP, kI, kD, kF, setPoint, 0, millis(),
-			0, errorEpsilon};
+	PIDController  *newController = malloc(sizeof(PIDController));
+
+	newController->kP = kP;
+	newController->kI = kI;
+	newController->kD = kD;
+	newController->kF = kF;
+	newController->setPoint = setPoint;
+	newController->lastError = 0;
+	newController->lastTime = millis();
+	newController->sumOfError = 0;
+	newController->errorEpsilon = errorEpsilon;
 
 	return newController;
 }

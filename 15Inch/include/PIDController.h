@@ -22,7 +22,7 @@ struct PIDController{
 
 }typedef PIDController;
 
-PIDController initPIDController(double kP, double kI, double kD, double kF, int setPoint, int errorEpsilon);
+PIDController* initPIDController(double kP, double kI, double kD, double kF, int setPoint, int errorEpsilon);
 void PIDsetkP(PIDController *controller, double kP);
 void PIDsetkI(PIDController *controller, double kP);
 void PIDsetkD(PIDController *controller, double kP);

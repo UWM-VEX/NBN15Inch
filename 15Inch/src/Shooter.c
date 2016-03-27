@@ -7,14 +7,10 @@
 
 #include "main.h"
 
-Shooter initShooter(PIDController controller, PantherMotor motor, int fenderSpeed,
+Shooter initShooter(PIDController *controller, PantherMotor motor, int fenderSpeed,
 		int halfCourtSpeed, RedEncoder encoder)
 {
-	PIDController newController = controller;
-
-	newController.setPoint = 0;
-
-	Shooter newShooter = {motor, 1, fenderSpeed, 0, millis(), newController,
+	Shooter newShooter = {motor, 1, fenderSpeed, 0, millis(), controller,
 			0, millis(), encoder, fenderSpeed, SHOOTER_FENDER, fenderSpeed,
 			halfCourtSpeed};
 	return newShooter;
@@ -142,9 +138,9 @@ void updateShooter(Shooter *shooter)
 	//lcdPrint(uart1, 2, "Speed: %d", (*shooter).processVariable);
 	lcdPrint(uart1, 1, "SP: %d", (*shooter).SP);
 
-	lcdPrint(uart1, 2, "Error: %d", (*shooter).controller.setPoint - (*shooter).processVariable);
+	lcdPrint(uart1, 2, "Error: %d", (*shooter).controller->setPoint - (*shooter).processVariable);
 
-	if(abs((int) (*shooter).controller.setPoint - (*shooter).processVariable) > 1)
+	if(abs((int) (*shooter).controller->setPoint - (*shooter).processVariable) > 1)
 	{
 		(*shooter).lastOffTime = millis();
 	}
@@ -164,12 +160,12 @@ void runShooterAtSpeed(Shooter *shooter)
 	if((*shooter).turnedOn && (*shooter).processVariable == 0)
 	{
 		//Open loop fall back if the encoder is not working correctly
-		speed = (*shooter).SP * shooter->controller.kF;
+		speed = (*shooter).SP * shooter->controller->kP;
 	}
 	else
 	{
-		(*shooter).controller.setPoint = (*shooter).SP;
-		speed = PIDRunController(&((*shooter).controller),
+		(*shooter).controller->setPoint = (*shooter).SP;
+		speed = PIDRunController(((*shooter).controller),
 				(*shooter).processVariable);
 	}
 
