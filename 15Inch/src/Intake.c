@@ -7,15 +7,11 @@
 
 #include "main.h"
 
-Intake initIntake(PantherMotor leftMotor, PantherMotor rightMotor,
-		PantherMotor backMotor, int leftLimitSwitch,
-		int rightLimitSwitch)
+Intake initIntake(PantherMotor frontMotor, PantherMotor middleMotor1,
+		PantherMotor middleMotor2, PantherMotor backMotor)
 {
-	pinMode(leftLimitSwitch, INPUT);
-	pinMode(rightLimitSwitch, INPUT);
-
-	Intake newIntake = {leftMotor, rightMotor, backMotor,
-			leftLimitSwitch, rightLimitSwitch, INTAKE_OFF, INTAKE_OFF, millis(), INTAKE_OFF};
+	Intake newIntake = {frontMotor, middleMotor1, middleMotor2, backMotor,
+			INTAKE_OFF, INTAKE_OFF, millis(), INTAKE_OFF};
 	return newIntake;
 }
 
@@ -66,37 +62,29 @@ void runIntake(Intake *intake)
 	switch((*intake).frontIntakeState)
 	{
 	case(INTAKE_OFF):
-		setPantherMotor((*intake).leftMotor, 0);
-		setPantherMotor((*intake).rightMotor, 0);
+		setPantherMotor((*intake).frontMotor, 0);
+		setPantherMotor((*intake).middleMotor1, 0);
 		break;
 
 	case(INTAKE_IN):
-		setPantherMotor((*intake).leftMotor, 127);
-
-		if(!digitalRead((*intake).leftLimitSwitch) && !digitalRead((*intake).rightLimitSwitch))
-		{
-			setPantherMotor((*intake).rightMotor, 0);
-		}
-		else
-		{
-			setPantherMotor((*intake).rightMotor, 127);
-		}
+		setPantherMotor((*intake).frontMotor, 127);
+		setPantherMotor((*intake).middleMotor1, 127);
 
 		break;
 
 	case(INTAKE_OUT):
-		setPantherMotor((*intake).leftMotor, -127);
-		setPantherMotor((*intake).rightMotor, -127);
+		setPantherMotor((*intake).frontMotor, -127);
+		setPantherMotor((*intake).middleMotor1, -127);
 		break;
 
 	case(AUTO_INTAKE):
-		setPantherMotor((*intake).leftMotor, 42);
-		setPantherMotor((*intake).rightMotor, 127);
+		setPantherMotor((*intake).frontMotor, 42);
+		setPantherMotor((*intake).middleMotor1, 127);
 		break;
 
 	case(INTAKE_UNJAM):
-		setPantherMotor((*intake).leftMotor, 127);
-		setPantherMotor((*intake).rightMotor, -70);
+		setPantherMotor((*intake).frontMotor, 127);
+		setPantherMotor((*intake).middleMotor1, -70);
 		break;
 	}
 
@@ -104,14 +92,17 @@ void runIntake(Intake *intake)
 	{
 	case(INTAKE_OFF):
 		setPantherMotor((*intake).backMotor, 0);
+	setPantherMotor((*intake).middleMotor2, 0);
 		break;
 
 	case(INTAKE_IN):
 		setPantherMotor((*intake).backMotor, 127);
+	setPantherMotor((*intake).middleMotor2, 127);
 		break;
 
 	case(INTAKE_OUT):
 		setPantherMotor((*intake).backMotor, -127);
+		setPantherMotor((*intake).middleMotor2, -127);
 		break;
 	}
 }
