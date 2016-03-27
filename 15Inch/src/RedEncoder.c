@@ -12,7 +12,7 @@ RedEncoder initRedEncoder(Encoder encoder, long refreshTime)
 	long currentTime = micros();
 	int currentEncoder = encoderGet(encoder);
 	double velocity = 0;
-	RedEncoder newEncoder = {encoder, &currentTime, &currentEncoder, &velocity};
+	RedEncoder newEncoder = {encoder, &currentTime, &currentEncoder, &velocity, refreshTime};
 	return newEncoder;
 }
 
@@ -23,11 +23,13 @@ int getRedEncoder(RedEncoder encoder)
 
 double getRedEncoderVelocity(RedEncoder encoder)
 {
-	if(micros() - (*encoder.lastReadTime) > 100000)
+	if(micros() - (*encoder.lastReadTime) > encoder.refreshTime)
 	{
 		if(micros() - (*encoder.lastReadTime) < 1000000)
 		{
 			int currentEncoder = encoderGet(encoder.encoder);
+
+			//lcdPrint(uart1, 2, "%d", currentEncoder - *encoder.lastEncoder);
 
 			double velocity = (double) ((double) (currentEncoder - (*encoder.lastEncoder)) /
 				(double) (micros() - (*encoder.lastReadTime)));
@@ -38,11 +40,9 @@ double getRedEncoderVelocity(RedEncoder encoder)
 
 			velocity *= 100000;
 
-			lcdPrint(uart1, 1, "%f", velocity);
+			//lcdPrint(uart1, 2, "%f", velocity);
 
 			*encoder.velocity = velocity;
-
-			//lcdSetText(uart1, 2, "Update");
 		}
 		else
 		{

@@ -139,15 +139,17 @@ void updateShooter(Shooter *shooter)
 {
 	(*shooter).processVariable = (int) getRedEncoderVelocity((*shooter).encoder);
 
-	lcdPrint(uart1, 2, "Speed: %d", (*shooter).processVariable);
+	//lcdPrint(uart1, 2, "Speed: %d", (*shooter).processVariable);
 	lcdPrint(uart1, 1, "SP: %d", (*shooter).SP);
 
-	//lcdPrint(uart1, 2, "Error: %d", (*shooter).controller.setPoint - (*shooter).processVariable);
+	lcdPrint(uart1, 2, "Error: %d", (*shooter).controller.setPoint - (*shooter).processVariable);
 
 	if(abs((int) (*shooter).controller.setPoint - (*shooter).processVariable) > 1)
 	{
 		(*shooter).lastOffTime = millis();
 	}
+
+	lcdSetBacklight(uart1, isShooterUpToSpeed(shooter));
 }
 
 int isShooterUpToSpeed(Shooter *shooter)
@@ -162,7 +164,7 @@ void runShooterAtSpeed(Shooter *shooter)
 	if((*shooter).turnedOn && (*shooter).processVariable == 0)
 	{
 		//Open loop fall back if the encoder is not working correctly
-		speed = (*shooter).SP * 0.37;
+		speed = (*shooter).SP * shooter->controller.kF;
 	}
 	else
 	{

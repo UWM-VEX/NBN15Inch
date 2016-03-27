@@ -16,6 +16,7 @@ struct RedEncoder{
 	long *lastReadTime;
 	int *lastEncoder;
 	double *velocity;
+	long refreshTime;
 
 }typedef RedEncoder;
 
