@@ -19,7 +19,8 @@
 
 void teleopInit()
 {
-	//Any telop initialization code goes here
+	shootFender(&robotShooter);
+	turnShooterOn(&robotShooter);
 }
 
 /**

@@ -50,6 +50,8 @@
 #include "Drive.h"
 #include "BallStopper.h"
 #include "Intake.h"
+#include "RedEncoder.h"
+#include "PIDController.h"
 #include "Shooter.h"
 #include "Robot.h"
 #include "Auto.h"
