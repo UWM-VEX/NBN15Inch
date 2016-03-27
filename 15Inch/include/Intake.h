@@ -16,8 +16,9 @@
 
 struct Intake{
 
-	PantherMotor leftMotor;
-	PantherMotor rightMotor;
+	PantherMotor frontMotor;
+	PantherMotor middleMotor1;
+	PantherMotor middleMotor2;
 	PantherMotor backMotor;
 	int leftLimitSwitch;
 	int rightLimitSwitch;
@@ -31,9 +32,8 @@ struct Intake{
 /**
  * Use in initIO method.
  */
-Intake initIntake(PantherMotor leftMotor, PantherMotor rightMotor,
-		PantherMotor backMotor, int leftLimitSwitch,
-		int rightLimitSwitch);
+Intake initIntake(PantherMotor frontMotor, PantherMotor middleMotor1,
+		PantherMotor middleMotor2, PantherMotor backMotor);
 void intake1In(Intake *intake);
 void intake1Out(Intake *intake);
 void intake1Auto(Intake *intake);
