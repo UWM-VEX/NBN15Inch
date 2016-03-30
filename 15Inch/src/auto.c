@@ -65,42 +65,15 @@
  * Running the pickup or spinner does not require an object to be declared
  * or instantiated, an example is shown below.
  */
-PropDriveToWayPoint drivetobar;
-PropDriveToWayPoint backoffbar;
-PropDriveToWayPoint turntocenter;
-PropDriveToWayPoint drivetocenter;
-PropDriveToWayPoint turntogoal;
-PropDriveToWayPoint drivetogoal;
-PropDriveToWayPoint backoffgoal;
-PropDriveToWayPoint turntopile1;
-PropDriveToWayPoint drivetopile1;
-//PropDriveToWayPoint backoffpile1;
-PropDriveToWayPoint turntogoal1;
-PropDriveToWayPoint drivetogoal1;
-PropDriveToWayPoint backoffgoal2;
-PropDriveToWayPoint turntopile2;
-PropDriveToWayPoint drivetopile2;
-PropDriveToWayPoint turntoalign2;
-PropDriveToWayPoint drivetocenter2;
-PropDriveToWayPoint turntogoal2;
-PropDriveToWayPoint drivetogoal2;
-
-PropDriveToWayPoint _2drivetobar;
-PropDriveToWayPoint _2backoffbar;
-PropDriveToWayPoint _2turntogoal;
-PropDriveToWayPoint _2turntopile1;
-PropDriveToWayPoint _2drivetopile1;
-PropDriveToWayPoint _2turntogoal1;
-PropDriveToWayPoint _2drivetogoal1;
-
-PropDriveToWayPoint FSUdrive;
-PropDriveToWayPoint FSUturn;
-PropDriveToWayPoint FSUblock;
-
 
 int isAuto = 1;
 
 long int stepStartTime;
+
+DriveToWP drive24Forward;
+DriveToWP turn90Right;
+DriveToWP turn90Left;
+DriveToWP drive24Backward;
 
 /**
  * Runs at the start of autonomous. Steps should be initialized here.
@@ -112,80 +85,17 @@ void autonomousInit()
 	 * given about them. By hovering over the function name, you can see a
 	 * list of the arguments to pass in.
 	 */
-	if(alliance == BLUE)
-	{
-		drivetobar = initPropDriveToWayPoint(robotDrive, 119, 0);
-		backoffbar = initPropDriveToWayPoint(robotDrive, -1.5, 0);
-		turntocenter = initPropDriveToWayPoint(robotDrive, 0, 90);
-		drivetocenter = initPropDriveToWayPoint(robotDrive, 16, 0);
-		turntogoal = initPropDriveToWayPoint(robotDrive, 0, -90);
-		drivetogoal = initPropDriveToWayPoint(robotDrive, 10, 0);
-		backoffgoal = initPropDriveToWayPoint(robotDrive, -1.5, 0);
-		turntopile1 = initPropDriveToWayPoint(robotDrive, 0, 180);
-		drivetopile1 = initPropDriveToWayPoint(robotDrive, 32, 0);
-		propDriveToWayPointSetMaxSpeed(&drivetopile1, 40);
-		//backoffpile1 = initPropDriveToWayPoint(robotDrive, -10, 0);
-		turntogoal1 = initPropDriveToWayPoint(robotDrive, 0, -180);
-		drivetogoal1 = initPropDriveToWayPoint(robotDrive, 42, 0);
-		backoffgoal2 = initPropDriveToWayPoint(robotDrive, -12, 0);
-		turntopile2 = initPropDriveToWayPoint(robotDrive, 0, -90);
-		drivetopile2 = initPropDriveToWayPoint(robotDrive, 24, 0);
-		turntoalign2 = initPropDriveToWayPoint(robotDrive, 0, 180);
-		drivetocenter2 = initPropDriveToWayPoint(robotDrive, 26, 0);
-		turntogoal2 = initPropDriveToWayPoint(robotDrive, 0, -80);
-		drivetogoal2 = initPropDriveToWayPoint(robotDrive, 13, 0);
 
-		_2drivetobar = initPropDriveToWayPoint(robotDrive, 119, 0);
-		_2backoffbar = initPropDriveToWayPoint(robotDrive, -1.5, 0);
-		_2turntogoal = initPropDriveToWayPoint(robotDrive, 0, 10);
-		_2turntopile1 = initPropDriveToWayPoint(robotDrive, 0, 180);
-		_2drivetopile1 = initPropDriveToWayPoint(robotDrive, 34, 0);
-		propDriveToWayPointSetMaxSpeed(&_2drivetopile1, 40);
-		_2turntogoal1 = initPropDriveToWayPoint(robotDrive, 0, 180);
-		_2drivetogoal1 = initPropDriveToWayPoint(robotDrive, 34, 0);
-
-		FSUdrive = initPropDriveToWayPoint(robotDrive, 64, 0);
-		FSUturn = initPropDriveToWayPoint(robotDrive, 0, -90);
-		FSUblock = initPropDriveToWayPoint(robotDrive, 51, 0);
-	}
-	else
-	{
-		drivetobar = initPropDriveToWayPoint(robotDrive, 119, 0);
-		backoffbar = initPropDriveToWayPoint(robotDrive, -1.5, 0);
-		turntocenter = initPropDriveToWayPoint(robotDrive, 0, -90);
-		drivetocenter = initPropDriveToWayPoint(robotDrive, 16, 0);
-		turntogoal = initPropDriveToWayPoint(robotDrive, 0, 90);
-		drivetogoal = initPropDriveToWayPoint(robotDrive, 10, 0);
-		backoffgoal = initPropDriveToWayPoint(robotDrive, -1.5, 0);
-		turntopile1 = initPropDriveToWayPoint(robotDrive, 0, -180);
-		drivetopile1 = initPropDriveToWayPoint(robotDrive, 32, 0);
-		propDriveToWayPointSetMaxSpeed(&drivetopile1, 40);
-		//backoffpile1 = initPropDriveToWayPoint(robotDrive, -10, 0);
-		turntogoal1 = initPropDriveToWayPoint(robotDrive, 0, 180);
-		drivetogoal1 = initPropDriveToWayPoint(robotDrive, 42, 0);
-		backoffgoal2 = initPropDriveToWayPoint(robotDrive, -12, 0);
-		turntopile2 = initPropDriveToWayPoint(robotDrive, 0, 90);
-		drivetopile2 = initPropDriveToWayPoint(robotDrive, 24, 0);
-		turntoalign2 = initPropDriveToWayPoint(robotDrive, 0, -180);
-		drivetocenter2 = initPropDriveToWayPoint(robotDrive, 26, 0);
-		turntogoal2 = initPropDriveToWayPoint(robotDrive, 0, 80);
-		drivetogoal2 = initPropDriveToWayPoint(robotDrive, 13, 0);
-
-		_2drivetobar = initPropDriveToWayPoint(robotDrive, 119, 0);
-		_2backoffbar = initPropDriveToWayPoint(robotDrive, -1.5, 0);
-		_2turntogoal = initPropDriveToWayPoint(robotDrive, 0, -10);
-		_2turntopile1 = initPropDriveToWayPoint(robotDrive, 0, -180);
-		_2drivetopile1 = initPropDriveToWayPoint(robotDrive, 34, 0);
-		propDriveToWayPointSetMaxSpeed(&_2drivetopile1, 40);
-		_2turntogoal1 = initPropDriveToWayPoint(robotDrive, 0, -180);
-		_2drivetogoal1 = initPropDriveToWayPoint(robotDrive, 34, 0);
-
-
-	}
+	drive24Forward = initDriveToWP(robotDrive, 24, 0);
+	turn90Right = initDriveToWP(robotDrive, 0, 90);
+	turn90Left = initDriveToWP(robotDrive, 0, -90);
+	drive24Backward = initDriveToWP(robotDrive, -24, 0);
 
 	autonomousInfo.lastStep = 0;
 	autonomousInfo.step = 1;
 	autonomousInfo.isFinished = 0;
+
+	delay(500);
 
 	stepStartTime = millis();
 }
@@ -202,466 +112,75 @@ void autonomousPeriodic()
 
 	autonomousInfo.elapsedTime = millis() - stepStartTime;
 
-	printf("Step: %d", autonomousInfo.step);
+	//lcdPrint(uart1, 2, "Step: %d", autonomousInfo.step);
 
 	switch(autonomousSelection)
 	{
 	case(MODE_1):
-				switch(autonomousInfo.step)
-				{
-				case(1):
-
-				propDriveToWayPoint(&drivetobar);
-
-				ballStopperUp(&robotStopper);
-
-				runBallStopper(&robotStopper);
-
-				turnShooterOn(&robotShooter);
-
-				runShooter(&robotShooter);
-
-				//intake1In(&robotIntake);
-
-				//runIntake(&robotIntake);
-
-				//ballStopperUp(&robotStopper);
-
-				//runBallStopper(&robotStopper);
-
-				//turnShooterOn(&robotShooter);
-
-				//runShooter(&robotShooter);
-
-				//intake1Stop(&robotIntake);
-
-				//lcdSetText(uart1, 2, "Step 1");
-
-				autonomousInfo.isFinished = drivetobar.isFinished || autonomousInfo.elapsedTime > 8000;
-
+		switch(autonomousInfo.step)
+		{
+			case(1):
+				driveToWP(&drive24Forward);
+				autonomousInfo.isFinished = drive24Forward.isFinished;
 				break;
 
-				case(2):
-					propDriveToWayPoint(&backoffbar);
-
-					autonomousInfo.isFinished = backoffbar.isFinished;
-
-					//lcdSetText(uart1, 2, "Step 2");
-
-					break;
-
-				case(3):
-					propDriveToWayPoint(&turntocenter);
-
-					autonomousInfo.isFinished = turntocenter.isFinished;
-
-					//lcdSetText(uart1, 2, "Step 3");
-
-					break;
-
-				case(4):
-				propDriveToWayPoint(&drivetocenter);
-
-				autonomousInfo.isFinished = drivetocenter.isFinished;
-
-				//lcdSetText(uart1, 2, "Step 4");
-
+			case(2):
+				driveToWP(&turn90Right);
+				autonomousInfo.isFinished = turn90Right.isFinished;
 				break;
 
-				case(5):
-				propDriveToWayPoint(&turntogoal);
-
-				autonomousInfo.isFinished = turntogoal.isFinished;
-
-				//lcdSetText(uart1, 2, "Step 5");
+			case (3):
+				driveToWP(&turn90Left);
+				autonomousInfo.isFinished = turn90Left.isFinished;
 				break;
 
-				case(6):
-				propDriveToWayPoint(&drivetogoal);
-
-				autonomousInfo.isFinished = drivetogoal.isFinished;
-
-				//lcdSetText(uart1, 2, "Step 6");
+			case(4):
+				driveToWP(&drive24Backward);
+				autonomousInfo.isFinished = drive24Backward.isFinished;
 				break;
 
-				case(7):
-				runShooter(&robotShooter);
-
-				intake1In(&robotIntake);
-
-				intake2In(&robotIntake);
-
-				runIntake(&robotIntake);
-
-				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 5500;
-
-				lcdSetText(uart1, 2, "Step 5");
-
+			default:
+				isAuto = 0;
 				break;
-
-
-				case(8):
-
-				propDriveToWayPoint(&backoffgoal);
-
-				autonomousInfo.isFinished = backoffgoal.isFinished;
-
-				lcdSetText(uart1, 2, "Step 6");
-
-				break;
-
-				case(9):
-					propDriveToWayPoint(&turntopile1);
-
-					ballStopperDown(&robotStopper);
-
-					runBallStopper(&robotStopper);
-
-					autonomousInfo.isFinished = turntopile1.isFinished;
-
-					lcdSetText(uart1, 2, "Step 7");
-
-					break;
-
-				case(10):
-					propDriveToWayPoint(&drivetopile1);
-
-					intake1Auto(&robotIntake);
-
-					intake2In(&robotIntake);
-
-					runIntake(&robotIntake);
-
-					autonomousInfo.isFinished = drivetopile1.isFinished;
-
-					lcdSetText(uart1, 2, "Step 8");
-
-				break;
-
-				/*case(9):
-				propDriveToWayPoint(&backoffpile1);
-
-				intake1Auto(&robotIntake);
-
-				intake2In(&robotIntake);
-
-				runIntake(&robotIntake);
-
-				autonomousInfo.isFinished = backoffpile1.isFinished;
-
-				lcdSetText(uart1, 2, "Step 9");
-
-				break;
-
-				*/
-
-				case(11):
-
-				propDriveToWayPoint(&turntogoal1);
-
-				autonomousInfo.isFinished = turntogoal1.isFinished;
-
-				lcdSetText(uart1, 2, "Step 10");
-
-				break;
-
-				case(12):
-
-				propDriveToWayPoint(&drivetogoal1);
-
-				intake1Stop(&robotIntake);
-
-				intake2Stop(&robotIntake);
-
-				runIntake(&robotIntake);
-
-				autonomousInfo.isFinished = drivetogoal1.isFinished;
-
-				lcdSetText(uart1, 2, "Step 11");
-
-				break;
-
-				case(13):
-
-				ballStopperUp(&robotStopper);
-
-				runBallStopper(&robotStopper);
-
-				intake1Auto(&robotIntake);
-
-				intake2In(&robotIntake);
-
-				runIntake(&robotIntake);
-
-				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 3000;
-
-				lcdSetText(uart1, 2, "Step 2");
-
-				break;
-
-				case(14):
-				propDriveToWayPoint(&backoffgoal2);
-
-				ballStopperDown(&robotStopper);
-
-				runBallStopper(&robotStopper);
-
-				intake1Auto(&robotIntake);
-
-				intake2In(&robotIntake);
-
-				runIntake(&robotIntake);
-
-				autonomousInfo.isFinished = backoffgoal2.isFinished;
-
-				lcdSetText(uart1, 2, "Step 2");
-
-				break;
-
-				case(15):
-				propDriveToWayPoint(&turntopile2);
-
-				autonomousInfo.isFinished = turntopile2.isFinished;
-
-				lcdSetText(uart1, 2, "Step 2");
-
-				break;
-
-				case(16):
-				propDriveToWayPoint(&drivetopile2);
-
-				autonomousInfo.isFinished = drivetopile2.isFinished;
-
-				lcdSetText(uart1, 2, "Step 2");
-
-				break;
-
-				case(17):
-				propDriveToWayPoint(&turntoalign2);
-
-				autonomousInfo.isFinished = turntoalign2.isFinished;
-
-				lcdSetText(uart1, 2, "Step 2");
-
-				break;
-
-				case(18):
-				propDriveToWayPoint(&drivetocenter2);
-
-				intake1Stop(&robotIntake);
-
-				intake2Stop(&robotIntake);
-
-				runIntake(&robotIntake);
-
-				autonomousInfo.isFinished = drivetocenter2.isFinished;
-
-				lcdSetText(uart1, 2, "Step 2");
-
-				break;
-
-				case(19):
-				propDriveToWayPoint(&turntogoal2);
-
-				autonomousInfo.isFinished = turntogoal2.isFinished;
-
-				lcdSetText(uart1, 2, "Step 2");
-
-				break;
-
-				case(20):
-				propDriveToWayPoint(&drivetogoal2);
-
-				ballStopperUp(&robotStopper);
-
-				runBallStopper(&robotStopper);
-
-				autonomousInfo.isFinished = drivetogoal2.isFinished;
-
-				lcdSetText(uart1, 2, "Step 2");
-
-				break;
-
-				case(21):
-				runShooter(&robotShooter);
-
-				intake1Auto(&robotIntake);
-
-				intake2In(&robotIntake);
-
-				runIntake(&robotIntake);
-
-				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 6000;
-
-				lcdSetText(uart1, 2, "Step 5");
-
-				break;
-
-
-				default:
-					isAuto = 0;
-					break;
 
 				}
-	break;
+				break;
 
-	case(MODE_2):
+		case(JUST_TURN):
 			switch(autonomousInfo.step)
 			{
 			case(1):
-			propDriveToWayPoint(&_2drivetobar);
-
-			ballStopperUp(&robotStopper);
-
-			runBallStopper(&robotStopper);
-
-			turnShooterOn(&robotShooter);
-
-			runShooter(&robotShooter);
-
-			autonomousInfo.isFinished = _2drivetobar.isFinished;
-
-			lcdSetText(uart1, 2, "Step 1");
-			break;
-
-			case(2):
-			propDriveToWayPoint(&_2backoffbar);
-
-			autonomousInfo.isFinished = _2backoffbar.isFinished;
-
-			lcdSetText(uart1, 2, "Step 2");
-			break;
-
-			case(3):
-			propDriveToWayPoint(&_2turntogoal);
-
-			autonomousInfo.isFinished = _2turntogoal.isFinished;
-
-			lcdSetText(uart1, 2, "Step 2");
-			break;
-
-			case(4):
-			runShooter(&robotShooter);
-
-			intake1In(&robotIntake);
-
-			intake2In(&robotIntake);
-
-			runIntake(&robotIntake);
-
-			autonomousInfo.isFinished = autonomousInfo.elapsedTime > 5500;
-
-			lcdSetText(uart1, 2, "Step 5");
-
-			break;
-
-			case(5):
-			propDriveToWayPoint(&_2turntopile1);
-
-			ballStopperDown(&robotStopper);
-
-			runBallStopper(&robotStopper);
-
-			autonomousInfo.isFinished = _2turntopile1.isFinished;
-
-			lcdSetText(uart1, 2, "Step 2");
-			break;
-
-			case(6):
-			propDriveToWayPoint(&_2drivetopile1);
-
-			intake1Auto(&robotIntake);
-
-			intake2In(&robotIntake);
-
-			runIntake(&robotIntake);
-
-			autonomousInfo.isFinished = _2drivetopile1.isFinished;
-
-			lcdSetText(uart1, 2, "Step 2");
-			break;
-
-			case(7):
-			propDriveToWayPoint(&_2turntogoal1);
-
-			intake1Stop(&robotIntake);
-
-			intake2Stop(&robotIntake);
-
-			runIntake(&robotIntake);
-
-			autonomousInfo.isFinished = _2turntogoal1.isFinished;
-
-			lcdSetText(uart1, 2, "Step 2");
-			break;
-
-			case(8):
-			propDriveToWayPoint(&_2drivetogoal1);
-
-			ballStopperUp(&robotStopper);
-
-			runBallStopper(&robotStopper);
-
-			autonomousInfo.isFinished = _2drivetogoal1.isFinished;
-
-			lcdSetText(uart1, 2, "Step 2");
-			break;
-
-			case(9):
-			runShooter(&robotShooter);
-
-			intake1In(&robotIntake);
-
-			intake2In(&robotIntake);
-
-			runIntake(&robotIntake);
-
-			autonomousInfo.isFinished = autonomousInfo.elapsedTime > 10000;
-
-			lcdSetText(uart1, 2, "Step 5");
-
-			break;
+				driveToWP(&turn90Right);
+				autonomousInfo.isFinished = turn90Right.isFinished;
+				break;
 
 			default:
 				isAuto = 0;
 			}
-	break;
-
-	case(FSU):
-	switch(autonomousInfo.step)
-	{
-	case(1):
-	propDriveToWayPoint(&FSUdrive);
-
-	autonomousInfo.isFinished = FSUdrive.isFinished;
-
-	lcdSetText(uart1, 2, "Step 1");
-	break;
-
-	case(2):
-		propDriveToWayPoint(&FSUturn);
-
-		autonomousInfo.isFinished = FSUturn.isFinished;
-
-		lcdSetText(uart1, 2, "Step 2");
-		break;
-
-	case(3):
-		propDriveToWayPoint(&FSUblock);
-
-		autonomousInfo.isFinished = FSUblock.isFinished;
-
-		lcdSetText(uart1, 2, "Step 3");
-		break;
-
-	default:
-		isAuto = 0;
-	}
-	break;
-
-	case(DO_NOTHING):
-			isAuto = 0;
 			break;
+
+		case(JUST_DRIVE):
+			switch(autonomousInfo.step)
+			{
+			case(1):
+				driveToWP(&drive24Forward);
+				autonomousInfo.isFinished = drive24Forward.isFinished;
+				break;
+			default:
+				isAuto = 0;
+				break;
+			}
+			break;
+		case(DO_NOTHING):
+			isAuto = 0;
+		break;
+				default:
+					isAuto = 0;
+					break;
+
+				break;
+
+
 
 	}
 
@@ -678,7 +197,11 @@ void autonomousPeriodic()
 
 void autonomous()
 {
+	lcdSetText(uart1, 1, "started");
+
 	autonomousInit();
+
+	//lcdSetText(uart1, 1, "initialized");
 
 	while(isAuto)
 	{

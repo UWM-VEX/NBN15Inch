@@ -53,7 +53,7 @@
 #include "Shooter.h"
 #include "Robot.h"
 #include "Auto.h"
-#include "PropDriveToWayPoint.h"
+#include "DriveToWP.h"
 
 // Allow usage of this file in C++ programs
 #ifdef __cplusplus
