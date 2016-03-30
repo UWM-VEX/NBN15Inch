@@ -68,7 +68,7 @@ void operatorControl()
 
 		runShooter(&robotShooter);
 
-		lcdPrint(uart1, 1, "SP: %d", robotShooter.SP);
+		//lcdPrint(uart1, 1, "SP: %d", robotShooter.SP);
 		puts("6");
 
 		lcdSetBacklight(uart1, true);

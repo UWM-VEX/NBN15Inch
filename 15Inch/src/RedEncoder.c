@@ -7,12 +7,12 @@
 
 #include "main.h"
 
-RedEncoder initRedEncoder(Encoder encoder, long refreshTime)
+RedEncoder initRedEncoder(Encoder encoder, unsigned long refreshTime)
 {
-	long currentTime = micros();
-	int currentEncoder = encoderGet(encoder);
-	double velocity = 0;
-	RedEncoder newEncoder = {encoder, &currentTime, &currentEncoder, &velocity, refreshTime};
+	RedEncoder newEncoder = {encoder, malloc(sizeof(unsigned long)), malloc(sizeof(int)), malloc(sizeof(double)), refreshTime};
+	*newEncoder.lastReadTime = micros();
+	*newEncoder.lastEncoder = encoderGet(encoder);
+	*newEncoder.velocity = 0;
 	return newEncoder;
 }
 
@@ -23,7 +23,7 @@ int getRedEncoder(RedEncoder encoder)
 
 double getRedEncoderVelocity(RedEncoder encoder)
 {
-	if(micros() - (*encoder.lastReadTime) > encoder.refreshTime)
+	if((unsigned int) (micros() - (*encoder.lastReadTime)) > (unsigned int) encoder.refreshTime)
 	{
 		if(micros() - (*encoder.lastReadTime) < 1000000)
 		{
@@ -54,7 +54,9 @@ double getRedEncoderVelocity(RedEncoder encoder)
 
 	}
 
-	//lcdPrint(uart1, 1, "%f", *encoder.velocity);
+	//lcdPrint(uart1, 1, "C%d", (unsigned int) micros());
+	//lcdPrint(uart1, 2, "L%d", (unsigned int) micros() - *encoder.lastReadTime);
+	//lcdPrint(uart1, 2, "%f", *encoder.velocity);
 
 	return *encoder.velocity;
 }

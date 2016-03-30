@@ -87,7 +87,7 @@ int PIDgetDContribution(PIDController *controller, int processVariable)
 	int timeDiff = (int) (millis() - (*controller).lastTime);
 	int errorDiff = error - (*controller).lastError;
 
-	double slope = (double) (errorDiff / timeDiff);
+	double slope = ((double) errorDiff) / ((double) timeDiff);
 
 	return (int) (slope * (*controller).kD);
 }

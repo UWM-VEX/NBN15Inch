@@ -13,14 +13,14 @@
 struct RedEncoder{
 
 	Encoder encoder;
-	long *lastReadTime;
+	unsigned long *lastReadTime;
 	int *lastEncoder;
 	double *velocity;
-	long refreshTime;
+	unsigned long refreshTime;
 
 }typedef RedEncoder;
 
-RedEncoder initRedEncoder(Encoder encoder, long refreshTime);
+RedEncoder initRedEncoder(Encoder encoder, unsigned long refreshTime);
 int getRedEncoder(RedEncoder encoder);
 double getRedEncoderVelocity(RedEncoder encoder);
 

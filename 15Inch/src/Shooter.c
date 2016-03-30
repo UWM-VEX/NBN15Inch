@@ -108,27 +108,27 @@ void runShooter(Shooter *shooter)
 
 void shooterSetKP(Shooter *shooter, double kP)
 {
-	PIDsetkP(&((*shooter).controller), kP);
+	PIDsetkP(((*shooter).controller), kP);
 }
 
 void shooterSetKI(Shooter *shooter, double kI)
 {
-	PIDsetkI(&((*shooter).controller), kI);
+	PIDsetkI(((*shooter).controller), kI);
 }
 
 void shooterSetKD(Shooter *shooter, double kD)
 {
-	PIDsetkD(&((*shooter).controller), kD);
+	PIDsetkD(((*shooter).controller), kD);
 }
 
 void shooterSetKF(Shooter *shooter, double kF)
 {
-	PIDsetkF(&((*shooter).controller), kF);
+	PIDsetkF(((*shooter).controller), kF);
 }
 
 void shooterSetErrorEpsilon(Shooter *shooter, int errorEpsilon)
 {
-	PIDsetErrorEpsilon(&((*shooter).controller), errorEpsilon);
+	PIDsetErrorEpsilon(((*shooter).controller), errorEpsilon);
 }
 
 void updateShooter(Shooter *shooter)
