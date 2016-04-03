@@ -54,6 +54,15 @@ void operatorControl()
 			turnShooterOff(&robotShooter);
 		}
 
+		if(OIHalfCourtShoot())
+		{
+			shootHalfCourt(&robotShooter);
+		}
+		else if(OIFenderShoot())
+		{
+			shootFender(&robotShooter);
+		}
+
 		if(OIShooterUp() && !lastIncrement)
 		{
 			incrementShooterSP(&robotShooter, 5);
