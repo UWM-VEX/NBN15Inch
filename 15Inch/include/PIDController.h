@@ -19,6 +19,8 @@ struct PIDController{
 	long lastTime;
 	int sumOfError;
 	int errorEpsilon;
+	int lastD;
+	long lastDTime;
 
 }typedef PIDController;
 

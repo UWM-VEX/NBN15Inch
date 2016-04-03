@@ -19,6 +19,8 @@ PIDController* initPIDController(double kP, double kI, double kD, double kF, int
 	newController->lastTime = millis();
 	newController->sumOfError = 0;
 	newController->errorEpsilon = errorEpsilon;
+	newController->lastD = 0;
+	newController->lastDTime = millis();
 
 	return newController;
 }
@@ -83,13 +85,32 @@ int PIDgetIContribution(PIDController *controller, int processVariable)
 
 int PIDgetDContribution(PIDController *controller, int processVariable)
 {
+	int output;
 	int error = (*controller).setPoint - processVariable;
-	int timeDiff = (int) (millis() - (*controller).lastTime);
-	int errorDiff = error - (*controller).lastError;
-
-	double slope = ((double) errorDiff) / ((double) timeDiff);
-
-	return (int) (slope * (*controller).kD);
+	if(error != controller->lastError) {
+		controller->lastDTime = millis();
+		if(millis() - controller->lastDTime < 250) {
+			int timeDiff = (int) (millis() - (*controller).lastTime);
+			int errorDiff = error - (*controller).lastError;
+			double slope = ((double) errorDiff) / ((double) timeDiff);
+			controller->lastD = (int) (slope * (*controller).kD);
+			output = controller->lastD;
+			//lcdPrint(uart1, 1, "%f", slope);
+		}
+		else {
+			output = controller->lastD;
+			//lcdSetText(uart1, 2, "D Timeout");
+		}
+	}
+	else {
+		if(millis() - controller->lastDTime < 250) {
+			output = controller->lastD;
+		}
+		else
+			output = 0;
+	}
+	//lcdPrint(uart1, 2, "%d", output);
+	return output;
 }
 
 int PIDgetFContribution(PIDController *controller)
