@@ -70,10 +70,15 @@ int isAuto = 1;
 
 long int stepStartTime;
 
-DriveToWP drive24Forward;
+DriveToWP drive48Forward;
 DriveToWP turn90Right;
 DriveToWP turn90Left;
 DriveToWP drive24Backward;
+
+DriveToWP worlds1TurnToBump;
+DriveToWP worlds1DriveToBump;
+DriveToWP worlds1TurnToFirstPile;
+DriveToWP worlds1DriveToFirstPile;
 
 /**
  * Runs at the start of autonomous. Steps should be initialized here.
@@ -86,16 +91,22 @@ void autonomousInit()
 	 * list of the arguments to pass in.
 	 */
 
-	drive24Forward = initDriveToWP(robotDrive, 24, 0);
+	drive48Forward = initDriveToWP(robotDrive, 48, 0);
 	turn90Right = initDriveToWP(robotDrive, 0, 90);
 	turn90Left = initDriveToWP(robotDrive, 0, -90);
 	drive24Backward = initDriveToWP(robotDrive, -24, 0);
 
+	if(autonomousSelection == WORLDS_1)
+	{
+		worlds1TurnToBump = initDriveToWP(robotDrive, 0, -50);
+		worlds1DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
+		worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, -10);
+		worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
+	}
+
 	autonomousInfo.lastStep = 0;
 	autonomousInfo.step = 1;
 	autonomousInfo.isFinished = 0;
-
-	delay(500);
 
 	stepStartTime = millis();
 }
@@ -120,8 +131,8 @@ void autonomousPeriodic()
 		switch(autonomousInfo.step)
 		{
 			case(1):
-				driveToWP(&drive24Forward);
-				autonomousInfo.isFinished = drive24Forward.isFinished;
+				driveToWP(&drive48Forward);
+				autonomousInfo.isFinished = drive48Forward.isFinished;
 				break;
 
 			case(2):
@@ -163,14 +174,47 @@ void autonomousPeriodic()
 			switch(autonomousInfo.step)
 			{
 			case(1):
-				driveToWP(&drive24Forward);
-				autonomousInfo.isFinished = drive24Forward.isFinished;
+				driveToWP(&drive48Forward);
+				autonomousInfo.isFinished = drive48Forward.isFinished;
 				break;
 			default:
 				isAuto = 0;
 				break;
 			}
 			break;
+		case(WORLDS_1):
+			switch(autonomousInfo.step)
+			{
+			case(1):
+				driveToWP(&worlds1TurnToBump);
+				turnShooterOn(&robotShooter);
+				shootHalfCourt(&robotShooter);
+				ballStopperDown(&robotStopper);
+
+				autonomousInfo.isFinished = worlds1TurnToBump.isFinished;
+				break;
+			case(2):
+				driveToWP(&worlds1DriveToBump);
+				autonomousInfo.isFinished = worlds1DriveToBump.isFinished;
+				break;
+			case(3):
+				driveToWP(&worlds1TurnToFirstPile);
+				intake1In(&robotIntake);
+				intake2In(&robotIntake);
+				autonomousInfo.isFinished = worlds1TurnToFirstPile.isFinished;
+				break;
+			case(4):
+				driveToWP(&worlds1DriveToFirstPile);
+				autonomousInfo.isFinished = worlds1DriveToFirstPile.isFinished;
+				break;
+			default:
+				isAuto = 0;
+				break;
+			}
+		break;
+
+
+
 		case(DO_NOTHING):
 			isAuto = 0;
 		break;
@@ -184,8 +228,13 @@ void autonomousPeriodic()
 
 	}
 
+	runShooter(&robotShooter);
+	runBallStopper(&robotStopper);
+	runIntake(&robotIntake);
 
 	autonomousInfo.lastStep = autonomousInfo.step;
+
+	lcdPrint(uart1, 1, "Step: %d", autonomousInfo.step);
 
 	if(autonomousInfo.isFinished)
 	{

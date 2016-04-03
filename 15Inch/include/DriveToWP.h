@@ -10,7 +10,7 @@
 
 #include "main.h"
 
-#define GYRO_INVERTED -1
+#define GYRO_INVERTED 1
 
 struct DriveToWPIterationInfo{
 
