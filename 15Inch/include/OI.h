@@ -23,5 +23,7 @@ int OIBallStopperUp();
 int OIBallStopperDown();
 int OIFireAtWill();
 int OISpitAtWill();
+int OIHalfCourtShoot();
+int OIFenderShoot();
 
 #endif /* INCLUDE_OI_H_ */

@@ -19,7 +19,8 @@
 
 void teleopInit()
 {
-	//Any telop initialization code goes here
+	shootFender(&robotShooter);
+	turnShooterOn(&robotShooter);
 }
 
 /**
@@ -53,6 +54,15 @@ void operatorControl()
 			turnShooterOff(&robotShooter);
 		}
 
+		if(OIHalfCourtShoot())
+		{
+			shootHalfCourt(&robotShooter);
+		}
+		else if(OIFenderShoot())
+		{
+			shootFender(&robotShooter);
+		}
+
 		if(OIShooterUp() && !lastIncrement)
 		{
 			incrementShooterSP(&robotShooter, 5);
@@ -67,7 +77,7 @@ void operatorControl()
 
 		runShooter(&robotShooter);
 
-		lcdPrint(uart1, 1, "SP: %d", robotShooter.SP);
+		//lcdPrint(uart1, 1, "SP: %d", robotShooter.SP);
 		puts("6");
 
 		lcdSetBacklight(uart1, true);

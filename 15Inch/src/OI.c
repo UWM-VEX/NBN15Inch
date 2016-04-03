@@ -86,3 +86,13 @@ int OISpitAtWill()
 {
 	return joystickGetAnalog(2, 3) < -25;
 }
+
+int OIFenderShoot()
+{
+	return joystickGetDigital(2, 7, JOY_RIGHT);
+}
+
+int OIHalfCourtShoot()
+{
+	return joystickGetDigital(2, 7, JOY_LEFT);
+}
