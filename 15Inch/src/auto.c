@@ -79,6 +79,8 @@ DriveToWP worlds1TurnToBump;
 DriveToWP worlds1DriveToBump;
 DriveToWP worlds1TurnToFirstPile;
 DriveToWP worlds1DriveToFirstPile;
+DriveToWP worlds1TurnToShoot1;
+DriveToWP worlds1DriveToShoot1;
 
 /**
  * Runs at the start of autonomous. Steps should be initialized here.
@@ -99,9 +101,12 @@ void autonomousInit()
 	if(autonomousSelection == WORLDS_1)
 	{
 		worlds1TurnToBump = initDriveToWP(robotDrive, 0, -50);
-		worlds1DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
-		worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, -10);
-		worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
+		worlds1DriveToBump = initDriveToWP(robotDrive, 6*12 + 4, 0);
+		worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, -20);
+		worlds1DriveToFirstPile = initDriveToWP(robotDrive, 21, 0);
+			driveToWPSetMaxSpeed(&worlds1DriveToFirstPile, 70);
+		worlds1TurnToShoot1 = initDriveToWP(robotDrive, 0, 45);
+		worlds1DriveToShoot1 = initDriveToWP(robotDrive, 24, 0);
 	}
 
 	autonomousInfo.lastStep = 0;
@@ -188,7 +193,7 @@ void autonomousPeriodic()
 			case(1):
 				driveToWP(&worlds1TurnToBump);
 				turnShooterOn(&robotShooter);
-				shootHalfCourt(&robotShooter);
+				shootFender(&robotShooter);
 				ballStopperDown(&robotStopper);
 
 				autonomousInfo.isFinished = worlds1TurnToBump.isFinished;
@@ -206,6 +211,18 @@ void autonomousPeriodic()
 			case(4):
 				driveToWP(&worlds1DriveToFirstPile);
 				autonomousInfo.isFinished = worlds1DriveToFirstPile.isFinished;
+				break;
+			case(5):
+				driveToWP(&worlds1TurnToShoot1);
+				autonomousInfo.isFinished = worlds1TurnToShoot1.isFinished;
+				break;
+			case(6):
+				driveToWP(&worlds1DriveToShoot1);
+				autonomousInfo.isFinished = worlds1DriveToShoot1.isFinished;
+				break;
+			case(7):
+				ballStopperUp(&robotStopper);
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 5000;
 				break;
 			default:
 				isAuto = 0;
@@ -234,7 +251,7 @@ void autonomousPeriodic()
 
 	autonomousInfo.lastStep = autonomousInfo.step;
 
-	lcdPrint(uart1, 1, "Step: %d", autonomousInfo.step);
+	//lcdPrint(uart1, 1, "Step: %d", autonomousInfo.step);
 
 	if(autonomousInfo.isFinished)
 	{

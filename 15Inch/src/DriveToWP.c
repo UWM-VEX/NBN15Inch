@@ -11,10 +11,10 @@ DriveToWP initDriveToWP(Drive drive, double distance, int rotation)
 {
 	DriveToWPIterationInfo *iterationInfo = malloc(sizeof(DriveToWPIterationInfo));
 
-	DriveToWP newStep = {.drive = robotDrive, .magnitudeKP = 2, .turningKP = 0.2, .straightRotationKP = 5,
+	DriveToWP newStep = {.drive = robotDrive, .magnitudeKP = 2, .turningKP = 0, .straightRotationKP = .5,
 		.distance = distance, .rotation = rotation, .straightMaxSpeed = 100, .turningMaxSpeed = 80,
-		.straightMinSpeed = 15, .turningMinSpeed = 40, .slowDownDistance = 18, .timeToAccelerate = 500,
-		.timeToAccelerateTurning = 250, .iteration = iterationInfo, .slowDownAngle = 45};
+		.straightMinSpeed = 15, .turningMinSpeed = 35, .slowDownDistance = 18, .timeToAccelerate = 500,
+		.timeToAccelerateTurning = 250, .iteration = iterationInfo, .slowDownAngle = 900};
 	lcdPrint(uart1, 1, "%d", sizeof(newStep));
 	return newStep;
 }
@@ -43,9 +43,9 @@ int driveToWPPropCorrection(DriveToWP *step, double error, double kP, int min, i
 {
 	int output = (int) (error * kP);
 
-	if(inDeadBandDouble((double) output, 0, deadBand))
+	if(inDeadBandDouble((double) error, 0, deadBand))
 		output = 0;
-	else if(output > 0)
+	else if(error > 0)
 	{
 		output += min;
 		output = limit(output, max, 0);
@@ -202,13 +202,13 @@ void driveToWP(DriveToWP *step)
 			step->iteration->rotation = (turnRight) ? -10 : 10;
 			(*step).goodRotation = 1;
 
-			//lcdSetText(uart1, 2, "Good Rotation");
+			lcdSetText(uart1, 1, "Good Rotation");
 		}
 		else if(abs(step->iteration->angleError) < (*step).slowDownAngle)
 		{
 			step->goodRotation = 0;
 			step->iteration->rotation = driveToWPGetRotationCorrection(step);
-			//lcdSetText(uart1, 2, "Slowing Down");
+			lcdSetText(uart1, 1, "Slowing Down");
 		}
 		else if(autonomousInfo.elapsedTime < (*step).timeToAccelerateTurning)
 		{
@@ -221,7 +221,7 @@ void driveToWP(DriveToWP *step)
 
 			if(!step->iteration->rotation) step->iteration->rotation *= -1;
 
-			//lcdSetText(uart1, 2, "Accelerating");
+			lcdSetText(uart1, 1, "Accelerating");
 		}
 		else
 		{
@@ -230,6 +230,8 @@ void driveToWP(DriveToWP *step)
 				step->iteration->rotation = (*step).turningMaxSpeed;
 			else
 				step->iteration->rotation = -(*step).turningMaxSpeed;
+
+			lcdSetText(uart1, 1, "Coasting");
 		}
 	}
 
