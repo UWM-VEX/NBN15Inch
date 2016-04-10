@@ -160,7 +160,7 @@ void runShooterAtSpeed(Shooter *shooter)
 	if((*shooter).turnedOn && (*shooter).processVariable == 0)
 	{
 		//Open loop fall back if the encoder is not working correctly
-		speed = (*shooter).SP * shooter->controller->kP;
+		speed = (*shooter).SP * shooter->controller->kF;
 	}
 	else
 	{
