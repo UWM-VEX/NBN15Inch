@@ -65,11 +65,11 @@ void operatorControl()
 
 		if(OIShooterUp() && !lastIncrement)
 		{
-			incrementShooterSP(&robotShooter, 5);
+			incrementShooterSP(&robotShooter, 2);
 		}
 		else if(OIShooterDown() && !lastDecrement)
 		{
-			incrementShooterSP(&robotShooter, -5);
+			incrementShooterSP(&robotShooter, -2);
 		}
 
 		lastIncrement = OIShooterUp();
