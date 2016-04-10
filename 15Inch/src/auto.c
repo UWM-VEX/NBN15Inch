@@ -101,12 +101,12 @@ void autonomousInit()
 	if(autonomousSelection == WORLDS_1)
 	{
 		worlds1TurnToBump = initDriveToWP(robotDrive, 0, -50);
-		worlds1DriveToBump = initDriveToWP(robotDrive, 6*12 + 4, 0);
-		worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, -20);
-		worlds1DriveToFirstPile = initDriveToWP(robotDrive, 21, 0);
-			driveToWPSetMaxSpeed(&worlds1DriveToFirstPile, 70);
+		worlds1DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
+		worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, -18);
+		worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
+			driveToWPSetMaxSpeed(&worlds1DriveToFirstPile, 60);
 		worlds1TurnToShoot1 = initDriveToWP(robotDrive, 0, 45);
-		worlds1DriveToShoot1 = initDriveToWP(robotDrive, 24, 0);
+		worlds1DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
 	}
 
 	autonomousInfo.lastStep = 0;

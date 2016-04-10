@@ -13,7 +13,7 @@ DriveToWP initDriveToWP(Drive drive, double distance, int rotation)
 
 	DriveToWP newStep = {.drive = robotDrive, .magnitudeKP = 2, .turningKP = 0, .straightRotationKP = .5,
 		.distance = distance, .rotation = rotation, .straightMaxSpeed = 100, .turningMaxSpeed = 80,
-		.straightMinSpeed = 15, .turningMinSpeed = 35, .slowDownDistance = 18, .timeToAccelerate = 500,
+		.straightMinSpeed = 20, .turningMinSpeed = 37, .slowDownDistance = 18, .timeToAccelerate = 500,
 		.timeToAccelerateTurning = 250, .iteration = iterationInfo, .slowDownAngle = 900};
 	lcdPrint(uart1, 1, "%d", sizeof(newStep));
 	return newStep;
