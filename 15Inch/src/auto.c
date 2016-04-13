@@ -81,6 +81,14 @@ DriveToWP worlds1TurnToFirstPile;
 DriveToWP worlds1DriveToFirstPile;
 DriveToWP worlds1TurnToShoot1;
 DriveToWP worlds1DriveToShoot1;
+DriveToWP worlds1TurnToSecondPile;
+DriveToWP worlds1DriveToSecondPile;
+DriveToWP worlds1SlowToSecondPile;
+DriveToWP worlds1TurnToShoot2;
+DriveToWP worlds1DriveToShoot2;
+DriveToWP worlds1BackToThirdPile;
+DriveToWP worlds1TurnToThirdPile;
+DriveToWP worlds1DriveToThirdPile;
 
 /**
  * Runs at the start of autonomous. Steps should be initialized here.
@@ -104,9 +112,18 @@ void autonomousInit()
 		worlds1DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
 		worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, -18);
 		worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
-			driveToWPSetMaxSpeed(&worlds1DriveToFirstPile, 60);
-		worlds1TurnToShoot1 = initDriveToWP(robotDrive, 0, 45);
+			driveToWPSetMaxSpeed(&worlds1DriveToFirstPile, 40);
+		worlds1TurnToShoot1 = initDriveToWP(robotDrive, 0, 51);
 		worlds1DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
+		worlds1TurnToSecondPile = initDriveToWP(robotDrive, 0, 97);
+		worlds1DriveToSecondPile = initDriveToWP(robotDrive, 10, 0);
+		worlds1SlowToSecondPile = initDriveToWP(robotDrive, 26, 0);
+			driveToWPSetMaxSpeed(&worlds1SlowToSecondPile, 35);
+		worlds1TurnToShoot2 = initDriveToWP(robotDrive, 0, -132);
+		worlds1DriveToShoot2 = initDriveToWP(robotDrive, 10, 0);
+		worlds1BackToThirdPile = initDriveToWP(robotDrive, -28, 0);
+		worlds1TurnToThirdPile = initDriveToWP(robotDrive, 0, 58);
+		worlds1DriveToThirdPile = initDriveToWP(robotDrive, 45.5, 0);
 	}
 
 	autonomousInfo.lastStep = 0;
@@ -218,15 +235,66 @@ void autonomousPeriodic()
 				break;
 			case(6):
 				driveToWP(&worlds1DriveToShoot1);
+				intake1Stop(&robotIntake);
+				intake2Stop(&robotIntake);
 				autonomousInfo.isFinished = worlds1DriveToShoot1.isFinished;
 				break;
 			case(7):
 				ballStopperUp(&robotStopper);
-				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 5000;
+				intake1In(&robotIntake);
+				intake2In(&robotIntake);
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 4000;
 				break;
 			default:
 				isAuto = 0;
 				break;
+
+
+			case(8):
+				driveToWP(&worlds1TurnToSecondPile);
+				ballStopperDown(&robotStopper);
+				autonomousInfo.isFinished = worlds1TurnToSecondPile.isFinished;
+				break;
+			case(9):
+			driveToWP(&worlds1DriveToSecondPile);
+			autonomousInfo.isFinished = worlds1DriveToSecondPile.isFinished;
+			break;
+
+			case(10):
+			driveToWP(&worlds1SlowToSecondPile);
+			autonomousInfo.isFinished = worlds1SlowToSecondPile.isFinished;
+			break;
+
+			case(11):
+			driveToWP(&worlds1TurnToShoot2);
+			autonomousInfo.isFinished = worlds1TurnToShoot2.isFinished;
+			break;
+
+			case(12):
+			driveToWP(&worlds1DriveToShoot2);
+			autonomousInfo.isFinished = worlds1DriveToShoot2.isFinished;
+			break;
+
+			case(13):
+			ballStopperUp(&robotStopper);
+			autonomousInfo.isFinished = autonomousInfo.elapsedTime > 3500;
+			break;
+
+			case(14):
+			driveToWP(&worlds1BackToThirdPile);
+			ballStopperDown(&robotStopper);
+			autonomousInfo.isFinished = worlds1BackToThirdPile.isFinished;
+			break;
+
+			case(15):
+			driveToWP(&worlds1TurnToThirdPile);
+			autonomousInfo.isFinished = worlds1TurnToThirdPile.isFinished;
+			break;
+
+			case(16):
+			driveToWP(&worlds1DriveToThirdPile);
+			autonomousInfo.isFinished = worlds1DriveToThirdPile.isFinished || autonomousInfo.elapsedTime > 4000;
+			break;
 			}
 		break;
 

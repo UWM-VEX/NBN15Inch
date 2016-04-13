@@ -11,10 +11,10 @@ DriveToWP initDriveToWP(Drive drive, double distance, int rotation)
 {
 	DriveToWPIterationInfo *iterationInfo = malloc(sizeof(DriveToWPIterationInfo));
 
-	DriveToWP newStep = {.drive = robotDrive, .magnitudeKP = 2, .turningKP = 0, .straightRotationKP = .5,
+	DriveToWP newStep = {.drive = robotDrive, .magnitudeKP = 2, .turningKP = 2, .straightRotationKP = .5,
 		.distance = distance, .rotation = rotation, .straightMaxSpeed = 100, .turningMaxSpeed = 80,
-		.straightMinSpeed = 20, .turningMinSpeed = 37, .slowDownDistance = 18, .timeToAccelerate = 500,
-		.timeToAccelerateTurning = 250, .iteration = iterationInfo, .slowDownAngle = 900};
+		.straightMinSpeed = 20, .turningMinSpeed = 25, .slowDownDistance = 18, .timeToAccelerate = 500,
+		.timeToAccelerateTurning = 250, .iteration = iterationInfo, .slowDownAngle = 40};
 	lcdPrint(uart1, 1, "%d", sizeof(newStep));
 	return newStep;
 }
@@ -135,12 +135,12 @@ void driveToWP(DriveToWP *step)
 
 			int turnEncoderError = step->iteration->leftEncoder - step->iteration->rightEncoder;
 
-			if(inDeadBand(turnEncoderError, 0, 5))
-			{
+			//if(inDeadBand(turnEncoderError, 0, 5))
+			//{
 				(*step).goodRotation = 1;
 				step->iteration->rotation = 0;
-			}
-			else if(turnEncoderError > 0)
+			//}
+			/*else if(turnEncoderError > 0)
 			{
 				(*step).goodRotation = 0;
 				step->iteration->rotation = -25;
@@ -149,7 +149,7 @@ void driveToWP(DriveToWP *step)
 			{
 				(*step).goodRotation = 0;
 				step->iteration->rotation = 25;
-			}
+			}*/
 
 			//lcdSetText(uart1, 1, "Good Distance");
 		}
