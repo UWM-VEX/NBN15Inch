@@ -176,7 +176,7 @@ void initialize() {
 			initPantherMotor(1, 0),initPantherMotor(10,0));
 	RedEncoder shooterEncoder = initRedEncoder(encoderInit(5,6,1), 100000);
 	PIDController *shooterPID = initPIDController(4, 0, 0, 1, 0, 0.5);
-	robotShooter = initShooter(shooterPID, initPantherMotor(9,1), 58, 66, shooterEncoder);
+	robotShooter = initShooter(shooterPID, initPantherMotor(9,1), 57, 66, shooterEncoder);
 
 	lcdModeSelect();
 
