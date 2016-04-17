@@ -89,6 +89,12 @@ DriveToWP worlds1DriveToShoot2;
 DriveToWP worlds1BackToThirdPile;
 DriveToWP worlds1TurnToThirdPile;
 DriveToWP worlds1DriveToThirdPile;
+DriveToWP worlds1BackToShoot;
+DriveToWP worlds1TurnToShoot3;
+DriveToWP worlds1DriveToShoot3;
+
+
+
 
 /**
  * Runs at the start of autonomous. Steps should be initialized here.
@@ -119,11 +125,16 @@ void autonomousInit()
 		worlds1DriveToSecondPile = initDriveToWP(robotDrive, 10, 0);
 		worlds1SlowToSecondPile = initDriveToWP(robotDrive, 26, 0);
 			driveToWPSetMaxSpeed(&worlds1SlowToSecondPile, 35);
-		worlds1TurnToShoot2 = initDriveToWP(robotDrive, 0, -132);
+		worlds1TurnToShoot2 = initDriveToWP(robotDrive, 0, -137);
 		worlds1DriveToShoot2 = initDriveToWP(robotDrive, 10, 0);
-		worlds1BackToThirdPile = initDriveToWP(robotDrive, -28, 0);
-		worlds1TurnToThirdPile = initDriveToWP(robotDrive, 0, 58);
-		worlds1DriveToThirdPile = initDriveToWP(robotDrive, 45.5, 0);
+		worlds1BackToThirdPile = initDriveToWP(robotDrive, -32, 0);
+		worlds1TurnToThirdPile = initDriveToWP(robotDrive, 0, 52);
+		worlds1DriveToThirdPile = initDriveToWP(robotDrive, 45, 0);
+		worlds1BackToShoot = initDriveToWP(robotDrive, -36, 0);
+		worlds1TurnToShoot3 = initDriveToWP(robotDrive, 0, -60);
+		worlds1DriveToShoot3 = initDriveToWP(robotDrive, 24, 0);
+
+
 	}
 
 	autonomousInfo.lastStep = 0;
@@ -293,8 +304,29 @@ void autonomousPeriodic()
 
 			case(16):
 			driveToWP(&worlds1DriveToThirdPile);
-			autonomousInfo.isFinished = worlds1DriveToThirdPile.isFinished || autonomousInfo.elapsedTime > 4000;
+			autonomousInfo.isFinished = worlds1DriveToThirdPile.isFinished && autonomousInfo.elapsedTime > 5000;
 			break;
+
+			case(17):
+			driveToWP(&worlds1BackToShoot);
+			autonomousInfo.isFinished = worlds1BackToShoot.isFinished;
+			break;
+
+			case(18):
+			driveToWP(&worlds1TurnToShoot3);
+			autonomousInfo.isFinished = worlds1TurnToShoot3.isFinished;
+			break;
+
+			case(19):
+			driveToWP(&worlds1DriveToShoot3);
+			autonomousInfo.isFinished = worlds1DriveToShoot3.isFinished;
+			break;
+
+			case(20):
+			ballStopperUp(&robotStopper);
+			intake1In(&robotIntake);
+			intake2In(&robotIntake);
+			autonomousInfo.isFinished = autonomousInfo.elapsedTime > 4000;
 			}
 		break;
 
