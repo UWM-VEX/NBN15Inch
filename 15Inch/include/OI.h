@@ -25,5 +25,7 @@ int OIFireAtWill();
 int OISpitAtWill();
 int OIHalfCourtShoot();
 int OIFenderShoot();
+int OIReduceDrive();
+int OIDriveStraightBack();
 
 #endif /* INCLUDE_OI_H_ */

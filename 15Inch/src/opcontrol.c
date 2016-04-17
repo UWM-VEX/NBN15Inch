@@ -43,7 +43,21 @@ void operatorControl()
 
 	while (true)
 	{
-		tankDrive(robotDrive, OIGetDriveLeft(), OIGetDriveRight());
+		int left = OIGetDriveLeft();
+		int right = OIGetDriveRight();
+
+		if(OIDriveStraightBack())
+		{
+			left = -127;
+			right = -127;
+		}
+		else if(OIReduceDrive())
+		{
+			left = (int) left * 0.6;
+			right = (int) right * 0.6;
+		}
+
+		tankDrive(robotDrive, left, right);
 
 		if(OIShooterOn())
 		{
