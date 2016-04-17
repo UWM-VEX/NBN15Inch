@@ -19,27 +19,23 @@ int OIGetDriveRight()
 
 int OIGetIntake1In()
 {
-	return joystickGetDigital(1, 6, JOY_DOWN) ||
-			joystickGetDigital(2, 8, JOY_DOWN);
+	return joystickGetDigital(2, 8, JOY_DOWN);
 
 }
 
 int OIGetIntake1Out()
 {
-	return joystickGetDigital(1, 6, JOY_UP)
-			|| joystickGetDigital(2, 8, JOY_UP);
+	return joystickGetDigital(2, 8, JOY_UP);
 }
 
 int OIGetIntake2In()
 {
-	return joystickGetDigital(1, 5, JOY_DOWN) ||
-			joystickGetDigital(2, 7, JOY_DOWN);
+	return joystickGetDigital(2, 7, JOY_DOWN);
 }
 
 int OIGetIntake2Out()
 {
-	return joystickGetDigital(1, 5, JOY_UP) ||
-			joystickGetDigital(2, 7, JOY_UP);
+	return joystickGetDigital(2, 7, JOY_UP);
 }
 
 int OIGetIntakeMacroTrigger()
@@ -79,12 +75,14 @@ int OIBallStopperDown()
 
 int OIFireAtWill()
 {
-	return joystickGetAnalog(2, 3) > 25;
+	return joystickGetAnalog(2, 3) > 25
+		|| joystickGetDigital(1, 5, JOY_UP);
 }
 
 int OISpitAtWill()
 {
-	return joystickGetAnalog(2, 3) < -25;
+	return joystickGetAnalog(2, 3) < -25
+		|| joystickGetDigital(1, 5, JOY_DOWN);
 }
 
 int OIFenderShoot()
@@ -95,4 +93,14 @@ int OIFenderShoot()
 int OIHalfCourtShoot()
 {
 	return joystickGetDigital(2, 7, JOY_LEFT);
+}
+
+int OIReduceDrive()
+{
+	return joystickGetDigital(1,6,JOY_DOWN);
+}
+
+int OIDriveStraightBack()
+{
+	return joystickGetDigital(1, 8, JOY_DOWN);
 }
