@@ -70,11 +70,6 @@ int isAuto = 1;
 
 long int stepStartTime;
 
-DriveToWP drive48Forward;
-DriveToWP turn90Right;
-DriveToWP turn90Left;
-DriveToWP drive24Backward;
-
 DriveToWP worlds1TurnToBump;
 DriveToWP worlds1DriveToBump;
 DriveToWP worlds1TurnToFirstPile;
@@ -107,11 +102,6 @@ void autonomousInit()
 	 * list of the arguments to pass in.
 	 */
 
-	drive48Forward = initDriveToWP(robotDrive, 48, 0);
-	turn90Right = initDriveToWP(robotDrive, 0, 90);
-	turn90Left = initDriveToWP(robotDrive, 0, -90);
-	drive24Backward = initDriveToWP(robotDrive, -24, 0);
-
 	if(autonomousSelection == WORLDS_1)
 	{
 		worlds1TurnToBump = initDriveToWP(robotDrive, 0, -50);
@@ -131,12 +121,15 @@ void autonomousInit()
 		worlds1TurnToThirdPile = initDriveToWP(robotDrive, 0, 52);
 		worlds1DriveToThirdPile = initDriveToWP(robotDrive, 45, 0);
 		worlds1BackToShoot = initDriveToWP(robotDrive, -36, 0);
-		worlds1TurnToShoot3 = initDriveToWP(robotDrive, 0, -60);
-		worlds1DriveToShoot3 = initDriveToWP(robotDrive, 24, 0);
+		worlds1TurnToShoot3 = initDriveToWP(robotDrive, 0, -58);
+		worlds1DriveToShoot3 = initDriveToWP(robotDrive, 28, 0);
 
 
 	}
+	else if(autonomousSelection == WORLDS_2)
+	{
 
+	}
 	autonomousInfo.lastStep = 0;
 	autonomousInfo.step = 1;
 	autonomousInfo.isFinished = 0;
@@ -160,61 +153,6 @@ void autonomousPeriodic()
 
 	switch(autonomousSelection)
 	{
-	case(MODE_1):
-		switch(autonomousInfo.step)
-		{
-			case(1):
-				driveToWP(&drive48Forward);
-				autonomousInfo.isFinished = drive48Forward.isFinished;
-				break;
-
-			case(2):
-				driveToWP(&turn90Right);
-				autonomousInfo.isFinished = turn90Right.isFinished;
-				break;
-
-			case (3):
-				driveToWP(&turn90Left);
-				autonomousInfo.isFinished = turn90Left.isFinished;
-				break;
-
-			case(4):
-				driveToWP(&drive24Backward);
-				autonomousInfo.isFinished = drive24Backward.isFinished;
-				break;
-
-			default:
-				isAuto = 0;
-				break;
-
-				}
-				break;
-
-		case(JUST_TURN):
-			switch(autonomousInfo.step)
-			{
-			case(1):
-				driveToWP(&turn90Right);
-				autonomousInfo.isFinished = turn90Right.isFinished;
-				break;
-
-			default:
-				isAuto = 0;
-			}
-			break;
-
-		case(JUST_DRIVE):
-			switch(autonomousInfo.step)
-			{
-			case(1):
-				driveToWP(&drive48Forward);
-				autonomousInfo.isFinished = drive48Forward.isFinished;
-				break;
-			default:
-				isAuto = 0;
-				break;
-			}
-			break;
 		case(WORLDS_1):
 			switch(autonomousInfo.step)
 			{
@@ -327,6 +265,19 @@ void autonomousPeriodic()
 			intake1In(&robotIntake);
 			intake2In(&robotIntake);
 			autonomousInfo.isFinished = autonomousInfo.elapsedTime > 4000;
+			}
+		break;
+
+		case(WORLDS_2):
+			switch(autonomousInfo.step)
+			{
+			case(1):
+				//do stuff
+				autonomousInfo.isFinished = 1;
+				break;
+
+			default:
+				isAuto = 0;
 			}
 		break;
 
