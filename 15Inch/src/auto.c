@@ -159,99 +159,207 @@ void autonomousInit()
 
 	if(autonomousSelection == WORLDS_1)
 	{
-		worlds1TurnToBump = initDriveToWP(robotDrive, 0, -50);
-		worlds1DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
-		worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, -18);
-		worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
-			driveToWPSetMaxSpeed(&worlds1DriveToFirstPile, 40);
-		worlds1TurnToShoot1 = initDriveToWP(robotDrive, 0, 51);
-		worlds1DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
-		worlds1TurnToSecondPile = initDriveToWP(robotDrive, 0, 97);
-		worlds1DriveToSecondPile = initDriveToWP(robotDrive, 10, 0);
-		worlds1SlowToSecondPile = initDriveToWP(robotDrive, 26, 0);
-			driveToWPSetMaxSpeed(&worlds1SlowToSecondPile, 35);
-		worlds1TurnToShoot2 = initDriveToWP(robotDrive, 0, -137);
-		worlds1DriveToShoot2 = initDriveToWP(robotDrive, 10, 0);
-		worlds1BackToThirdPile = initDriveToWP(robotDrive, -32, 0);
-		worlds1TurnToThirdPile = initDriveToWP(robotDrive, 0, 52);
-		worlds1DriveToThirdPile = initDriveToWP(robotDrive, 45, 0);
-		worlds1BackToShoot = initDriveToWP(robotDrive, -36, 0);
-		worlds1TurnToShoot3 = initDriveToWP(robotDrive, 0, -58);
-		worlds1DriveToShoot3 = initDriveToWP(robotDrive, 28, 0);
-
-
+		if(alliance == BLUE)
+		{
+			worlds1TurnToBump = initDriveToWP(robotDrive, 0, -50);
+			worlds1DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
+			worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, -18);
+			worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
+				driveToWPSetMaxSpeed(&worlds1DriveToFirstPile, 40);
+			worlds1TurnToShoot1 = initDriveToWP(robotDrive, 0, 51);
+			worlds1DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
+			worlds1TurnToSecondPile = initDriveToWP(robotDrive, 0, 97);
+			worlds1DriveToSecondPile = initDriveToWP(robotDrive, 10, 0);
+			worlds1SlowToSecondPile = initDriveToWP(robotDrive, 26, 0);
+				driveToWPSetMaxSpeed(&worlds1SlowToSecondPile, 35);
+			worlds1TurnToShoot2 = initDriveToWP(robotDrive, 0, -137);
+			worlds1DriveToShoot2 = initDriveToWP(robotDrive, 10, 0);
+			worlds1BackToThirdPile = initDriveToWP(robotDrive, -32, 0);
+			worlds1TurnToThirdPile = initDriveToWP(robotDrive, 0, 52);
+			worlds1DriveToThirdPile = initDriveToWP(robotDrive, 45, 0);
+			worlds1BackToShoot = initDriveToWP(robotDrive, -36, 0);
+			worlds1TurnToShoot3 = initDriveToWP(robotDrive, 0, -58);
+			worlds1DriveToShoot3 = initDriveToWP(robotDrive, 28, 0);
+		}
+		else
+		{
+			worlds1TurnToBump = initDriveToWP(robotDrive, 0, 50);
+			worlds1DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
+			worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, 18);
+			worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
+				driveToWPSetMaxSpeed(&worlds1DriveToFirstPile, 40);
+			worlds1TurnToShoot1 = initDriveToWP(robotDrive, 0, -51);
+			worlds1DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
+			worlds1TurnToSecondPile = initDriveToWP(robotDrive, 0, -97);
+			worlds1DriveToSecondPile = initDriveToWP(robotDrive, 10, 0);
+			worlds1SlowToSecondPile = initDriveToWP(robotDrive, 26, 0);
+				driveToWPSetMaxSpeed(&worlds1SlowToSecondPile, 35);
+			worlds1TurnToShoot2 = initDriveToWP(robotDrive, 0, 137);
+			worlds1DriveToShoot2 = initDriveToWP(robotDrive, 10, 0);
+			worlds1BackToThirdPile = initDriveToWP(robotDrive, -32, 0);
+			worlds1TurnToThirdPile = initDriveToWP(robotDrive, 0, -52);
+			worlds1DriveToThirdPile = initDriveToWP(robotDrive, 45, 0);
+			worlds1BackToShoot = initDriveToWP(robotDrive, -36, 0);
+			worlds1TurnToShoot3 = initDriveToWP(robotDrive, 0, 58);
+			worlds1DriveToShoot3 = initDriveToWP(robotDrive, 28, 0);
+		}
 	}
 	else if(autonomousSelection == WORLDS_2)
 	{
-		worlds2TurnToBump = initDriveToWP(robotDrive, 0, -50);
-		worlds2DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
-		worlds2TurnToFirstPile = initDriveToWP(robotDrive, 0, -18);
-		worlds2DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
-			driveToWPSetMaxSpeed(&worlds2DriveToFirstPile, 40);
-		worlds2TurnToShoot1 = initDriveToWP(robotDrive, 0, 51);
-		worlds2DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
-		worlds2BackToPile2 = initDriveToWP(robotDrive, -27, 0);
-		worlds2TurnToPile2 = initDriveToWP(robotDrive, 0, -65);
-		worlds2DriveToPile2 = initDriveToWP(robotDrive, 17.5, 0);
-			driveToWPSetMaxSpeed(&worlds2DriveToPile2, 50);
-		worlds2BackToShoot2 = initDriveToWP(robotDrive, -18, 0);
-		worlds2TurnToShoot2 = initDriveToWP(robotDrive, 0, 60);
-		worlds2DriveToShoot2 = initDriveToWP(robotDrive, 27, 0);
-		worlds2TurnToPile3 = initDriveToWP(robotDrive, 0, 97);
-		worlds2DriveToPile3 = initDriveToWP(robotDrive, 10, 0);
-		worlds2SlowToPile3 = initDriveToWP(robotDrive, 26, 0);
-			driveToWPSetMaxSpeed(&worlds2SlowToPile3, 35);
-		worlds2TurnToShoot3 = initDriveToWP(robotDrive, 0, -137);
-		worlds2DriveToShoot3 = initDriveToWP(robotDrive, 14, 0);
+		if(alliance == BLUE)
+		{
+			worlds2TurnToBump = initDriveToWP(robotDrive, 0, -50);
+			worlds2DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
+			worlds2TurnToFirstPile = initDriveToWP(robotDrive, 0, -18);
+			worlds2DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
+				driveToWPSetMaxSpeed(&worlds2DriveToFirstPile, 40);
+			worlds2TurnToShoot1 = initDriveToWP(robotDrive, 0, 51);
+			worlds2DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
+			worlds2BackToPile2 = initDriveToWP(robotDrive, -27, 0);
+			worlds2TurnToPile2 = initDriveToWP(robotDrive, 0, -65);
+			worlds2DriveToPile2 = initDriveToWP(robotDrive, 17.5, 0);
+				driveToWPSetMaxSpeed(&worlds2DriveToPile2, 50);
+			worlds2BackToShoot2 = initDriveToWP(robotDrive, -18, 0);
+			worlds2TurnToShoot2 = initDriveToWP(robotDrive, 0, 60);
+			worlds2DriveToShoot2 = initDriveToWP(robotDrive, 27, 0);
+			worlds2TurnToPile3 = initDriveToWP(robotDrive, 0, 97);
+			worlds2DriveToPile3 = initDriveToWP(robotDrive, 10, 0);
+			worlds2SlowToPile3 = initDriveToWP(robotDrive, 26, 0);
+				driveToWPSetMaxSpeed(&worlds2SlowToPile3, 35);
+			worlds2TurnToShoot3 = initDriveToWP(robotDrive, 0, -137);
+			worlds2DriveToShoot3 = initDriveToWP(robotDrive, 14, 0);
+		}
+		else
+		{
+			worlds2TurnToBump = initDriveToWP(robotDrive, 0, 50);
+			worlds2DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
+			worlds2TurnToFirstPile = initDriveToWP(robotDrive, 0, 18);
+			worlds2DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
+				driveToWPSetMaxSpeed(&worlds2DriveToFirstPile, 40);
+			worlds2TurnToShoot1 = initDriveToWP(robotDrive, 0, -51);
+			worlds2DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
+			worlds2BackToPile2 = initDriveToWP(robotDrive, -27, 0);
+			worlds2TurnToPile2 = initDriveToWP(robotDrive, 0, 65);
+			worlds2DriveToPile2 = initDriveToWP(robotDrive, 17.5, 0);
+				driveToWPSetMaxSpeed(&worlds2DriveToPile2, 50);
+			worlds2BackToShoot2 = initDriveToWP(robotDrive, -18, 0);
+			worlds2TurnToShoot2 = initDriveToWP(robotDrive, 0, -60);
+			worlds2DriveToShoot2 = initDriveToWP(robotDrive, 27, 0);
+			worlds2TurnToPile3 = initDriveToWP(robotDrive, 0, -97);
+			worlds2DriveToPile3 = initDriveToWP(robotDrive, 10, 0);
+			worlds2SlowToPile3 = initDriveToWP(robotDrive, 26, 0);
+				driveToWPSetMaxSpeed(&worlds2SlowToPile3, 35);
+			worlds2TurnToShoot3 = initDriveToWP(robotDrive, 0, 137);
+			worlds2DriveToShoot3 = initDriveToWP(robotDrive, 14, 0);
+		}
 	}
 	else if(autonomousSelection == WORLDS_3)
 	{
-		worlds3TurnToPile1 = initDriveToWP(robotDrive, 0, -62);
-		worlds3DriveToPile1 = initDriveToWP(robotDrive, 88, 0);
-		worlds3TurnPile2 = initDriveToWP(robotDrive, 0, 45);
-		worlds3ThroughPile2 = initDriveToWP(robotDrive, 30, 0);
-		worlds3BackToPile3 = initDriveToWP(robotDrive, -20, 0);
-		worlds3TurnToPile3 = initDriveToWP(robotDrive, 0, -65);
-		worlds3DriveToPile3 = initDriveToWP(robotDrive, 18, 0);
-			driveToWPSetMaxSpeed(&worlds2DriveToPile2, 50);
-		worlds3BackToShoot2 = initDriveToWP(robotDrive, -18, 0);
-		worlds3TurnToShoot2 = initDriveToWP(robotDrive, 0, 60);
-		worlds3DriveToShoot2 = initDriveToWP(robotDrive, 24, 0);
-		worlds3TurnToPile4 = initDriveToWP(robotDrive, 0, 97);
-		worlds3DriveToPile4 = initDriveToWP(robotDrive, 10, 0);
-		worlds3SlowToPile4 = initDriveToWP(robotDrive, 26, 0);
-			driveToWPSetMaxSpeed(&worlds3SlowToPile4, 35);
-		worlds3TurnToShoot4 = initDriveToWP(robotDrive, 0, -137);
-		worlds3DriveToShoot3 = initDriveToWP(robotDrive, 15, 0);
+		if(alliance == BLUE)
+		{
+			worlds3TurnToPile1 = initDriveToWP(robotDrive, 0, -62);
+			worlds3DriveToPile1 = initDriveToWP(robotDrive, 88, 0);
+			worlds3TurnPile2 = initDriveToWP(robotDrive, 0, 45);
+			worlds3ThroughPile2 = initDriveToWP(robotDrive, 30, 0);
+			worlds3BackToPile3 = initDriveToWP(robotDrive, -20, 0);
+			worlds3TurnToPile3 = initDriveToWP(robotDrive, 0, -65);
+			worlds3DriveToPile3 = initDriveToWP(robotDrive, 18, 0);
+				driveToWPSetMaxSpeed(&worlds2DriveToPile2, 50);
+			worlds3BackToShoot2 = initDriveToWP(robotDrive, -18, 0);
+			worlds3TurnToShoot2 = initDriveToWP(robotDrive, 0, 60);
+			worlds3DriveToShoot2 = initDriveToWP(robotDrive, 24, 0);
+			worlds3TurnToPile4 = initDriveToWP(robotDrive, 0, 97);
+			worlds3DriveToPile4 = initDriveToWP(robotDrive, 10, 0);
+			worlds3SlowToPile4 = initDriveToWP(robotDrive, 26, 0);
+				driveToWPSetMaxSpeed(&worlds3SlowToPile4, 35);
+			worlds3TurnToShoot4 = initDriveToWP(robotDrive, 0, -137);
+			worlds3DriveToShoot3 = initDriveToWP(robotDrive, 15, 0);
+		}
+		else
+		{
+			worlds3TurnToPile1 = initDriveToWP(robotDrive, 0, 62);
+			worlds3DriveToPile1 = initDriveToWP(robotDrive, 88, 0);
+			worlds3TurnPile2 = initDriveToWP(robotDrive, 0, -45);
+			worlds3ThroughPile2 = initDriveToWP(robotDrive, 30, 0);
+			worlds3BackToPile3 = initDriveToWP(robotDrive, -20, 0);
+			worlds3TurnToPile3 = initDriveToWP(robotDrive, 0, 65);
+			worlds3DriveToPile3 = initDriveToWP(robotDrive, 18, 0);
+				driveToWPSetMaxSpeed(&worlds2DriveToPile2, 50);
+			worlds3BackToShoot2 = initDriveToWP(robotDrive, -18, 0);
+			worlds3TurnToShoot2 = initDriveToWP(robotDrive, 0, -60);
+			worlds3DriveToShoot2 = initDriveToWP(robotDrive, 24, 0);
+			worlds3TurnToPile4 = initDriveToWP(robotDrive, 0, -97);
+			worlds3DriveToPile4 = initDriveToWP(robotDrive, 10, 0);
+			worlds3SlowToPile4 = initDriveToWP(robotDrive, 26, 0);
+				driveToWPSetMaxSpeed(&worlds3SlowToPile4, 35);
+			worlds3TurnToShoot4 = initDriveToWP(robotDrive, 0, 137);
+			worlds3DriveToShoot3 = initDriveToWP(robotDrive, 15, 0);
+		}
 	}
 	else if(autonomousSelection == WORLDS_4)
 	{
-		 worlds4TurnToDrive = initDriveToWP(robotDrive, 0, -40);
-		 worlds4Drive = initDriveToWP(robotDrive, 58, 0);
-		 worlds4TurnToPile1 = initDriveToWP(robotDrive, 0, 80);
-		 worlds4DriveToPile1 = initDriveToWP(robotDrive, 43, 0);
-		 worlds4BackToShoot1 = initDriveToWP(robotDrive, -35, 0);
-		 worlds4TurnToShoot1 = initDriveToWP(robotDrive, 0, -85);
-		 worlds4DriveToShoot1 = initDriveToWP(robotDrive, 24, 0);
-		 worlds4SlowToPile2 = initDriveToWP(robotDrive, 12, 0);
-		 	 driveToWPSetMaxSpeed(&worlds4SlowToPile2, 35);
-		 worlds4DriveToShoot2 = initDriveToWP(robotDrive, 24, 0);
+		if(alliance == BLUE)
+		{
+			 worlds4TurnToDrive = initDriveToWP(robotDrive, 0, -40);
+			 worlds4Drive = initDriveToWP(robotDrive, 58, 0);
+			 worlds4TurnToPile1 = initDriveToWP(robotDrive, 0, 80);
+			 worlds4DriveToPile1 = initDriveToWP(robotDrive, 43, 0);
+			 worlds4BackToShoot1 = initDriveToWP(robotDrive, -35, 0);
+			 worlds4TurnToShoot1 = initDriveToWP(robotDrive, 0, -85);
+			 worlds4DriveToShoot1 = initDriveToWP(robotDrive, 24, 0);
+			 worlds4SlowToPile2 = initDriveToWP(robotDrive, 12, 0);
+				 driveToWPSetMaxSpeed(&worlds4SlowToPile2, 35);
+			 worlds4DriveToShoot2 = initDriveToWP(robotDrive, 24, 0);
+		}
+		else
+		{
+			worlds4TurnToDrive = initDriveToWP(robotDrive, 0, 40);
+			worlds4Drive = initDriveToWP(robotDrive, 58, 0);
+			worlds4TurnToPile1 = initDriveToWP(robotDrive, 0, -80);
+			worlds4DriveToPile1 = initDriveToWP(robotDrive, 43, 0);
+			worlds4BackToShoot1 = initDriveToWP(robotDrive, -35, 0);
+			worlds4TurnToShoot1 = initDriveToWP(robotDrive, 0, 85);
+			worlds4DriveToShoot1 = initDriveToWP(robotDrive, 24, 0);
+			worlds4SlowToPile2 = initDriveToWP(robotDrive, 12, 0);
+				driveToWPSetMaxSpeed(&worlds4SlowToPile2, 35);
+			worlds4DriveToShoot2 = initDriveToWP(robotDrive, 24, 0);
+		}
 	}
 	else if(autonomousSelection == WORLDS_5)
 	{
-		worlds5TurnToShoot1 = initDriveToWP(robotDrive, 0, -50);
-		worlds5DriveToShoot1 = initDriveToWP(robotDrive, 114, 0);
-		worlds5TurnToGoal1 = initDriveToWP(robotDrive, 0, 36);
-		worlds5TurnToPile2 = initDriveToWP(robotDrive, 0, 84);
-		worlds5DriveToPile2 = initDriveToWP(robotDrive, 14, 0);
-		worlds5SlowToPile2 = initDriveToWP(robotDrive, 5, 0);
-			driveToWPSetMaxSpeed(&worlds5SlowToPile2, 65);
-		worlds5FastToPile2 = initDriveToWP(robotDrive, 27, 0);
-		worlds5TurnToShoot2 = initDriveToWP(robotDrive, 0, -130);
-		worlds5TurnToPile3 = initDriveToWP(robotDrive, 0, 80);
-		worlds5DriveToPile3 = initDriveToWP(robotDrive, 30, 0);
-		worlds5BackToShoot3 = initDriveToWP(robotDrive, -30, 0);
-		worlds5TurnToShoot3 = initDriveToWP(robotDrive, 0, -73);
+		if(alliance == BLUE)
+		{
+			worlds5TurnToShoot1 = initDriveToWP(robotDrive, 0, -50);
+			worlds5DriveToShoot1 = initDriveToWP(robotDrive, 114, 0);
+			worlds5TurnToGoal1 = initDriveToWP(robotDrive, 0, 36);
+			worlds5TurnToPile2 = initDriveToWP(robotDrive, 0, 84);
+			worlds5DriveToPile2 = initDriveToWP(robotDrive, 14, 0);
+			worlds5SlowToPile2 = initDriveToWP(robotDrive, 5, 0);
+				driveToWPSetMaxSpeed(&worlds5SlowToPile2, 65);
+			worlds5FastToPile2 = initDriveToWP(robotDrive, 27, 0);
+			worlds5TurnToShoot2 = initDriveToWP(robotDrive, 0, -130);
+			worlds5TurnToPile3 = initDriveToWP(robotDrive, 0, 80);
+			worlds5DriveToPile3 = initDriveToWP(robotDrive, 30, 0);
+			worlds5BackToShoot3 = initDriveToWP(robotDrive, -30, 0);
+			worlds5TurnToShoot3 = initDriveToWP(robotDrive, 0, -73);
+		}
+		else
+		{
+			worlds5TurnToShoot1 = initDriveToWP(robotDrive, 0, 50);
+			worlds5DriveToShoot1 = initDriveToWP(robotDrive, 114, 0);
+			worlds5TurnToGoal1 = initDriveToWP(robotDrive, 0, -36);
+			worlds5TurnToPile2 = initDriveToWP(robotDrive, 0, -84);
+			worlds5DriveToPile2 = initDriveToWP(robotDrive, 14, 0);
+			worlds5SlowToPile2 = initDriveToWP(robotDrive, 5, 0);
+				driveToWPSetMaxSpeed(&worlds5SlowToPile2, 65);
+			worlds5FastToPile2 = initDriveToWP(robotDrive, 27, 0);
+			worlds5TurnToShoot2 = initDriveToWP(robotDrive, 0, 130);
+			worlds5TurnToPile3 = initDriveToWP(robotDrive, 0, -80);
+			worlds5DriveToPile3 = initDriveToWP(robotDrive, 30, 0);
+			worlds5BackToShoot3 = initDriveToWP(robotDrive, -30, 0);
+			worlds5TurnToShoot3 = initDriveToWP(robotDrive, 0, 73);
+
+		}
 	}
 
 	autonomousInfo.lastStep = 0;
