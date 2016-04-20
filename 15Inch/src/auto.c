@@ -129,6 +129,9 @@ DriveToWP worlds4DriveToPile1;
 DriveToWP worlds4BackToShoot1;
 DriveToWP worlds4TurnToShoot1;
 DriveToWP worlds4DriveToShoot1;
+DriveToWP worlds4SlowToPile2;
+DriveToWP worlds4DriveToShoot2;
+
 
 DriveToWP worlds5TurnToShoot1;
 DriveToWP worlds5DriveToShoot1;
@@ -230,6 +233,9 @@ void autonomousInit()
 		 worlds4BackToShoot1 = initDriveToWP(robotDrive, -35, 0);
 		 worlds4TurnToShoot1 = initDriveToWP(robotDrive, 0, -85);
 		 worlds4DriveToShoot1 = initDriveToWP(robotDrive, 24, 0);
+		 worlds4SlowToPile2 = initDriveToWP(robotDrive, 12, 0);
+		 	 driveToWPSetMaxSpeed(&worlds4SlowToPile2, 35);
+		 worlds4DriveToShoot2 = initDriveToWP(robotDrive, 24, 0);
 	}
 	else if(autonomousSelection == WORLDS_5)
 	{
