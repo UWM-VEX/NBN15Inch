@@ -53,7 +53,7 @@ void lcdModeSelect()
 	int newButtonPressed;
 	int lastStep = 0;
 
-	const char * selectionText[] = {"Nothing", "Worlds 1", "Worlds 2"};
+	const char * selectionText[] = {"Nothing", "Worlds 1", "Worlds 2", "Worlds 3", "Worlds 4"};
 	int size = sizeof(selectionText) / sizeof(int);
 
 	autonomousSelection = 0;

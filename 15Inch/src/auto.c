@@ -106,6 +106,30 @@ DriveToWP worlds2SlowToPile3;
 DriveToWP worlds2TurnToShoot3;
 DriveToWP worlds2DriveToShoot3;
 
+DriveToWP worlds3TurnToPile1;
+DriveToWP worlds3DriveToPile1;
+DriveToWP worlds3TurnPile2;
+DriveToWP worlds3ThroughPile2;
+DriveToWP worlds3BackToPile3;
+DriveToWP worlds3TurnToPile3;
+DriveToWP worlds3DriveToPile3;
+DriveToWP worlds3BackToShoot2;
+DriveToWP worlds3TurnToShoot2;
+DriveToWP worlds3DriveToShoot2;
+DriveToWP worlds3TurnToPile4;
+DriveToWP worlds3DriveToPile4;
+DriveToWP worlds3SlowToPile4;
+DriveToWP worlds3TurnToShoot4;
+DriveToWP worlds3DriveToShoot3;
+
+DriveToWP worlds4TurnToDrive;
+DriveToWP worlds4Drive;
+DriveToWP worlds4TurnToPile1;
+DriveToWP worlds4DriveToPile1;
+DriveToWP worlds4BackToShoot1;
+DriveToWP worlds4TurnToShoot1;
+DriveToWP worlds4DriveToShoot1;
+
 
 /**
  * Runs at the start of autonomous. Steps should be initialized here.
@@ -120,50 +144,27 @@ void autonomousInit()
 
 	if(autonomousSelection == WORLDS_1)
 	{
-		if(alliance == BLUE)
-		{
-			worlds1TurnToBump = initDriveToWP(robotDrive, 0, -50);
-			worlds1DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
-			worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, -18);
-			worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
-				driveToWPSetMaxSpeed(&worlds1DriveToFirstPile, 40);
-			worlds1TurnToShoot1 = initDriveToWP(robotDrive, 0, 51);
-			worlds1DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
-			worlds1TurnToSecondPile = initDriveToWP(robotDrive, 0, 97);
-			worlds1DriveToSecondPile = initDriveToWP(robotDrive, 10, 0);
-			worlds1SlowToSecondPile = initDriveToWP(robotDrive, 26, 0);
-				driveToWPSetMaxSpeed(&worlds1SlowToSecondPile, 35);
-			worlds1TurnToShoot2 = initDriveToWP(robotDrive, 0, -137);
-			worlds1DriveToShoot2 = initDriveToWP(robotDrive, 10, 0);
-			worlds1BackToThirdPile = initDriveToWP(robotDrive, -32, 0);
-			worlds1TurnToThirdPile = initDriveToWP(robotDrive, 0, 52);
-			worlds1DriveToThirdPile = initDriveToWP(robotDrive, 45, 0);
-			worlds1BackToShoot = initDriveToWP(robotDrive, -36, 0);
-			worlds1TurnToShoot3 = initDriveToWP(robotDrive, 0, -58);
-			worlds1DriveToShoot3 = initDriveToWP(robotDrive, 28, 0);
-		}
-		else
-		{
-			worlds1TurnToBump = initDriveToWP(robotDrive, 0, 50);
-			worlds1DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
-			worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, 18);
-			worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
-				driveToWPSetMaxSpeed(&worlds1DriveToFirstPile, 40);
-			worlds1TurnToShoot1 = initDriveToWP(robotDrive, 0, -51);
-			worlds1DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
-			worlds1TurnToSecondPile = initDriveToWP(robotDrive, 0, -97);
-			worlds1DriveToSecondPile = initDriveToWP(robotDrive, 10, 0);
-			worlds1SlowToSecondPile = initDriveToWP(robotDrive, 26, 0);
-				driveToWPSetMaxSpeed(&worlds1SlowToSecondPile, 35);
-			worlds1TurnToShoot2 = initDriveToWP(robotDrive, 0, 137);
-			worlds1DriveToShoot2 = initDriveToWP(robotDrive, 10, 0);
-			worlds1BackToThirdPile = initDriveToWP(robotDrive, -32, 0);
-			worlds1TurnToThirdPile = initDriveToWP(robotDrive, 0, -52);
-			worlds1DriveToThirdPile = initDriveToWP(robotDrive, 45, 0);
-			worlds1BackToShoot = initDriveToWP(robotDrive, -36, 0);
-			worlds1TurnToShoot3 = initDriveToWP(robotDrive, 0, 58);
-			worlds1DriveToShoot3 = initDriveToWP(robotDrive, 28, 0);
-		}
+		worlds1TurnToBump = initDriveToWP(robotDrive, 0, -50);
+		worlds1DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
+		worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, -18);
+		worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
+			driveToWPSetMaxSpeed(&worlds1DriveToFirstPile, 40);
+		worlds1TurnToShoot1 = initDriveToWP(robotDrive, 0, 51);
+		worlds1DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
+		worlds1TurnToSecondPile = initDriveToWP(robotDrive, 0, 97);
+		worlds1DriveToSecondPile = initDriveToWP(robotDrive, 10, 0);
+		worlds1SlowToSecondPile = initDriveToWP(robotDrive, 26, 0);
+			driveToWPSetMaxSpeed(&worlds1SlowToSecondPile, 35);
+		worlds1TurnToShoot2 = initDriveToWP(robotDrive, 0, -137);
+		worlds1DriveToShoot2 = initDriveToWP(robotDrive, 10, 0);
+		worlds1BackToThirdPile = initDriveToWP(robotDrive, -32, 0);
+		worlds1TurnToThirdPile = initDriveToWP(robotDrive, 0, 52);
+		worlds1DriveToThirdPile = initDriveToWP(robotDrive, 45, 0);
+		worlds1BackToShoot = initDriveToWP(robotDrive, -36, 0);
+		worlds1TurnToShoot3 = initDriveToWP(robotDrive, 0, -58);
+		worlds1DriveToShoot3 = initDriveToWP(robotDrive, 28, 0);
+
+
 	}
 	else if(autonomousSelection == WORLDS_2)
 	{
@@ -187,12 +188,38 @@ void autonomousInit()
 			driveToWPSetMaxSpeed(&worlds2SlowToPile3, 35);
 		worlds2TurnToShoot3 = initDriveToWP(robotDrive, 0, -137);
 		worlds2DriveToShoot3 = initDriveToWP(robotDrive, 14, 0);
-
-
-
-
-
 	}
+	else if(autonomousSelection == WORLDS_3)
+	{
+		worlds3TurnToPile1 = initDriveToWP(robotDrive, 0, -62);
+		worlds3DriveToPile1 = initDriveToWP(robotDrive, 88, 0);
+		worlds3TurnPile2 = initDriveToWP(robotDrive, 0, 45);
+		worlds3ThroughPile2 = initDriveToWP(robotDrive, 30, 0);
+		worlds3BackToPile3 = initDriveToWP(robotDrive, -20, 0);
+		worlds3TurnToPile3 = initDriveToWP(robotDrive, 0, -65);
+		worlds3DriveToPile3 = initDriveToWP(robotDrive, 18, 0);
+			driveToWPSetMaxSpeed(&worlds2DriveToPile2, 50);
+		worlds3BackToShoot2 = initDriveToWP(robotDrive, -18, 0);
+		worlds3TurnToShoot2 = initDriveToWP(robotDrive, 0, 60);
+		worlds3DriveToShoot2 = initDriveToWP(robotDrive, 24, 0);
+		worlds3TurnToPile4 = initDriveToWP(robotDrive, 0, 97);
+		worlds3DriveToPile4 = initDriveToWP(robotDrive, 10, 0);
+		worlds3SlowToPile4 = initDriveToWP(robotDrive, 26, 0);
+			driveToWPSetMaxSpeed(&worlds3SlowToPile4, 35);
+		worlds3TurnToShoot4 = initDriveToWP(robotDrive, 0, -137);
+		worlds3DriveToShoot3 = initDriveToWP(robotDrive, 15, 0);
+	}
+	else if(autonomousSelection == WORLDS_4)
+	{
+		 worlds4TurnToDrive = initDriveToWP(robotDrive, 0, -40);
+		 worlds4Drive = initDriveToWP(robotDrive, 58, 0);
+		 worlds4TurnToPile1 = initDriveToWP(robotDrive, 0, 80);
+		 worlds4DriveToPile1 = initDriveToWP(robotDrive, 43, 0);
+		 worlds4BackToShoot1 = initDriveToWP(robotDrive, -35, 0);
+		 worlds4TurnToShoot1 = initDriveToWP(robotDrive, 0, -85);
+		 worlds4DriveToShoot1 = initDriveToWP(robotDrive, 24, 0);
+	}
+
 	autonomousInfo.lastStep = 0;
 	autonomousInfo.step = 1;
 	autonomousInfo.isFinished = 0;
@@ -387,7 +414,7 @@ void autonomousPeriodic()
 					break;
 				case(10):
 					driveToWP(&worlds2DriveToPile2);
-					autonomousInfo.isFinished = worlds2DriveToPile2.isFinished || autonomousInfo.elapsedTime > 4000;
+					autonomousInfo.isFinished = worlds2DriveToPile2.isFinished || autonomousInfo.elapsedTime > 3500;
 					break;
 				case(11):
 					driveToWP(&worlds2BackToShoot2);
@@ -444,16 +471,155 @@ void autonomousPeriodic()
 		break;
 
 
-
-		case(DO_NOTHING):
-			isAuto = 0;
+		case(WORLDS_3):
+			switch(autonomousInfo.step)
+			{
+			case(1):
+				driveToWP(&worlds3TurnToPile1);
+				turnShooterOn(&robotShooter);
+				shootFender(&robotShooter);
+				ballStopperDown(&robotStopper);
+				autonomousInfo.isFinished = worlds3TurnToPile1.isFinished;
+				break;
+			case(2):
+				driveToWP(&worlds3DriveToPile1);
+				intake1In(&robotIntake);
+				intake2In(&robotIntake);
+				autonomousInfo.isFinished = worlds3DriveToPile1.isFinished;
+				break;
+			case(3):
+				driveToWP(&worlds3TurnPile2);
+				autonomousInfo.isFinished = worlds3TurnPile2.isFinished;
+				break;
+			case(4):
+				driveToWP(&worlds3ThroughPile2);
+				autonomousInfo.isFinished = worlds3ThroughPile2.isFinished;
+				break;
+			case(5):
+				ballStopperUp(&robotStopper);
+				intake1In(&robotIntake);
+				intake2In(&robotIntake);
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 4000;
+				break;
+			case(6):
+				driveToWP(&worlds3BackToPile3);
+				ballStopperDown(&robotStopper);
+				autonomousInfo.isFinished = worlds3BackToPile3.isFinished;
+				break;
+			case(7):
+				driveToWP(&worlds3TurnToPile3);
+				autonomousInfo.isFinished = worlds3TurnToPile3.isFinished;
+				break;
+			case(8):
+				driveToWP(&worlds3DriveToPile3);
+				autonomousInfo.isFinished = worlds3BackToShoot2.isFinished || autonomousInfo.elapsedTime > 3000;
+				break;
+			case(9):
+				driveToWP(&worlds3BackToShoot2);
+				autonomousInfo.isFinished = worlds3BackToShoot2.isFinished;
+				break;
+			case(10):
+				driveToWP(&worlds3TurnToShoot2);
+				autonomousInfo.isFinished = worlds3TurnToShoot2.isFinished;
+				break;
+			case(11):
+				driveToWP(&worlds3DriveToShoot2);
+				autonomousInfo.isFinished = worlds3DriveToShoot2.isFinished;
+				break;
+			case(12):
+				ballStopperUp(&robotStopper);
+				intake1In(&robotIntake);
+				intake2In(&robotIntake);
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 4000;
+				break;
+			case(13):
+				driveToWP(&worlds3TurnToPile4);
+				autonomousInfo.isFinished = worlds3TurnToPile4.isFinished;
+				break;
+			case(14):
+				driveToWP(&worlds3DriveToPile4);
+				ballStopperDown(&robotStopper);
+				autonomousInfo.isFinished = worlds3DriveToPile4.isFinished;
+				break;
+			case(15):
+				driveToWP(&worlds3SlowToPile4);
+				autonomousInfo.isFinished = worlds3SlowToPile4.isFinished;
+				break;
+			case(16):
+				driveToWP(&worlds3TurnToShoot4);
+				autonomousInfo.isFinished = worlds3TurnToShoot4.isFinished;
+				break;
+			case(17):
+				driveToWP(&worlds3DriveToShoot3);
+				autonomousInfo.isFinished = worlds3DriveToShoot3.isFinished;
+				break;
+			case(18):
+				ballStopperUp(&robotStopper);
+				intake1In(&robotIntake);
+				intake2In(&robotIntake);
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 4000;
+				break;
+			default:
+				isAuto = 0;
+				break;
+			}
 		break;
+
+		case(WORLDS_4):
+			switch(autonomousInfo.step)
+			{
+			case(1):
+				driveToWP(&worlds4TurnToDrive);
+				ballStopperDown(&robotStopper);
+				turnShooterOn(&robotShooter);
+				shootHalfCourt(&robotShooter);
+				intake1In(&robotIntake);
+				intake2In(&robotIntake);
+				autonomousInfo.isFinished = worlds4TurnToDrive.isFinished;
+				break;
+			case(2):
+				driveToWP(&worlds4Drive);
+				autonomousInfo.isFinished = worlds4Drive.isFinished;
+				break;
+			case(3):
+				driveToWP(&worlds4TurnToPile1);
+				autonomousInfo.isFinished = worlds4TurnToPile1.isFinished;
+				break;
+			case(4):
+				driveToWP(&worlds4DriveToPile1);
+				autonomousInfo.isFinished = worlds4DriveToPile1.isFinished;
+				break;
+			case(5):
+				driveToWP(&worlds4BackToShoot1);
+				autonomousInfo.isFinished = worlds4BackToShoot1.isFinished;
+				break;
+			case(6):
+				driveToWP(&worlds4TurnToShoot1);
+				autonomousInfo.isFinished = worlds4TurnToShoot1.isFinished;
+				break;
+			case(7):
+				driveToWP(&worlds4DriveToShoot1);
+				autonomousInfo.isFinished = worlds4DriveToShoot1.isFinished;
+				break;
+			case(8):
+				ballStopperUp(&robotStopper);
+				intake1In(&robotIntake);
+				intake2In(&robotIntake);
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 4000;
+				break;
+
+			default:
+				isAuto = 0;
+				break;
+			}
+			break;
+
+		/*case(DO_NOTHING):
+			isAuto = 0;
+		break;*/
 				default:
 					isAuto = 0;
 					break;
-
-				break;
-
 
 
 	}
@@ -496,3 +662,4 @@ void autonomous()
 		puts("Autonomous");
 	}
 }
+

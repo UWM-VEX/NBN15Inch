@@ -53,8 +53,8 @@ void operatorControl()
 		}
 		else if(OIReduceDrive())
 		{
-			left = (int) left * 0.6;
-			right = (int) right * 0.6;
+			left = (int) left * 0.5;
+			right = (int) right * 0.5;
 		}
 
 		tankDrive(robotDrive, left, right);

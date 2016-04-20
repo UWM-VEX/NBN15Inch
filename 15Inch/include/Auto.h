@@ -34,6 +34,9 @@ int alliance;
 #define DO_NOTHING 0
 #define WORLDS_1 1
 #define WORLDS_2 2
+#define WORLDS_3 3
+#define WORLDS_4 4
+
 
 
 int autonomousSelection;
