@@ -453,11 +453,13 @@ void autonomousPeriodic()
 			case(8):
 				driveToWP(&worlds1TurnToSecondPile);
 				ballStopperDown(&robotStopper);
+				intake1Out(&robotIntake);
 				autonomousInfo.isFinished = worlds1TurnToSecondPile.isFinished
 						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(9):
 			driveToWP(&worlds1DriveToSecondPile);
+			intake1In(&robotIntake);
 			autonomousInfo.isFinished = worlds1DriveToSecondPile.isFinished
 					|| autonomousInfo.elapsedTime > globalTimeout;
 			break;
@@ -488,12 +490,14 @@ void autonomousPeriodic()
 			case(14):
 			driveToWP(&worlds1BackToThirdPile);
 			ballStopperDown(&robotStopper);
+			intake1Out(&robotIntake);
 			autonomousInfo.isFinished = worlds1BackToThirdPile.isFinished
 					|| autonomousInfo.elapsedTime > globalTimeout;
 			break;
 
 			case(15):
 			driveToWP(&worlds1TurnToThirdPile);
+			intake1In(&robotIntake);
 			autonomousInfo.isFinished = worlds1TurnToThirdPile.isFinished
 					|| autonomousInfo.elapsedTime > globalTimeout;
 			break;
@@ -587,11 +591,13 @@ void autonomousPeriodic()
 				case(8):
 					driveToWP(&worlds2BackToPile2);
 					ballStopperDown(&robotStopper);
+					intake1Out(&robotIntake);
 					autonomousInfo.isFinished = worlds2BackToPile2.isFinished
 							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(9):
 					driveToWP(&worlds2TurnToPile2);
+					intake1In(&robotIntake);
 					autonomousInfo.isFinished = worlds2TurnToPile2.isFinished
 							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
@@ -624,11 +630,13 @@ void autonomousPeriodic()
 				case(15):
 					driveToWP(&worlds2TurnToPile3);
 					ballStopperDown(&robotStopper);
+					intake1Out(&robotIntake);
 					autonomousInfo.isFinished = worlds2TurnToPile3.isFinished
 							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(16):
 					driveToWP(&worlds2DriveToPile3);
+					intake1In(&robotIntake);
 					autonomousInfo.isFinished = worlds2DriveToPile3.isFinished
 							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
@@ -700,11 +708,13 @@ void autonomousPeriodic()
 			case(6):
 				driveToWP(&worlds3BackToPile3);
 				ballStopperDown(&robotStopper);
+				intake1Out(&robotIntake);
 				autonomousInfo.isFinished = worlds3BackToPile3.isFinished
 						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(7):
 				driveToWP(&worlds3TurnToPile3);
+				intake1In(&robotIntake);
 				autonomousInfo.isFinished = worlds3TurnToPile3.isFinished
 						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
@@ -736,12 +746,14 @@ void autonomousPeriodic()
 				break;
 			case(13):
 				driveToWP(&worlds3TurnToPile4);
+				intake1Out(&robotIntake);
 				autonomousInfo.isFinished = worlds3TurnToPile4.isFinished
 						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(14):
 				driveToWP(&worlds3DriveToPile4);
 				ballStopperDown(&robotStopper);
+				intake1In(&robotIntake);
 				autonomousInfo.isFinished = worlds3DriveToPile4.isFinished
 						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
@@ -857,6 +869,7 @@ void autonomousPeriodic()
 				break;
 			case(5):
 				driveToWP(&worlds5TurnToPile2);
+				intake1Out(&robotIntake);
 				autonomousInfo.isFinished = worlds5TurnToPile2.isFinished
 						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
@@ -864,6 +877,7 @@ void autonomousPeriodic()
 				driveToWP(&worlds5DriveToPile2);
 				ballStopperDown(&robotStopper);
 				shootHalfCourt(&robotShooter);
+				intake1In(&robotIntake);
 				autonomousInfo.isFinished = worlds5DriveToPile2.isFinished
 						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
@@ -889,11 +903,13 @@ void autonomousPeriodic()
 			case(11):
 				driveToWP(&worlds5TurnToPile3);
 				ballStopperDown(&robotStopper);
+				intake1Out(&robotIntake);
 				autonomousInfo.isFinished = worlds5TurnToPile3.isFinished
 						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(12):
 				driveToWP(&worlds5DriveToPile3);
+				intake1In(&robotIntake);
 				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 5000;
 				break;
 			case(13):
