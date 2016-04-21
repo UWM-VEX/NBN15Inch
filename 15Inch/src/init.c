@@ -53,7 +53,7 @@ void lcdModeSelect()
 	int newButtonPressed;
 	int lastStep = 0;
 
-	const char * selectionText[] = {"Nothing", "Worlds 1", "Worlds 2", "Worlds 3", "Worlds 4", "Worlds 5", "Turn"};
+	const char * selectionText[] = {"Nothing", "Worlds 1", "Worlds 2", "Worlds 3", "Worlds 4", "Worlds 5", "Turn", "Feed"};
 	int size = sizeof(selectionText) / sizeof(int);
 
 	autonomousSelection = 0;
@@ -169,10 +169,10 @@ void initializeIO() {
  */
 
 void initialize() {
-	robotDrive = initDrive(initPantherMotor(2,0), initPantherMotor(5,1),
+	robotDrive = initDrive(initPantherMotor(2,0), initPantherMotor(7/*was 5*/,1),
 					initPantherMotor(3,0), initPantherMotor(6,1),
 					encoderInit(1, 2, 1), encoderInit(3,4,0), gyroInit(1, 0));
-	robotIntake = initIntake(initPantherMotor(8,1), initPantherMotor(7,0),
+	robotIntake = initIntake(initPantherMotor(8,1), initPantherMotor(5/*was 7*/,0),
 			initPantherMotor(1, 0),initPantherMotor(10,0));
 	RedEncoder shooterEncoder = initRedEncoder(encoderInit(5,6,1), 100000);
 	PIDController *shooterPID = initPIDController(4, 0, 0, 1, 0, 0.5);

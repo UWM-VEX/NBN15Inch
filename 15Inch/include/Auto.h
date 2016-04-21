@@ -38,6 +38,7 @@ int alliance;
 #define WORLDS_4 4
 #define WORLDS_5 5
 #define TURN_TEST 6
+#define WORLDS_FEED 7
 
 
 int autonomousSelection;
