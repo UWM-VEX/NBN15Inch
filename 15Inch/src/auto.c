@@ -1397,7 +1397,7 @@ autonomousInfo.elapsedTime > 5000;
 				break;
 			case(10):
 				driveToWP(&worldsfeedDriveThroughPile1);
-				autonomousInfo.isFinished = worldsfeedDriveThroughPile1.isFinished;
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 3000;
 				break;
 
 
