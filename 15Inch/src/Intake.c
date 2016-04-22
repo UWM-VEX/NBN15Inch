@@ -78,8 +78,8 @@ void runIntake(Intake *intake)
 		break;
 
 	case(AUTO_INTAKE):
-		setPantherMotor((*intake).frontMotor, 42);
-		setPantherMotor((*intake).middleMotor1, 127);
+		setPantherMotor((*intake).frontMotor, -60);
+		setPantherMotor((*intake).middleMotor1, -60);
 		break;
 
 	case(INTAKE_UNJAM):

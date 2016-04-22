@@ -175,26 +175,16 @@ DriveToWP worldsfeedTurnToPile1;
 DriveToWP worldsfeedDriveToPile1;
 DriveToWP worldsfeedDriveToPile1Slow;
 DriveToWP worldsfeedDriveThroughPile1;
-DriveToWP worldsfeedTurnToFeed1;
-DriveToWP worldsfeedDriveToFeed1;
-DriveToWP worldsfeedTurnToPile2;
-DriveToWP worldsfeedDriveToPile2;
-DriveToWP worldsfeedDriveToPile2Slow;
-DriveToWP worldsfeedDriveThroughPile2;
+DriveToWP worldsfeedDriveToFeed4;
+DriveToWP worldsfeedBackToFeed2;
 DriveToWP worldsfeedTurnToFeed2;
-DriveToWP worldsfeedDriveToFeed2;
 DriveToWP worldsfeedBackToPile3;
 DriveToWP worldsfeedTurnToPile3;
-DriveToWP worldsfeedDriveToPIle3;
-DriveToWP worldsfeedBackToFeed3;
+DriveToWP worldsfeedDriveToPile3;
+DriveToWP worldsfeedSlowToPile3;
+DriveToWP worldsfeedDriveThroughPile3;
 DriveToWP worldsfeedTurnToFeed3;
 DriveToWP worldsfeedDriveToFeed3;
-DriveToWP worldsfeedBackToPIle4;
-DriveToWP worldsfeedTurnToPile4;
-DriveToWP worldsfeedDriveToPile4;
-DriveToWP worldsfeedBackToFeed4;
-DriveToWP worldsfeedTurnToFeed4;
-DriveToWP worldsfeedDriveToFeed4;
 
 
 int globalTimeout;
@@ -478,15 +468,25 @@ void autonomousInit()
 		if(alliance == BLUE)
 		{
 			worldsfeedTurnToClear = initDriveToWP(robotDrive, 0, -30);
-			worldsfeedDriveToSet = initDriveToWP(robotDrive, 12, 0);
+			worldsfeedDriveToSet = initDriveToWP(robotDrive, 14, 0);
 			worldsfeedTurnToFeed = initDriveToWP(robotDrive, 0, 135);
-			worldsfeedDriveToFeed = initDriveToWP(robotDrive, 8, 0);
+			worldsfeedDriveToFeed = initDriveToWP(robotDrive, 9, 0);
 			worldsfeedBackToPile1 = initDriveToWP(robotDrive, -3, 0);
-			worldsfeedTurnToPile1 = initDriveToWP(robotDrive, 0, -105);
-			worldsfeedDriveToPile1 = initDriveToWP(robotDrive, 24, 0);
+			worldsfeedTurnToPile1 = initDriveToWP(robotDrive, 0, -85);
+			worldsfeedDriveToPile1 = initDriveToWP(robotDrive, 32, 0);
 			worldsfeedDriveToPile1Slow = initDriveToWP(robotDrive, 4, 0);
-				driveToWPSetMaxSpeed(&worldsfeedDriveToPile1Slow, 60);
-			worldsfeedDriveThroughPile1 = initDriveToWP(robotDrive, 12, 0);
+				driveToWPSetMaxSpeed(&worldsfeedDriveToPile1Slow, 80);
+			worldsfeedDriveThroughPile1 = initDriveToWP(robotDrive, 8, 0);
+			worldsfeedBackToFeed2 = initDriveToWP(robotDrive, -44, 0);
+			worldsfeedTurnToFeed2 = initDriveToWP(robotDrive, 0, 85);
+			worldsfeedBackToPile3 = initDriveToWP(robotDrive, -12, 0);
+			worldsfeedTurnToPile3 = initDriveToWP(robotDrive, 0, -90);
+			worldsfeedDriveToPile3 = initDriveToWP(robotDrive, 6, 0);
+			worldsfeedSlowToPile3 = initDriveToWP(robotDrive, 4, 0);
+				driveToWPSetMaxSpeed(&worldsfeedSlowToPile3, 80);
+			worldsfeedDriveThroughPile3 = initDriveToWP(robotDrive, 12, 0);
+			worldsfeedTurnToFeed3 = initDriveToWP(robotDrive, 0, 120);
+			worldsfeedDriveToFeed3 = initDriveToWP(robotDrive, 20, 0);
 		}
 		else
 		{
@@ -1358,6 +1358,7 @@ autonomousInfo.elapsedTime > 5000;
 			{
 			case(1):
 				driveToWP(&worldsfeedTurnToClear);
+				ballStopperDown(&robotStopper);
 				autonomousInfo.isFinished = worldsfeedTurnToClear.isFinished;
 				break;
 			case(2):
@@ -1365,42 +1366,91 @@ autonomousInfo.elapsedTime > 5000;
 				autonomousInfo.isFinished = worldsfeedDriveToSet.isFinished;
 				break;
 			case(3):
+				tankDrive(robotDrive, 0, 0);
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 5000;
+				break;
+			case(4):
 				driveToWP(&worldsfeedTurnToFeed);
 				autonomousInfo.isFinished = worldsfeedTurnToFeed.isFinished;
 				break;
-			case(4):
+			case(5):
 				driveToWP(&worldsfeedDriveToFeed);
 				autonomousInfo.isFinished = worldsfeedDriveToFeed.isFinished;
 				break;
-			case(5):
-				intake1Out(&robotIntake);
+			case(6):
+				intake1Auto(&robotIntake);
 				intake2Out(&robotIntake);
 				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 3500;
 				break;
-			case(6):
+			case(7):
 				driveToWP(&worldsfeedBackToPile1);
 				autonomousInfo.isFinished = worldsfeedBackToPile1.isFinished;
 				break;
-			case(7):
+			case(8):
 				driveToWP(&worldsfeedTurnToPile1);
 				intake1In(&robotIntake);
 				intake2In(&robotIntake);
 				autonomousInfo.isFinished = worldsfeedTurnToPile1.isFinished;
 				break;
-			case(8):
+			case(9):
 				driveToWP(&worldsfeedDriveToPile1);
 				autonomousInfo.isFinished = worldsfeedDriveToPile1.isFinished;
 				break;
-			case(9):
+			case(10):
 				driveToWP(&worldsfeedDriveToPile1Slow);
 				autonomousInfo.isFinished = worldsfeedDriveToPile1Slow.isFinished;
 				break;
-			case(10):
+			case(11):
 				driveToWP(&worldsfeedDriveThroughPile1);
 				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 3000;
 				break;
-
-
+			case(12):
+				driveToWP(&worldsfeedBackToFeed2);
+				autonomousInfo.isFinished = worldsfeedBackToFeed2.isFinished;
+				break;
+			case(13):
+				driveToWP(&worldsfeedTurnToFeed2);
+				autonomousInfo.isFinished = worldsfeedTurnToFeed2.isFinished;
+				break;
+			case(14):
+				intake1Auto(&robotIntake);
+				intake2Out(&robotIntake);
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 4500;
+				break;
+			case(15):
+				intake1In(&robotIntake);
+				intake2In(&robotIntake);
+				driveToWP(&worldsfeedBackToPile3);
+				autonomousInfo.isFinished = worldsfeedBackToPile3.isFinished;
+				break;
+			case(16):
+				driveToWP(&worldsfeedTurnToPile3);
+				autonomousInfo.isFinished = worldsfeedTurnToPile3.isFinished;
+				break;
+			case(17):
+				driveToWP(&worldsfeedDriveToPile3);
+				autonomousInfo.isFinished = worldsfeedDriveToPile3.isFinished;
+				break;
+			case(18):
+				driveToWP(&worldsfeedSlowToPile3);
+				autonomousInfo.isFinished = worldsfeedSlowToPile3.isFinished;
+				break;
+			case(19):
+				driveToWP(&worldsfeedDriveThroughPile3);
+				autonomousInfo.isFinished = worldsfeedDriveThroughPile3.isFinished;
+				break;
+			case(20):
+				driveToWP(&worldsfeedTurnToFeed3);
+				autonomousInfo.isFinished = worldsfeedTurnToFeed3.isFinished;
+				break;
+			case(21):
+				driveToWP(&worldsfeedDriveToFeed3);
+				autonomousInfo.isFinished = worldsfeedDriveToFeed3.isFinished;
+				break;
+			case(22):
+				intake1Auto(&robotIntake);
+				intake2Out(&robotIntake);
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 4500;
 				break;
 			default:
 				isAuto = 0;
