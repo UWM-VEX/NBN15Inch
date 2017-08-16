@@ -20,7 +20,7 @@ void turnShooterOn(Shooter *shooter)
 {
 	(*shooter).turnedOn = 1;
 	(*shooter).SP = (*shooter).speedWhenOn;
-	puts("Shooter turned on.");
+	//puts("Shooter turned on.");
 }
 
 void turnShooterOff(Shooter *shooter)

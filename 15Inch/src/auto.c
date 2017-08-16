@@ -224,38 +224,20 @@ void autonomousInit()
 		{
 			worlds1TurnToBump = initDriveToWP(robotDrive, 0, -50);
 			worlds1DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
-			worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, -
-
-18);
-			worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24,
-
-0);
-				driveToWPSetMaxSpeed(&worlds1DriveToFirstPile,
-
-40);
+			worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, -18);
+			worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
+				driveToWPSetMaxSpeed(&worlds1DriveToFirstPile, 40);
 			worlds1TurnToShoot1 = initDriveToWP(robotDrive, 0, 51);
 			worlds1DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
-			worlds1TurnToSecondPile = initDriveToWP(robotDrive, 0,
-
-97);
-			worlds1DriveToSecondPile = initDriveToWP(robotDrive, 10,
-
-0);
-			worlds1SlowToSecondPile = initDriveToWP(robotDrive, 26,
-
-0);
-				driveToWPSetMaxSpeed(&worlds1SlowToSecondPile,
-
-35);
+			worlds1TurnToSecondPile = initDriveToWP(robotDrive, 0, 97);
+			worlds1DriveToSecondPile = initDriveToWP(robotDrive, 10, 0);
+			worlds1SlowToSecondPile = initDriveToWP(robotDrive, 26, 0);
+				driveToWPSetMaxSpeed(&worlds1SlowToSecondPile, 35);
 			worlds1TurnToShoot2 = initDriveToWP(robotDrive, 0, -137);
 			worlds1DriveToShoot2 = initDriveToWP(robotDrive, 10, 0);
-			worlds1BackToThirdPile = initDriveToWP(robotDrive, -32,
-
-0);
+			worlds1BackToThirdPile = initDriveToWP(robotDrive, -32, 0);
 			worlds1TurnToThirdPile = initDriveToWP(robotDrive, 0, 52);
-			worlds1DriveToThirdPile = initDriveToWP(robotDrive, 45,
-
-0);
+			worlds1DriveToThirdPile = initDriveToWP(robotDrive, 45, 0);
 			worlds1BackToShoot = initDriveToWP(robotDrive, -36, 0);
 			worlds1TurnToShoot3 = initDriveToWP(robotDrive, 0, -58);
 			worlds1DriveToShoot3 = initDriveToWP(robotDrive, 28, 0);
@@ -265,37 +247,19 @@ void autonomousInit()
 			worlds1TurnToBump = initDriveToWP(robotDrive, 0, 47);
 			worlds1DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
 			worlds1TurnToFirstPile = initDriveToWP(robotDrive, 0, 17);
-			worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24,
-
-0);
-				driveToWPSetMaxSpeed(&worlds1DriveToFirstPile,
-
-40);
+			worlds1DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
+				driveToWPSetMaxSpeed(&worlds1DriveToFirstPile, 40);
 			worlds1TurnToShoot1 = initDriveToWP(robotDrive, 0, -54);
 			worlds1DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
-			worlds1TurnToSecondPile = initDriveToWP(robotDrive, 0, -
-
-102);
-			worlds1DriveToSecondPile = initDriveToWP(robotDrive, 10,
-
-0);
-			worlds1SlowToSecondPile = initDriveToWP(robotDrive, 26,
-
-0);
-				driveToWPSetMaxSpeed(&worlds1SlowToSecondPile,
-
-35);
-			worlds1TurnToShoot2 = initDriveToWP(robotDrive, 0, 135);
+			worlds1TurnToSecondPile = initDriveToWP(robotDrive, 0, -102);
+			worlds1DriveToSecondPile = initDriveToWP(robotDrive, 10, 0);
+			worlds1SlowToSecondPile = initDriveToWP(robotDrive, 26, 0);
+				driveToWPSetMaxSpeed(&worlds1SlowToSecondPile, 35);
+			worlds1TurnToShoot2 = initDriveToWP(robotDrive, 0, 145);
 			worlds1DriveToShoot2 = initDriveToWP(robotDrive, 16, 0);
-			worlds1BackToThirdPile = initDriveToWP(robotDrive, -34,
-
-0);
-			worlds1TurnToThirdPile = initDriveToWP(robotDrive, 0, -
-
-55);
-			worlds1DriveToThirdPile = initDriveToWP(robotDrive, 49,
-
-0);
+			worlds1BackToThirdPile = initDriveToWP(robotDrive, -34, 0);
+			worlds1TurnToThirdPile = initDriveToWP(robotDrive, 0, - 55);
+			worlds1DriveToThirdPile = initDriveToWP(robotDrive, 49, 0);
 			worlds1BackToShoot = initDriveToWP(robotDrive, -40, 0);
 			worlds1TurnToShoot3 = initDriveToWP(robotDrive, 0, 55);
 			worlds1DriveToShoot3 = initDriveToWP(robotDrive, 34, 0);
@@ -307,15 +271,9 @@ void autonomousInit()
 		{
 			worlds2TurnToBump = initDriveToWP(robotDrive, 0, -50);
 			worlds2DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
-			worlds2TurnToFirstPile = initDriveToWP(robotDrive, 0, -
-
-18);
-			worlds2DriveToFirstPile = initDriveToWP(robotDrive, 24,
-
-0);
-				driveToWPSetMaxSpeed(&worlds2DriveToFirstPile,
-
-40);
+			worlds2TurnToFirstPile = initDriveToWP(robotDrive, 0, - 18);
+			worlds2DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
+				driveToWPSetMaxSpeed(&worlds2DriveToFirstPile, 40);
 			worlds2TurnToShoot1 = initDriveToWP(robotDrive, 0, 51);
 			worlds2DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
 			worlds2BackToPile2 = initDriveToWP(robotDrive, -27, 0);
@@ -337,12 +295,8 @@ void autonomousInit()
 			worlds2TurnToBump = initDriveToWP(robotDrive, 0, 47);
 			worlds2DriveToBump = initDriveToWP(robotDrive, 6*12, 0);
 			worlds2TurnToFirstPile = initDriveToWP(robotDrive, 0, 17);
-			worlds2DriveToFirstPile = initDriveToWP(robotDrive, 24,
-
-0);
-				driveToWPSetMaxSpeed(&worlds2DriveToFirstPile,
-
-40);
+			worlds2DriveToFirstPile = initDriveToWP(robotDrive, 24, 0);
+				driveToWPSetMaxSpeed(&worlds2DriveToFirstPile, 40);
 			worlds2TurnToShoot1 = initDriveToWP(robotDrive, 0, -54);
 			worlds2DriveToShoot1 = initDriveToWP(robotDrive, 22, 0);
 			worlds2BackToPile2 = initDriveToWP(robotDrive, -27, 0);
@@ -350,7 +304,7 @@ void autonomousInit()
 			worlds2DriveToPile2 = initDriveToWP(robotDrive, 17.5, 0);
 				driveToWPSetMaxSpeed(&worlds2DriveToPile2, 50);
 			worlds2BackToShoot2 = initDriveToWP(robotDrive, -18, 0);
-			worlds2TurnToShoot2 = initDriveToWP(robotDrive, 0, -63);
+			worlds2TurnToShoot2 = initDriveToWP(robotDrive, 0, -58);
 			worlds2DriveToShoot2 = initDriveToWP(robotDrive, 27, 0);
 			worlds2TurnToPile3 = initDriveToWP(robotDrive, 0, -102);
 			worlds2DriveToPile3 = initDriveToWP(robotDrive, 10, 0);
@@ -472,11 +426,11 @@ void autonomousInit()
 	{
 		if(alliance == BLUE)
 		{
-			turn90 = initDriveToWP(robotDrive, 0, -90);
+			turn90 = initDriveToWP(robotDrive, 96, 0);
 		}
 		else
 		{
-			turn90 = initDriveToWP(robotDrive, 0, 90);
+			turn90 = initDriveToWP(robotDrive, 96, 0);
 		}
 	}
 	else if(autonomousSelection == WORLDS_FEED)
@@ -586,194 +540,126 @@ void autonomousPeriodic()
 				shootFender(&robotShooter);
 				ballStopperDown(&robotStopper);
 
-				autonomousInfo.isFinished =
-
-worlds1TurnToBump.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds1TurnToBump.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(2):
 				driveToWP(&worlds1DriveToBump);
-				autonomousInfo.isFinished =
-
-worlds1DriveToBump.isFinished;
+				autonomousInfo.isFinished = worlds1DriveToBump.isFinished;
 				break;
 			case(3):
 				driveToWP(&worlds1TurnToFirstPile);
 				intake1In(&robotIntake);
 				intake2In(&robotIntake);
-				autonomousInfo.isFinished =
-
-worlds1TurnToFirstPile.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds1TurnToFirstPile.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(4):
 				driveToWP(&worlds1DriveToFirstPile);
-				autonomousInfo.isFinished =
-
-worlds1DriveToFirstPile.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds1DriveToFirstPile.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(5):
 				driveToWP(&worlds1TurnToShoot1);
-				autonomousInfo.isFinished =
-
-worlds1TurnToShoot1.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds1TurnToShoot1.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(6):
 				driveToWP(&worlds1DriveToShoot1);
 				intake1Stop(&robotIntake);
 				intake2Stop(&robotIntake);
-				autonomousInfo.isFinished =
-
-worlds1DriveToShoot1.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds1DriveToShoot1.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(7):
 				ballStopperUp(&robotStopper);
 				intake1In(&robotIntake);
 				intake2In(&robotIntake);
-				autonomousInfo.isFinished =
-
-autonomousInfo.elapsedTime > 4000;
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 4000;
 				break;
-
-
 
 			case(8):
 				driveToWP(&worlds1TurnToSecondPile);
 				ballStopperDown(&robotStopper);
 				intake1Out(&robotIntake);
-				autonomousInfo.isFinished =
-
-worlds1TurnToSecondPile.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds1TurnToSecondPile.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(9):
 			driveToWP(&worlds1DriveToSecondPile);
 			intake1In(&robotIntake);
-			autonomousInfo.isFinished =
-
-worlds1DriveToSecondPile.isFinished
-					|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+			autonomousInfo.isFinished = worlds1DriveToSecondPile.isFinished
+					|| autonomousInfo.elapsedTime > globalTimeout;
 			break;
 
 			case(10):
 			driveToWP(&worlds1SlowToSecondPile);
-			autonomousInfo.isFinished =
-
-worlds1SlowToSecondPile.isFinished
-					|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+			autonomousInfo.isFinished = worlds1SlowToSecondPile.isFinished
+					|| autonomousInfo.elapsedTime > globalTimeout;
 			break;
 
 			case(11):
 			driveToWP(&worlds1TurnToShoot2);
 			autonomousInfo.isFinished = worlds1TurnToShoot2.isFinished
-					|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+					|| autonomousInfo.elapsedTime > globalTimeout;
 			break;
 
 			case(12):
 			driveToWP(&worlds1DriveToShoot2);
-			autonomousInfo.isFinished =
-
-worlds1DriveToShoot2.isFinished
-					|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+			autonomousInfo.isFinished = worlds1DriveToShoot2.isFinished
+					|| autonomousInfo.elapsedTime > globalTimeout;
 			break;
 
 			case(13):
 			ballStopperUp(&robotStopper);
-			autonomousInfo.isFinished = autonomousInfo.elapsedTime >
-
-3500;
+			autonomousInfo.isFinished = autonomousInfo.elapsedTime > 3500;
 			break;
 
 			case(14):
 			driveToWP(&worlds1BackToThirdPile);
 			ballStopperDown(&robotStopper);
 			intake1Out(&robotIntake);
-			autonomousInfo.isFinished =
-
-worlds1BackToThirdPile.isFinished
-					|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+			autonomousInfo.isFinished = worlds1BackToThirdPile.isFinished
+					|| autonomousInfo.elapsedTime > globalTimeout;
 			break;
 
 			case(15):
 			driveToWP(&worlds1TurnToThirdPile);
 			intake1In(&robotIntake);
-			autonomousInfo.isFinished =
-
-worlds1TurnToThirdPile.isFinished
-					|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+			autonomousInfo.isFinished = worlds1TurnToThirdPile.isFinished
+					|| autonomousInfo.elapsedTime > globalTimeout;
 			break;
 
 			case(16):
 			driveToWP(&worlds1DriveToThirdPile);
-			autonomousInfo.isFinished =
-
-(worlds1DriveToThirdPile.isFinished
+			autonomousInfo.isFinished = (worlds1DriveToThirdPile.isFinished
 					&& autonomousInfo.elapsedTime > 4000)
-					|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+					|| autonomousInfo.elapsedTime > globalTimeout;
 			break;
 
 			case(17):
 			driveToWP(&worlds1BackToShoot);
 			autonomousInfo.isFinished = worlds1BackToShoot.isFinished
-					|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+					|| autonomousInfo.elapsedTime > globalTimeout;
 			break;
 
 			case(18):
 			driveToWP(&worlds1TurnToShoot3);
 			autonomousInfo.isFinished = worlds1TurnToShoot3.isFinished
-					|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+					|| autonomousInfo.elapsedTime > globalTimeout;
 			break;
 
 			case(19):
 			driveToWP(&worlds1DriveToShoot3);
-			autonomousInfo.isFinished =
-
-worlds1DriveToShoot3.isFinished
-					|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+			autonomousInfo.isFinished = worlds1DriveToShoot3.isFinished
+					|| autonomousInfo.elapsedTime > globalTimeout;
 			break;
 
 			case(20):
 			ballStopperUp(&robotStopper);
 			intake1In(&robotIntake);
 			intake2In(&robotIntake);
-			autonomousInfo.isFinished = autonomousInfo.elapsedTime >
-
-4000;
+			autonomousInfo.isFinished = autonomousInfo.elapsedTime > 4000;
 			break;
 
 			default:
@@ -792,192 +678,118 @@ globalTimeout;
 					shootFender(&robotShooter);
 					ballStopperDown(&robotStopper);
 
-					autonomousInfo.isFinished =
-
-worlds2TurnToBump.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2TurnToBump.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(2):
 					driveToWP(&worlds2DriveToBump);
-					autonomousInfo.isFinished =
-
-worlds2DriveToBump.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2DriveToBump.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(3):
 					driveToWP(&worlds2TurnToFirstPile);
 					intake1In(&robotIntake);
 					intake2In(&robotIntake);
-					autonomousInfo.isFinished =
-
-worlds2TurnToFirstPile.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2TurnToFirstPile.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(4):
 					driveToWP(&worlds2DriveToFirstPile);
-					autonomousInfo.isFinished =
-
-worlds2DriveToFirstPile.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2DriveToFirstPile.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(5):
 					driveToWP(&worlds2TurnToShoot1);
-					autonomousInfo.isFinished =
-
-worlds2TurnToShoot1.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2TurnToShoot1.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(6):
 					driveToWP(&worlds2DriveToShoot1);
 					intake1Stop(&robotIntake);
 					intake2Stop(&robotIntake);
-					autonomousInfo.isFinished =
-
-worlds2DriveToShoot1.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2DriveToShoot1.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(7):
 					ballStopperUp(&robotStopper);
 					intake1In(&robotIntake);
 					intake2In(&robotIntake);
-					autonomousInfo.isFinished =
-
-autonomousInfo.elapsedTime > 3500;
+					autonomousInfo.isFinished = autonomousInfo.elapsedTime > 3500;
 					break;
 				case(8):
 					driveToWP(&worlds2BackToPile2);
 					ballStopperDown(&robotStopper);
 					intake1Out(&robotIntake);
-					autonomousInfo.isFinished =
-
-worlds2BackToPile2.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2BackToPile2.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(9):
 					driveToWP(&worlds2TurnToPile2);
 					intake1In(&robotIntake);
-					autonomousInfo.isFinished =
-
-worlds2TurnToPile2.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2TurnToPile2.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(10):
 					driveToWP(&worlds2DriveToPile2);
-					autonomousInfo.isFinished =
-
-worlds2DriveToPile2.isFinished
-							||
-
-autonomousInfo.elapsedTime > 3500;
+					autonomousInfo.isFinished = worlds2DriveToPile2.isFinished
+							|| autonomousInfo.elapsedTime > 3500;
 					break;
 				case(11):
 					driveToWP(&worlds2BackToShoot2);
-					autonomousInfo.isFinished =
-
-worlds2BackToShoot2.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2BackToShoot2.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(12):
 					driveToWP(&worlds2TurnToShoot2);
-					autonomousInfo.isFinished =
-
-worlds2TurnToShoot2.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2TurnToShoot2.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(13):
 					driveToWP(&worlds2DriveToShoot2);
-					autonomousInfo.isFinished =
-
-worlds2DriveToShoot2.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2DriveToShoot2.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(14):
 					ballStopperUp(&robotStopper);
 					intake1In(&robotIntake);
 					intake2In(&robotIntake);
-					autonomousInfo.isFinished =
-
-autonomousInfo.elapsedTime > 3500;
+					autonomousInfo.isFinished = autonomousInfo.elapsedTime > 3500;
 					break;
 				case(15):
 					driveToWP(&worlds2TurnToPile3);
 					ballStopperDown(&robotStopper);
 					intake1Out(&robotIntake);
-					autonomousInfo.isFinished =
-
-worlds2TurnToPile3.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2TurnToPile3.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 				case(16):
 					driveToWP(&worlds2DriveToPile3);
 					intake1In(&robotIntake);
-					autonomousInfo.isFinished =
-
-worlds2DriveToPile3.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2DriveToPile3.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 					break;
 
 				case(17):
 					driveToWP(&worlds2SlowToPile3);
-					autonomousInfo.isFinished =
-
-worlds2SlowToPile3.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2SlowToPile3.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 
 				case(18):
 					driveToWP(&worlds2TurnToShoot3);
-					autonomousInfo.isFinished =
-
-worlds2TurnToShoot3.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2TurnToShoot3.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 
 				case(19):
 					driveToWP(&worlds2DriveToShoot3);
-					autonomousInfo.isFinished =
-
-worlds2DriveToShoot3.isFinished
-							||
-
-autonomousInfo.elapsedTime > globalTimeout;
+					autonomousInfo.isFinished = worlds2DriveToShoot3.isFinished
+							|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 
 				case(20):
 					ballStopperUp(&robotStopper);
-					autonomousInfo.isFinished =
-
-autonomousInfo.elapsedTime > 3500;
+					autonomousInfo.isFinished = autonomousInfo.elapsedTime > 3500;
 				break;
 
 
@@ -1110,74 +922,44 @@ autonomousInfo.elapsedTime > 3500;
 				shootHalfCourt(&robotShooter);
 				intake1In(&robotIntake);
 				intake2In(&robotIntake);
-				autonomousInfo.isFinished =
-
-worlds4TurnToDrive.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds4TurnToDrive.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(2):
 				driveToWP(&worlds4Drive);
-				autonomousInfo.isFinished =
-
-worlds4Drive.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds4Drive.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(3):
 				driveToWP(&worlds4TurnToPile1);
-				autonomousInfo.isFinished =
-
-worlds4TurnToPile1.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds4TurnToPile1.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(4):
 				driveToWP(&worlds4DriveToPile1);
-				autonomousInfo.isFinished =
-
-worlds4DriveToPile1.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds4DriveToPile1.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(5):
 				driveToWP(&worlds4BackToShoot1);
-				autonomousInfo.isFinished =
-
-worlds4BackToShoot1.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds4BackToShoot1.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(6):
 				driveToWP(&worlds4TurnToShoot1);
-				autonomousInfo.isFinished =
-
-worlds4TurnToShoot1.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds4TurnToShoot1.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(7):
 				driveToWP(&worlds4DriveToShoot1);
-				autonomousInfo.isFinished =
-
-worlds4DriveToShoot1.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds4DriveToShoot1.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(8):
 				ballStopperUp(&robotStopper);
 				intake1In(&robotIntake);
 				intake2In(&robotIntake);
-				autonomousInfo.isFinished =
-
-autonomousInfo.elapsedTime > 4000;
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 4000;
 				break;
 
 			default:
@@ -1197,135 +979,83 @@ autonomousInfo.elapsedTime > 4000;
 				shootFender(&robotShooter);
 				ballStopperDown(&robotStopper);
 				driveToWP(&worlds5TurnToShoot1);
-				autonomousInfo.isFinished =
-
-worlds5TurnToShoot1.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds5TurnToShoot1.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(3):
 				driveToWP(&worlds5DriveToShoot1);
-				autonomousInfo.isFinished =
-
-worlds5DriveToShoot1.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds5DriveToShoot1.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(4):
 				driveToWP(&worlds5TurnToGoal1);
-				autonomousInfo.isFinished =
-
-worlds5TurnToGoal1.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds5TurnToGoal1.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(5):
 				intake1In(&robotIntake);
 				intake2In(&robotIntake);
 				ballStopperUp(&robotStopper);
-				autonomousInfo.isFinished =
-
-autonomousInfo.elapsedTime > 5000;
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 5000;
 				break;
 			case(6):
 				driveToWP(&worlds5TurnToPile2);
 				intake1Out(&robotIntake);
-				autonomousInfo.isFinished =
-
-worlds5TurnToPile2.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds5TurnToPile2.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(7):
 				driveToWP(&worlds5DriveToPile2);
 				ballStopperDown(&robotStopper);
 				shootHalfCourt(&robotShooter);
 				intake1In(&robotIntake);
-				autonomousInfo.isFinished =
-
-worlds5DriveToPile2.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds5DriveToPile2.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(8):
 				driveToWP(&worlds5SlowToPile2);
-				autonomousInfo.isFinished =
-
-worlds5SlowToPile2.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds5SlowToPile2.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(9):
 				driveToWP(&worlds5FastToPile2);
-				autonomousInfo.isFinished =
-
-worlds5FastToPile2.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds5FastToPile2.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(10):
 				driveToWP(&worlds5TurnToShoot2);
-				autonomousInfo.isFinished =
-
-worlds5TurnToShoot2.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds5TurnToShoot2.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(11):
 				ballStopperUp(&robotStopper);
-				autonomousInfo.isFinished =
-
-autonomousInfo.elapsedTime > 5000;
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 5000;
 				break;
 			case(12):
 				driveToWP(&worlds5TurnToPile3);
 				ballStopperDown(&robotStopper);
 				intake1Out(&robotIntake);
-				autonomousInfo.isFinished =
-
-worlds5TurnToPile3.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds5TurnToPile3.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(13):
 				driveToWP(&worlds5DriveToPile3);
 				intake1In(&robotIntake);
-				autonomousInfo.isFinished =
-
-autonomousInfo.elapsedTime > 5000;
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 5000;
 				break;
 			case(14):
 				driveToWP(&worlds5BackToShoot3);
-				autonomousInfo.isFinished =
-
-worlds5BackToShoot3.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds5BackToShoot3.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(15):
 				driveToWP(&worlds5TurnToShoot3);
-				autonomousInfo.isFinished =
-
-worlds5TurnToShoot3.isFinished
-						|| autonomousInfo.elapsedTime >
-
-globalTimeout;
+				autonomousInfo.isFinished = worlds5TurnToShoot3.isFinished
+						|| autonomousInfo.elapsedTime > globalTimeout;
 				break;
 			case(16):
 				ballStopperUp(&robotStopper);
-				autonomousInfo.isFinished =
-
-autonomousInfo.elapsedTime > 5000;
+				autonomousInfo.isFinished = autonomousInfo.elapsedTime > 5000;
 				break;
 
 
@@ -1612,7 +1342,6 @@ void autonomous()
 
 		delay(20);
 
-		puts("Autonomous");
+		//puts("Autonomous");
 	}
 }
-

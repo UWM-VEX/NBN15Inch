@@ -60,7 +60,7 @@ void lcdModeSelect()
 
 	while((isOnline() ? (!isEnabled() && inModeSelection) : inModeSelection))
 	{
-		printf("Step: %d\n", step);
+		//printf("Step: %d\n", step);
 
 		if(lastButtonPress != lcdReadButtons(uart1))
 		{
@@ -76,7 +76,7 @@ void lcdModeSelect()
 		switch(step)
 		{
 		case(1):
-			puts("Setting Text");
+			//puts("Setting Text");
 
 			if(step != lastStep)
 			{
@@ -178,7 +178,7 @@ void initialize() {
 	PIDController *shooterPID = initPIDController(4, 0, 0, 1, 0, 0.5);
 	robotShooter = initShooter(shooterPID, initPantherMotor(9,1), 57, 66, shooterEncoder);
 
-	lcdModeSelect();
+	//lcdModeSelect();
 
-	puts("LCD Finished");
+	//puts("LCD Finished");
 }
